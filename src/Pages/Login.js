@@ -1,10 +1,23 @@
-import React from 'react'
+import React from "react";
+import "./Login.css";
+import img from '../Images/instagramAdd.png'
+
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <section className="section">
+      <div className="main">
+        <article className="loginPage">
+          <div className="ImageContainer">
 
+            <img src={img} ></img>
+          </div>
+          <div className="loginContainer">login</div>
+        </article>
+      </div>
 
-
+      <footer>footer</footer>
+    </section>
+  );
+};
+export default Login;

@@ -1,0 +1,36 @@
+*{
+padding: 0%;
+margin: 0%;
+}
+.section{
+  height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.main{
+  width: 60%;
+  height: 85vh;
+  display: flex;
+}
+
+.loginPage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+.ImageContainer{
+
+width: 50%;
+text-align: center;
+ 
+
+}
+.loginContainer{
+  width: 50%;
+  background-color: rgb(239, 207, 184);
+}
+
+footer{background-color: aquamarine; width: 60%; height: 15vh;}
