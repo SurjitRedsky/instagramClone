@@ -1,22 +1,18 @@
 import React from "react";
 import "./Login.css";
-import img from "../Images/instagramAdd.png";
-import Footer from "../Components/Footer";
-import LoginForm from "../Components/LoginForm";
+import img from "../images/instagramAdd.png";
+import Footer from "../components/Footer";
+import LoginForm from "../components/LoginForm";
 
 const Login = () => {
   return (
     <>
       <section className="section">
-        <div className="loginPage">
-          <div className="main">
-            <div className="imageContainer">
-              <img src=""></img>
-            </div>
-            <div className="loginContainer">
-              <LoginForm />
-            </div>
+        <div className="main">
+          <div className="imageContainer">
+            <img src=""></img>
           </div>
+          <LoginForm />
         </div>
       </section>
       <Footer />
