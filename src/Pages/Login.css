@@ -29,7 +29,6 @@ align-items: center;
   width: 50%;
  height: 80vh;
   background-image: url('../Images//home-phones.png');
-  /* background-image: url('../Images/c5Rp7Ym-Klz.png'); */
 background-repeat: no-repeat;
 background-position: center;
 
@@ -37,8 +36,8 @@ background-position: center;
 }
 .loginContainer{
   width: 40%;
-  height: 80vh;
- 
+  /* height: 80vh; */
+
 }
 
 
@@ -52,7 +51,7 @@ width: 50%;
 /* background-repeat: no-repeat; */
 /* background-size:auto auto; */
 /* text-align: center; */
-/* } */ 
+/* } */
 
 
 
