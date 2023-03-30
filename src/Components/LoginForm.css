@@ -1,13 +1,12 @@
 
 .icon{
-  /* height: 100px; */
   margin-top: 36px;
   margin-bottom: 12px;
 }
+
 .loginForm{
   height: 80vh;
 }
-
 
 .loginContainer{
   padding: 0px 40px;
@@ -27,18 +26,15 @@
   align-items: center;
   gap:8px;
 }
+
 .form>input[type="text"], input[type="password"]{
   width: 100%;
   min-width: 280px;
   padding: 10px 10px;
   border: 1px solid rgb(var(--grey-2));
-  
-  
 }
 .form>input[type=text],input[type=password]:focus{
-
   outline: none;
-
 }
 
 .loginBtn{
@@ -49,7 +45,7 @@ width: 100%;
   background-color: rgba(var(--blue-4));
   font-size: 14px;
   font-weight: var(--font-weight-system-semibold);
-  padding: 10px 0px;
+  padding: 7px 0px;
   margin: 5px 0px;
 }
 
@@ -68,6 +64,7 @@ width: 100%;
   font-size: 15px;
   font-weight: var(--font-weight-system-semibold);
   text-decoration: none;
+  padding: 15px 0px;
 
 }
 .line{
@@ -77,7 +74,7 @@ width: 40%;
   font-size: 13px;
   color: rgba(var(--blue-8));
 text-decoration: none;
-padding: 0px 0px 14px 0px ;
+padding: 0px 0px 25px 0px ;
 }
 
 .signUp {
@@ -88,16 +85,16 @@ padding: 0px 0px 14px 0px ;
   border: 1px solid rgb(var(--grey-2));
   margin: 10px 0px;
   font-size: 14px;
-  padding: 10px 10px ;
+  padding: 25px 10px ;
 }
 .signUp>a{
   color: rgba(var(--blue-4));
-
   font-weight:var(  --font-weight-system-semibold) ;
-
 text-decoration: none;
 font-size: inherit;
+padding: 0px 0px ;
 }
+
 
 
 .appStoreIcons {

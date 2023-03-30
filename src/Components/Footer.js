@@ -2,24 +2,66 @@ import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
+
+const footerLinks=[
+  {
+    "url":"https://about.meta.com/",
+    "name":"Meta"
+  },
+  {
+    "url":"https://about.instagram.com/",
+    "name":"About"
+  } ,{
+    "url":"https://about.instagram.com/en_US/blog",
+    "name":"Blog"
+  }, {
+    "url":"https://about.instagram.com/about-us/careers",
+    "name":"Jobs"
+  } ,{
+    "url":"https://help.instagram.com/",
+    "name":"Help"
+  } ,{
+    "url":"https://about.meta.com/",
+    "name":"Api"
+  } ,{
+    "url":"https://about.meta.com/",
+    "name":"Privacy"
+  } ,{
+    "url":"https://about.meta.com/",
+    "name":"Terms"
+  },{
+    "url":"https://about.meta.com/",
+    "name":"Top Accounts"
+  },{
+    "url":"https://about.meta.com/",
+    "name":"Locations"
+  },{
+    "url":"https://about.meta.com/",
+    "name":"Instagram Lite"
+  },{
+    "url":"https://about.meta.com/",
+    "name":"Contact Uploading $ Non-Users"
+  },{
+    "url":"https://about.meta.com/",
+    "name":"Meta Verified"
+  }
+]
+
+
+
   return (
     <footer className="mainFooter">
       <div className="footerLinks">
-        <a src="*">Meta </a>
-        <a src="*">About </a>
-        <a src="*">Blog </a>
-        <a src="*">Jobs </a>
-        <a src="*">Help </a>
-        <a src="*">Api </a>
-        <a src="*">Privacy </a>
-        <a src="*">Terms </a>
-        <a src="*">Top Accounts </a>
-        <a src="*">Locations </a>
-        <a src="*">instagram Lite </a>
-        <a src="*">Contact Uploading & Non-Users </a>
-        <a src="*">Meta Verified </a>
+        {
+          footerLinks.map((item)=>{
+            return (
+            <a href={item.url}> {item.name}</a>
+             )
+          })
+        }
+      
       </div>
-      <div className="firstLine">
+      <div className="links">
         <select id="" className="laguageSelection">
           <option value="english" selected>
             English

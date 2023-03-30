@@ -4,7 +4,8 @@
 
 .mainFooter {
   color:rgba(var(--ig-secondary-text)) ;
-  font-size:14px;
+ 
+ 
   width: 100%;
   height: auto;
 display: flex;
@@ -15,18 +16,26 @@ align-items: center;
 }
 .footerLinks  {
   display: flex;
- 
-}
-a{
-  margin: 9px 5px 9px 5px;
-  
-}
 
+}
+.footerLinks>a{
+  text-decoration: none;
+  margin: 9px 5px 9px 5px;
+  color:rgba(var(--ig-secondary-text)) ;  
+  font-size: 13px;
+  font-weight: var(--font-weight-system-semibold);
+}
+.links{
+  color:rgba(var(--ig-secondary-text)) ;
+  font-size: 13px;
+  font-weight: var(--font-weight-system-semibold);
+}
 
 
 .laguageSelection {
   color:rgba(var(--ig-secondary-text)) ;
-  font-size:var(--system-14-font-size);
+  font-size: 13px;
+  font-weight: var(--font-weight-system-semibold);
   background-color: transparent;
   border: none;
 }

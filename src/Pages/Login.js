@@ -38,7 +38,7 @@ const addImages=[addImg1,addImg2,addImg3,addImg4]
           </div>
           <LoginForm />
         </div>
-      {/* </section> */}
+    
       <div>
       <Footer />
       </div>
