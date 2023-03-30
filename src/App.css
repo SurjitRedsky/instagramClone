@@ -4,6 +4,7 @@
     --blue-1: 224, 241, 255;
     --blue-2: 179, 219, 255;
     --blue-3: 112, 188, 255;
+
     --blue-4: 71, 175, 255;
     --blue-5: 0, 149, 246;
     --blue-6: 0, 116, 204;
@@ -235,6 +236,8 @@
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
+  /* font-size: 13px; */
+  /* font-family: var(--fon); */
   }
   .app{
     width: 100%;
@@ -243,6 +246,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: var(--font-family-system);
+  /* gap:40px */
   /* background-color: #00A400; */
   }
 

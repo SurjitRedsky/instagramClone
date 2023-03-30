@@ -1,19 +1,26 @@
 import React from 'react';
 import './LoginForm.css';
-import instaLogo from '../images/instaBlackLogo.png';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+
+
 import appleAppStore from '../images/Yfc020c87j0.png';
 import googleAppStore from '../images/c5Rp7Ym-Klz.png';
+import blackInstaLogo from '../images/binstalogo.png' 
+
+
 
 const LoginForm = () => {
   return (
-    <div className="loginform">
+    <div className="loginForm">
       <div className="loginContainer">
         <div className="icon">
-          <img src={''} />
+          <img src={blackInstaLogo} width={200}/>
         </div>
 
         <form className="form">
-          <input type="text" placeholder='Phone number, username or email address'></input>
+          <input type="text" placeholder='Phone number, username or email'></input>
           <input type="password" placeholder='Password'></input>
           <button className='loginBtn'>Log in</button>
           <div className='horizontal'>
@@ -23,7 +30,7 @@ const LoginForm = () => {
             </div>
 
             <div>
-              <span>OR</span>
+              <span>or</span>
 
             </div>
             <div className='line'>
@@ -33,14 +40,14 @@ const LoginForm = () => {
 
           </div>
 
-          <a href='*'>Log in with Facebook</a>
-          <span>Forgotten your Password?</span>
+         <a href='*' className='facebookIcons'> <FontAwesomeIcon size='1x' icon={faFacebookSquare}/>  Log in with Facebook </a>
+          <a href='*' className="forgotPass">Forgot Password?</a>
 
 
         </form>
       </div>
       <div className="signUp">
-        Don't have an account?<a href='*'>signUp </a>
+        Don't have an account?<a href='*'>Sign up </a>
       </div>
 
       <div className="appStoreIcons">

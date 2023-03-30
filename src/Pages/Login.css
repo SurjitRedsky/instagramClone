@@ -1,44 +1,25 @@
 
-.section{
-
-}
-
-
 .main{
   display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-gap:10px;
-background-color: aliceblue;
+/* gap:10px; */
+
 }
 
 .imageContainer{
-  width: 400px;
- height: 80vh;
-  background-image: url('../images//home-phones.png');
+  height: 83vh;
+  width: 450px;
+  background-image: url('../images/home-phones.png');
 background-repeat: no-repeat;
-background-position: center;
+
+}
+#add{
+  transition-timing-function: ease-out;
+  position: relative;
+  top: 4%;
+  left: 35%;
 }
 
 
-
-/* .ImageContainer{
-  background-color: aqua;
-  align-items: center;
-width: 50%;
-/* height: 90%; */
-/* background-image: url('../Images/home-phones.png'); */
-/* background-repeat: no-repeat; */
-/* background-size:auto auto; */
-/* text-align: center; */
-/* } */
-
-
-
-
-/* .loginContainer{
-  width: 50%;
-height: 90%;
-  background-color: rgb(239, 207, 184);
-} */

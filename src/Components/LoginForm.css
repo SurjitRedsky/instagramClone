@@ -1,12 +1,18 @@
 
 .icon{
-  height: 100px;
+  /* height: 100px; */
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+.loginForm{
+  height: 80vh;
 }
 
+
 .loginContainer{
-  padding: 20px 30px;
-  margin :5px 0px ;
-  border: 1px solid rgba(var(--ig-secondary-text));
+  padding: 0px 40px;
+  border: 1px solid rgb(var(--grey-2));
+  font-size: 13px;
   display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -18,35 +24,84 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap:4px;
+  align-items: center;
+  gap:8px;
 }
 .form>input[type="text"], input[type="password"]{
   width: 100%;
-  min-width: 300px;
+  min-width: 280px;
   padding: 10px 10px;
+  border: 1px solid rgb(var(--grey-2));
+  
+  
 }
+.form>input[type=text],input[type=password]:focus{
+
+  outline: none;
+
+}
+
 .loginBtn{
+width: 100%;
   border: none;
+  border-radius: 7px;
   color: white;
   background-color: rgba(var(--blue-4));
-  font-weight: var(--font-weight-system-light);
-  padding: 5px 0px;
+  font-size: 14px;
+  font-weight: var(--font-weight-system-semibold);
+  padding: 10px 0px;
+  margin: 5px 0px;
 }
+
 .horizontal{
+  width: 100%;
+  color: rgb(var(--ig-secondary-text));
+  font-family: var(--font-family-system);
+  text-transform: uppercase;
+  /* color: rgb(var(--grey-6)); */
   display: flex;
   align-items: center;
   justify-content: space-between
 }
+.facebookIcons {
+  color: rgba(var(--blue-8));
+  font-size: 15px;
+  font-weight: var(--font-weight-system-semibold);
+  text-decoration: none;
 
+}
 .line{
 width: 40%;
 }
+.forgotPass{
+  font-size: 13px;
+  color: rgba(var(--blue-8));
+text-decoration: none;
+padding: 0px 0px 14px 0px ;
+}
 
 .signUp {
-  border: 1px solid rgba(var(--ig-secondary-text));
-  text-align: center;
+  display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+  border: 1px solid rgb(var(--grey-2));
+  margin: 10px 0px;
+  font-size: 14px;
+  padding: 10px 10px ;
 }
+.signUp>a{
+  color: rgba(var(--blue-4));
+
+  font-weight:var(  --font-weight-system-semibold) ;
+
+text-decoration: none;
+font-size: inherit;
+}
+
+
 .appStoreIcons {
+  font-size: 13px;
   width: 100%;
   display: flex;
   flex-direction: column;

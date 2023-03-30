@@ -4,7 +4,7 @@
 
 .mainFooter {
   color:rgba(var(--ig-secondary-text)) ;
-  font-size:var(--system-15-font-size);
+  font-size:14px;
   width: 100%;
   height: auto;
 display: flex;
@@ -22,9 +22,6 @@ a{
   
 }
 
-select,span{
-  /* margin: 9px 5px 9px 5px; */
-}
 
 
 .laguageSelection {
