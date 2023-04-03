@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const DatePicker = () => {
 
-    const [dayValue, setDayValue] = useState(second)
+    const [dayValue, setDayValue] = useState("")
 
     return (
         <>
