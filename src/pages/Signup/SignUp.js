@@ -1,15 +1,14 @@
 import React from "react";
 import "./SignUp.css";
-import ImgTag from "../components/ImgTag";
-import AnchorTag from "../components/AnchorTag";
-import InputFeild from "../components/InputFeild";
-import Button from "../components/Button";
+import ImgTag from "../../components/ImgTag";
+import AnchorTag from "../../components/AnchorTag";
+import InputFeild from "../../components/InputFeild";
+import Button from "../../components/Button";
 
-import appleAppStore from "../images/Yfc020c87j0.png";
-import googleAppStore from "../images/c5Rp7Ym-Klz.png";
-import blackInstaLogo from "../images/binstalogo.png";
-import facebook from '../images/lightFacebookIcons.png'
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer/Footer";
+import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
+import LoginSignupOption from "../../components/Common/LoginSignupOption";
+import HorizontalLine from "../../components/Common/HorizontalLine";
 
 const SignUp = () => {
   return (
@@ -17,21 +16,17 @@ const SignUp = () => {
       <div className="signUpContainer">
         <div className="signUpPanel">
           <div className="icon">
-            <ImgTag src={blackInstaLogo} width={200} />
+            <ImgTag src={'/images/binstalogo.png'} width={200} />
           </div>
           <form className="signUpForm">
             <h2 className="signUpHeading">Sign up to see photos and videos from your friends.</h2>
             <Button
               className={"facebookLoginBtn"}
-              fontIcon={<ImgTag src={facebook} width={15} />}
+              fontIcon={<ImgTag src={'/images/lightFacebookIcons.png'} width={15} />}
               text={` Log in with Facebook `}
             />
 
-            <div className="horizontal">
-              <hr className="line" />
-              <span>or</span>
-              <hr className="line" />
-            </div>
+            <HorizontalLine />
             <InputFeild type={"text"} placeholder={"Mobile number or email"} />
             <InputFeild type={"text"} placeholder={"Full Name"} />
             <InputFeild type={"text"} placeholder={"Username"} />
@@ -53,20 +48,14 @@ const SignUp = () => {
             <Button className={"sginUpBtn"} text={"Sign up"} />
           </form>
         </div>
-        <div className="loginOption">
-          Have an account?
-          <AnchorTag href={"/accounts/login"} text={"Log In"} />
-        </div>
-        <div className="appStoreIcons">
-          <div className="getAppHeading">
-            <span> Get the app.</span>
-          </div>
-          <div className="getAppIcons">
-            <ImgTag src={appleAppStore} width={130} />
-            <ImgTag src={googleAppStore} width={130} />
-          </div>
-        </div>
+        <LoginSignupOption
+          label={"Have an account?"}
+          linkText="Log In"
+          linkUrl="/accounts/login"
+        />
+        <AppStoreIcons />
       </div>
+
       <Footer />
     </div>
 

@@ -1,0 +1,38 @@
+
+.main{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+/* gap:10px; */
+
+}
+
+.loginPanel{
+  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginPanel .imgBox{
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.loginPanel .imgBox>img{
+  height: 100%;
+}
+
+.loginPanel .imgBox .innerImg{
+  position: absolute;
+      top: 25px;
+    left: 156px;
+}
+
+/* .loginPanel .imgBox .innerImg img{
+  width: 100%;
+} */
+
+

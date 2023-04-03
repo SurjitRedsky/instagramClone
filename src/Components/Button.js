@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({type,className,id,onClick,text,fontIcon} ) => {
+const Button = ({ type, className, id, onClick, text }) => {
   return (
     <>
       <button
@@ -8,14 +8,10 @@ const Button = ({type,className,id,onClick,text,fontIcon} ) => {
         className={className}
         id={id}
         onClick={onClick}
-        fontIcon={fontIcon}
       >
         {
-          fontIcon
+          text
         }
-{
-  text
-}
 
       </button>
     </>
