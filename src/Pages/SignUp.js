@@ -55,7 +55,7 @@ const SignUp = () => {
         </div>
         <div className="loginOption">
           Have an account?
-          <AnchorTag href={"*"} text={"Log In"} />
+          <AnchorTag href={"/accounts/login"} text={"Log In"} />
         </div>
         <div className="appStoreIcons">
           <div className="getAppHeading">

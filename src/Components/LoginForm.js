@@ -11,6 +11,7 @@ import InputFeild from "./InputFeild";
 import Button from "./Button";
 import ImgTag from "./ImgTag";
 import AnchorTag from "./AnchorTag";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
@@ -57,7 +58,8 @@ const LoginForm = () => {
       </div>
       <div className="signUp">
         Don't have an account?
-        <AnchorTag href={"*"} text={"Sign Up"} />
+        <Link to={"/accounts/emailsignup"} >SignUp </Link>
+        {/* <AnchorTag href={"*"} text={"Sign Up"} /> */}
       </div>
 
       <div className="appStoreIcons">
