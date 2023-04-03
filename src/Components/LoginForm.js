@@ -1,53 +1,63 @@
-import React from 'react';
-import './LoginForm.css';
+import React from "react";
+import "./LoginForm.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
-
-import appleAppStore from '../images/Yfc020c87j0.png';
-import googleAppStore from '../images/c5Rp7Ym-Klz.png';
-import blackInstaLogo from '../images/binstalogo.png' 
-
-
+import appleAppStore from "../images/Yfc020c87j0.png";
+import googleAppStore from "../images/c5Rp7Ym-Klz.png";
+import blackInstaLogo from "../images/binstalogo.png";
+import InputFeild from "./InputFeild";
+import Button from "./Button";
+import ImgTag from "./ImgTag";
+import AnchorTag from "./AnchorTag";
 
 const LoginForm = () => {
   return (
     <div className="loginForm">
       <div className="loginContainer">
         <div className="icon">
-          <img src={blackInstaLogo} width={200}/>
+          <ImgTag src={blackInstaLogo} width={200} />
         </div>
 
         <form className="form">
-          <input type="text" placeholder='Phone number, username or email'></input>
-          <input type="password" placeholder='Password'></input>
-          <button className='loginBtn'>Log in</button>
-          <div className='horizontal'>
-            <div className='line'>
+          <InputFeild
+            type={"text"}
+            placeholder={"Phone number, username or email"}
+          />
+          <InputFeild type={"password"} placeholder={"Password"} />
+
+          <Button className={"loginBtn"} text={"Log In"} />
+
+          <div className="horizontal">
+            <div className="line">
               <hr />
-
             </div>
-
             <div>
               <span>or</span>
-
             </div>
-            <div className='line'>
-
+            <div className="line">
               <hr />
             </div>
-
           </div>
 
-         <a href='*' className='facebookIcons'> <FontAwesomeIcon size='1x' icon={faFacebookSquare}/>  Log in with Facebook </a>
-          <a href='*' className="forgotPass">Forgot Password?</a>
-
-
+          <AnchorTag
+            href={"*"}
+            className={"facebookIcons"}
+            // fontIcon={<FontAwesomeIcon size="1x" icon={faFacebookSquare} />}
+            text={` Log in with Facebook `}
+          />
+          <AnchorTag
+            href={"*"}
+            className={"forgotPass"}
+            text={"Forgot Password?"}
+          />
         </form>
+
       </div>
       <div className="signUp">
-        Don't have an account?<a href='*'>Sign up </a>
+        Don't have an account?
+        <AnchorTag href={"*"} text={"Sign Up"} />
       </div>
 
       <div className="appStoreIcons">
@@ -55,8 +65,8 @@ const LoginForm = () => {
           <span> Get the app.</span>
         </div>
         <div className="getAppIcons">
-          <img src={appleAppStore} width={130}></img>
-          <img src={googleAppStore} width={130}></img>
+          <ImgTag src={appleAppStore} width={130} />
+          <ImgTag src={googleAppStore} width={130} />
         </div>
       </div>
     </div>

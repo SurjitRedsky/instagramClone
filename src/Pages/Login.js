@@ -8,6 +8,7 @@ import addImg4 from '../images/screenshot4.png';
 
 import Footer from "../components/Footer";
 import LoginForm from "../components/LoginForm";
+import ImgTag from "../components/ImgTag";
 
 
 const Login = () => {
@@ -31,10 +32,8 @@ const addImages=[addImg1,addImg2,addImg3,addImg4]
      
         <div className="main">
           <div className="imageContainer">
-         
-<img src={currentImage} id="add"></img>
+         <ImgTag src={currentImage} id={"add"}/>
 
-     
           </div>
           <LoginForm />
         </div>
