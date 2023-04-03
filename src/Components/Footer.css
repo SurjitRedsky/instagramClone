@@ -1,43 +1,36 @@
-/* :root{
-  --ig-primary-text: 38, 38, 38
-} */
-
 .mainFooter {
-  color:rgba(var(--ig-secondary-text)) ;
-  width: 100%;
-  height: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 15px;
-
-}
-.footerLinks  {
-  display: flex;
-  flex-wrap: wrap;
-align-items: center;
-  justify-content: center;
- 
-
-}
-.footerLinks>a{
-  text-decoration: none;
-  margin:5px 10px ;
-  color:rgba(var(--ig-secondary-text)) ;  
-  font-size: 12px;
-  font-weight: var(--font-weight-system-semibold);
-}
-.links{
-  color:rgba(var(--ig-secondary-text)) ;
-  font-size: 12px;
-  font-weight: var(--font-weight-system-semibold);
+    height: auto;
+    color: rgba(var(--ig-secondary-text));
+    font-weight: var(--font-weight-system-semibold);
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
+.footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footerLinks > a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0px 5px;
+}
+
+.links {
+    color: inherit;
+    font-size: inherit;
+}
 
 .laguageSelection {
-  color:rgba(var(--ig-secondary-text)) ;
-  font-size: 12px;
-  font-weight: var(--font-weight-system-semibold);
-  background-color: transparent;
-  border: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: transparent;
+    border: none;
 }

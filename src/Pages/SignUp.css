@@ -1,7 +1,7 @@
 .panel {
-  
-  background-color: aqua;
-  padding-bottom: 30px;
+
+  /* background-color: aqua;ß */
+  padding-bottom: 50px;
 }
 
 .signUpContainer {
@@ -17,13 +17,33 @@
 .signUpPanel {
   background-color: white;
   border: 1px solid rgb(var(--grey-2));
-  min-width: 360px;
-  width: 25%;
+  min-width: 350px;
+  width: 24%;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+/*  sign heading */
+.signUpHeading {
+  color: rgb(var(--grey-5));
+  font-weight: 650;
+  font-size: 16px;
+  text-align: center;
+}
+
+.facebookLoginBtn {
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  background-color: rgba(var(--blue-5));
+  font-size: 14px;
+  font-weight: var(--font-weight-system-semibold);
+  padding: 8px 0px;
+  margin: 5px 0px;
+  white-space: 2px;
 }
 
 /* sign up form  */
@@ -39,8 +59,6 @@
 .signUpForm>input[type="text"], input[type="password"]{
   width: 100%;
   min-width: 280px;
-color: rgb(var(--grey-5 ));
-
   padding: 10px 10px;
   border: 1px solid rgb(var(--grey-2));
 }
@@ -54,7 +72,7 @@ color: rgb(var(--grey-5 ));
   border: 1px solid rgb(var(--grey-2));
   font-size: 13px;
   background-color: white;
-  min-width: 360px;
+  min-width: 347px;
   text-align: center;
   margin-top: 10px;
   padding: 25px 0px;
@@ -81,24 +99,7 @@ color: rgb(var(--grey-5 ));
   margin: 10px 0px;
 }
 
-.signUpHeading {
-  /* margin: 5px 0px ; */
-  color: rgb(var(--grey-5));
-  font-size: 17px;
-  text-align: center;
-}
-.facebookLoginBtn {
-  width: 100%;
-  border: none;
-  border-radius: 7px;
-  color: white;
-  background-color: rgba(var(--blue-5));
-  font-size: 14px;
-  font-weight: var(--font-weight-system-semibold);
-  padding: 8px 0px;
-  margin: 5px 0px;
-  white-space: 2px;
-}
+
 .sginUpBtn {
   width: 100%;
   border: none;
@@ -110,24 +111,9 @@ color: rgb(var(--grey-5 ));
   padding: 7px 0px;
   margin: 0px 0px 30px 0px;
 }
-.haveLoginAcc {
-  /* display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center; */
-  border: 1px solid rgb(var(--grey-2));
-  margin: 10px 0px;
-  font-size: 14px;
-  padding: 25px 99px;
-}
-.haveLoginAcc > a {
-  color: rgba(var(--blue-4));
-  font-weight: var(--font-weight-system-semibold);
-  text-decoration: none;
-  font-size: inherit;
-  padding: 0 px 2px;
-}
+
 
 ::-webkit-input-placeholder {
   color: rgb(var(--grey-5));
 }
+

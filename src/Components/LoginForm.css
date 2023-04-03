@@ -52,18 +52,23 @@ width: 100%;
 }
 
 .horizontal{
+
   width: 100%;
   color: rgb(var(--ig-secondary-text));
-  
-
   font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: var(--font-weight-system-semibold);
   text-transform: uppercase;
-  /* color: rgb(var(--grey-6)); */
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin :8px 0px 10px 0px;
 }
+.line{
+width: 40%;
+opacity: 0.3;
+}
+
 .facebookIcons {
   color: rgba(var(--blue-8));
   font-size: 15px;
@@ -72,10 +77,7 @@ width: 100%;
   padding: 15px 0px;
 
 }
-.line{
-width: 40%;
-color: rgb(var(--grey-2));
-}
+
 .forgotPass{
   font-size: 13px;
   color: rgba(var(--blue-8));
@@ -105,23 +107,19 @@ padding: 0px 0px ;
 
 .appStoreIcons {
   font-size: 14px;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* padding: 5px 10px; */
 
 }
 .getAppHeading{
-  padding: 10px;
+  /* padding: 5px 10px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .getAppIcons>img {
   margin:0px 5px 10px;
 }
 
-/* .appStoreIcons >img{
-  width: 150px;
-  height: 100px; */
-/* } */
-/* .getAppIcons{
-  display: flex;
-} */
