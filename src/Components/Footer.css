@@ -4,37 +4,39 @@
 
 .mainFooter {
   color:rgba(var(--ig-secondary-text)) ;
- 
- 
   width: 100%;
   height: auto;
 display: flex;
 flex-direction: column;
 align-items: center;
-
+gap: 15px;
 
 }
 .footerLinks  {
   display: flex;
+  flex-wrap: wrap;
+align-items: center;
+  justify-content: center;
+ 
 
 }
 .footerLinks>a{
   text-decoration: none;
-  margin: 9px 5px 9px 5px;
+  margin:5px 10px ;
   color:rgba(var(--ig-secondary-text)) ;  
-  font-size: 13px;
+  font-size: 12px;
   font-weight: var(--font-weight-system-semibold);
 }
 .links{
   color:rgba(var(--ig-secondary-text)) ;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: var(--font-weight-system-semibold);
 }
 
 
 .laguageSelection {
   color:rgba(var(--ig-secondary-text)) ;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: var(--font-weight-system-semibold);
   background-color: transparent;
   border: none;

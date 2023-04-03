@@ -114,8 +114,8 @@ padding: 0px 0px ;
 .getAppHeading{
   padding: 10px;
 }
-.getAppIcons >img {
-  margin: 5px;
+.getAppIcons>img {
+  margin:0px 5px 10px;
 }
 
 /* .appStoreIcons >img{

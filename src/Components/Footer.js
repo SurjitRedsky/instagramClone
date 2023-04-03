@@ -40,7 +40,7 @@ const footerLinks=[
     "name":"Instagram Lite"
   },{
     "url":"https://about.meta.com/",
-    "name":"Contact Uploading $ Non-Users"
+    "name":"Contact Uploading & Non-Users"
   },{
     "url":"https://about.meta.com/",
     "name":"Meta Verified"

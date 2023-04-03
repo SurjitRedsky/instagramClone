@@ -1,43 +1,91 @@
-.signUpDescription{
-text-align: center;
-color: rgb(var(--grey-5 ));
-font-size: 12px;
-
-}
-.signUpDescription>p{
-margin: 10px 0px;
+.panel {
+  
+  background-color: aqua;
+  padding-bottom: 30px;
 }
 
-.signUpDescription>p>a{
-  text-decoration: none;
-  color: rgb(var(--blue-8 ));
-}
-
-.signUpContainer{
+.signUpContainer {
+  /* background-color: aqua; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 360px;
-  width: 22%;
+  margin-bottom: 40px;
 }
 
-.signUpPanel{
-  padding: 10px 39px;
+/* sign up form panel */
+.signUpPanel {
+  background-color: white;
   border: 1px solid rgb(var(--grey-2));
-  font-size: 12px;
+  min-width: 360px;
+  width: 25%;
+  margin-top: 10px;
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-} 
-.signUpHeading{
-  /* margin: 5px 0px ; */
- color: rgb(var(--grey-5 ));
- font-size: 17px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* sign up form  */
+.signUpForm{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap:8px;
+}
+.signUpForm>input[type="text"], input[type="password"]{
+  width: 100%;
+  min-width: 280px;
+color: rgb(var(--grey-5 ));
+
+  padding: 10px 10px;
+  border: 1px solid rgb(var(--grey-2));
+}
+.signUpForm>input[type=text],input[type=password]:focus{
+  outline: none;
+}
+
+
+/* have an account option block */
+.loginOption {
+  border: 1px solid rgb(var(--grey-2));
+  font-size: 13px;
+  background-color: white;
+  min-width: 360px;
   text-align: center;
- 
+  margin-top: 10px;
+  padding: 25px 0px;
+}
+.loginOption > a {
+  text-decoration: none;
+  color: rgba(var(--blue-4));
+}
+
+
+
+
+.signUpDescription > p > a {
+  text-decoration: none;
+  color: rgb(var(--blue-8));
+}
+
+.signUpDescription {
+  text-align: center;
+  color: rgb(var(--grey-5));
+  font-size: 12px;
+}
+.signUpDescription > p {
+  margin: 10px 0px;
+}
+
+.signUpHeading {
+  /* margin: 5px 0px ; */
+  color: rgb(var(--grey-5));
+  font-size: 17px;
+  text-align: center;
 }
 .facebookLoginBtn {
   width: 100%;
@@ -50,9 +98,8 @@ margin: 10px 0px;
   padding: 8px 0px;
   margin: 5px 0px;
   white-space: 2px;
-
 }
-.sginUpBtn{
+.sginUpBtn {
   width: 100%;
   border: none;
   border-radius: 7px;
@@ -61,9 +108,9 @@ margin: 10px 0px;
   font-size: 14px;
   font-weight: var(--font-weight-system-semibold);
   padding: 7px 0px;
-  margin: 0px 0px 30px 0px ;  
+  margin: 0px 0px 30px 0px;
 }
-.haveLoginAcc{
+.haveLoginAcc {
   /* display: flex;
    flex-direction: row;
    justify-content: center;
@@ -71,17 +118,16 @@ margin: 10px 0px;
   border: 1px solid rgb(var(--grey-2));
   margin: 10px 0px;
   font-size: 14px;
-  padding: 25px 99px ;
+  padding: 25px 99px;
 }
-.haveLoginAcc>a{
+.haveLoginAcc > a {
   color: rgba(var(--blue-4));
-  font-weight:var(  --font-weight-system-semibold) ;
-text-decoration: none;
-font-size: inherit;
-padding: 0  px 2px ;
+  font-weight: var(--font-weight-system-semibold);
+  text-decoration: none;
+  font-size: inherit;
+  padding: 0 px 2px;
 }
 
-::-webkit-input-placeholder{
-color: rgb(var(--grey-5 ));
-  
+::-webkit-input-placeholder {
+  color: rgb(var(--grey-5));
 }
