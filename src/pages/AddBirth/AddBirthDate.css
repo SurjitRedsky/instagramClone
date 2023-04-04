@@ -1,5 +1,109 @@
-
 .AddBirthDatePanel{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 20px;
+gap: 50px;
+}
+
+.birthDateContainer{
+    font-size: 14px;
+    min-width: 350px;
+    width: 22%;
+}
+
+.selectDatePanel{
+border: 1px solid rgb(var(--grey-2));
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+/* gap: 15px; */
+}
+
+.headingForBirth{
+    padding: 10px 0px;
+}
+
+
+.publicProfile,.question{
+    /* background-color: aqua; */
+    /* padding: 10px 0px; */
+}
+
+
+.cakeIcon >a{
+    color: rgb(var(--blue-4));
+padding-bottom: 10px;
+}
+
+.dateSelection{
+padding: 10px 23px;
+min-width: 350px;
+color: rgb(var(--grey-4));
+}
+
+
+.wearing{
+    display: block;
+    padding-bottom: 10px;
+
+}
+
+.birthDateDescription{
+    padding: 8px 0px;
+}
+
+
+.nextBackBtn{
+   min-width: 300px;
+   width: 22%;
+}
+.nextBtn{
+    width: 100%;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  background-color: rgba(var(--blue-4));
+  font-size: 14px;
+  font-weight: var(--font-weight-system-semibold);
+  padding: 7px 0px;
+  /* margin: 0px 0px 30px 0px; */
+}
+.nextBackBtn>a{
+text-decoration: none   ;
+color: rgb(var(--blue-4));
+display: block;
+padding: 15px;
+}
+
+/* datePicker */
+.datePicker{
+    padding:8px;
+}
+.datePicker span{
+    padding: 5px;
+    color: rgb(var(--grey-5));
+
+}
+
+.datePicker span select{
+
+    padding:8px;
+    color: rgb(var(--grey-5));
+border-color: rgb(var(--grey-3));
+}
+
+
+
+
+
+
+
+
+
+
+/* .AddBirthDatePanel{
 
 }
 
@@ -8,35 +112,40 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-}
+font-size: 14px;
+} */
 
 /* container */
-.selectDatePanel{
+/* .selectDatePanel{
 border: 1px solid rgb(var(--grey-2));
     min-width: 350px;
     width: 24%;
     margin-top: 10px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-}
+} */
 
 /* icons of cake  */
-.cakeIcon{
+/* .cakeIcon{
     display: flex;
     flex-direction: column;
 justify-content: center;
 align-items: center;
 
-}
+} */
 
 /* select date panel */
-.dateSelection{
+/* .dateSelection{
+color: rgb(var(--grey-4));
 
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: ;
+} */
 
 /* button for next page or go back */
-.nextBackBtn{
-
-}
+/* .nextBackBtn{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+} */

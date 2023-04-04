@@ -10,12 +10,12 @@ import AddBirthDate from "./pages/AddBirth/AddBirthDate";
 function App() {
   return (
     <div className="app">
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Login />} />
         <Route path='/accounts/login' element={<Login />} />
         <Route path="/accounts/emailsignup" element={<SignUp />} />
-      </Routes>
-      {/* <AddBirthDate /> */}
+      </Routes> */}
+      <AddBirthDate />
     </div>
 
   );
