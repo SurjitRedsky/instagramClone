@@ -1,16 +1,14 @@
 .appStoreIcons {
-    font-size: 14px;
-    /* width: 100%; */
+    font-size: 13px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding: 5px 10px; */
 
 }
 
 .getAppHeading {
-    padding-top: 15px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
 }
 
 .getAppIcons>img {

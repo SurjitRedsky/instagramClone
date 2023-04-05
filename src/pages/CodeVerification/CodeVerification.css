@@ -1,0 +1,85 @@
+  .codeVerificationPage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.codeVerificationPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0px;
+}
+
+.codevericationContainer {
+  font-size: 14px;
+  min-width: 315px;
+  border: 1px solid rgb(var(--grey-2));
+  font-size: 13px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* heading for code verification */
+.headingForCodeVerify > h4 {
+  font-weight: var(--font-weight-system-semibold);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.headingForCodeVerify > p {
+  margin: 15px 0px;
+  text-align: center;
+}
+.headingForCodeVerify > p > span {
+  display: block;
+}
+
+/* form verification */
+.codeVerifyForm {
+  width: 230px;
+  min-width: 242px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.codeVerifyForm > input {
+  width: 100%;
+  color: rgb(var(--grey-5));
+  padding: 10px 8px;
+  border: 1px solid rgb(var(--grey-2));
+  border-radius: 3px;
+}
+.codeVerifyForm > input[type="code"]:focus {
+  outline: none;
+}
+
+/* button for confirm  */
+.confirmBtn {
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  background-color: rgba(var(--blue-5));
+  font-size: 12px;
+  font-weight: var(--font-weight-system-semibold);
+  padding: 7px 0px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* update number and request for code */
+.updateNumberRequest {
+  margin-bottom: 35px;
+}
+.updateNumberRequest > a {
+  text-decoration: none;
+  color: rgba(var(--blue-4));
+  font-weight: var(--font-weight-system-semibold);
+}

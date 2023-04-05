@@ -1,9 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { Link } from "react-router-dom";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 import InputFeild from "../InputFeild";
 import Button from "../Button";
@@ -12,46 +9,81 @@ import AnchorTag from "../AnchorTag";
 import AppStoreIcons from "../Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../Common/LoginSignupOption";
 import HorizontalLine from "../Common/HorizontalLine";
+import { logIn } from "../../api/authApi";
+import { TextField } from "@mui/material";
 
 const LoginForm = () => {
-  const [error, setError] = useState({ username: '', password: '' })
-  const [username, setUser] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+  const loginInitialState = {
+    userName: "",
+    password: "",
+  };
 
-  const handleChange = (key, value) => {
-    if (key === 'username') {
-      setUser(value)
-    }
-    if (key === 'password') {
-      setPassword(value)
-    }
-  }
+  const [loginData, setLoginData] = useState(loginInitialState);
+  const [inputChange,setInputChange]=useState(false)
+  const [error, setError] = useState({ username: "", password: "" });
+
+  // set login data
+  const handleChange = (e) => {
+    setInputChange(true)
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  // login button submit form
+  const handleSubmit = (e) => {
+
+    console.log("loginUser", loginData);
+    e.preventDefault();
+    logIn(loginData, navigate);
+  };
 
   return (
     <div className="loginForm">
       <div className="loginContainer">
         <div className="icon">
-          <ImgTag src={'/images/binstalogo.png'} width={200} />
+          <ImgTag src={"/images/binstalogo.png"} width={200} />
         </div>
 
-        <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <form className="form" onSubmit={handleSubmit}>
           <InputFeild
+            requied
             type={"text"}
             placeholder={"Phone number, username or email"}
-            onChange={(e) => handleChange('username', e.target.value)}
+            onchange={handleChange}
+            name={"userName"}
+            value={loginData.userName}
           />
-          {error.username}
-          <InputFeild type={"password"} placeholder={"Password"}
-            onChange={(e) => handleChange('password', e.target.value)}
+{/* <TextField label="password" variant="filled"/> */}
+          {/* {inputChange ? (
+            <label>
+              <span>password</span>
+            <InputFeild
+            type={"password"}
+            placeholder={"Password"}
+            onchange={handleChange}
+            name={"password"}
+            value={loginData.password}
           />
-          {error.password}
+            </label>
+
+          ) : ( */}
+            <InputFeild
+              type={"password"}
+              placeholder={"Password"}
+              onchange={handleChange}
+              name={"password"}
+              value={loginData.password}
+            />
+          {/* )} */}
+
+          <span></span>
+
           <Button className={"loginBtn"} text={"Log In"} />
 
           <HorizontalLine />
           <AnchorTag
             href={"*"}
             className={"facebookIcons"}
-            // fontIcon={<FontAwesomeIcon size="1x" icon={faFacebookSquare} />}
             text={` Log in with Facebook `}
           />
           <AnchorTag
@@ -60,12 +92,11 @@ const LoginForm = () => {
             text={"Forgot Password?"}
           />
         </form>
-
       </div>
       <LoginSignupOption
         label="Don' t have an account?"
-        linkText='SignUp'
-        linkUrl='/accounts/emailsignup'
+        linkText="SignUp"
+        linkUrl="/accounts/emailsignup"
       />
       <AppStoreIcons />
     </div>
@@ -75,6 +106,6 @@ const LoginForm = () => {
 export default LoginForm;
 
 const errorMessages = {
-  'username': 'no user',
-  'password': 'nop as'
-}
+  username: "no user",
+  password: "nop as",
+};
