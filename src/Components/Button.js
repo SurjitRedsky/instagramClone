@@ -1,6 +1,7 @@
 import React from "react";
 
-const Button = ({ type, className, id, onClick, text }) => {
+const Button = ({ type, className, id, onClick, text,disabled }) => {
+  // console.log("kedhkjs",disable);
   return (
     <>
       <button
@@ -8,11 +9,11 @@ const Button = ({ type, className, id, onClick, text }) => {
         className={className}
         id={id}
         onClick={onClick}
+       disabled={disabled}
       >
         {
           text
         }
-
       </button>
     </>
   );

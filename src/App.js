@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path='/accounts/login' element={<Login />} />
         <Route path="/accounts/emailsignup" element={<SignUp />} />
-      <Route path="/accounts/emailssignup/addbirthdate"  element={<AddBirthDate/>} />
+       <Route path="/accounts/emailssignup/addbirthdate"  element={<AddBirthDate/>} />
         <Route path="/accounts/emailsignup/codeveified" element={<CodeVerification/>} />
         <Route path="/home" element={<Home/>}/>  
               </Routes> 

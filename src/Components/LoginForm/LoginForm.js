@@ -20,21 +20,23 @@ const LoginForm = () => {
   };
 
   const [loginData, setLoginData] = useState(loginInitialState);
+  const [warning,setWarning]=useState("")
   const [inputChange,setInputChange]=useState(false)
+  const [disable ,setDisable ]=useState(true);
   const [error, setError] = useState({ username: "", password: "" });
 
   // set login data
   const handleChange = (e) => {
     setInputChange(true)
+    loginData.password.length >= 5 ? setDisable(false) : setDisable(true);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   // login button submit form
   const handleSubmit = (e) => {
-
     console.log("loginUser", loginData);
     e.preventDefault();
-    logIn(loginData, navigate);
+    logIn(loginData, navigate,setWarning);
   };
 
   return (
@@ -76,9 +78,14 @@ const LoginForm = () => {
             />
           {/* )} */}
 
-          <span></span>
+          <span>
 
-          <Button className={"loginBtn"} text={"Log In"} />
+            {
+              warning
+            }
+          </span>
+
+          <Button  className={"loginBtn"} text={"Log In"} disabled={disable}/>
 
           <HorizontalLine />
           <AnchorTag
@@ -105,7 +112,4 @@ const LoginForm = () => {
 
 export default LoginForm;
 
-const errorMessages = {
-  username: "no user",
-  password: "nop as",
-};
+
