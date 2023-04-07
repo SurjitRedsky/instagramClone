@@ -9,7 +9,7 @@ export const logIn = (data, navigate) =>
   })
     .then((res) => {
       localStorage.setItem("loginUser", JSON.stringify(res?.data));
-      console.log(res.data);
+      // console.log(res.data);
       navigate("/home");
     })
     .catch((err) => {
@@ -27,8 +27,8 @@ export const register = (data, navigate,setWarning) => {
     .then((res) => {
       if(res.data.statusCode == 200){
         localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
-        console.log("signUpres=>", res.data)
-        navigate("/accounts/emailssignup/addbirthdate")
+
+        navigate("/accounts/emailssignup/addbirthdate",{state:{user:res.data.user}})
       }else{
         setWarning(`${res.data.message}`)
       }
@@ -38,8 +38,10 @@ export const register = (data, navigate,setWarning) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  API.put("/signUp/:data", {
+  console.log("data->",data);
+  API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
+    email:data.email
   })
     .then((res) => {
       console.log("dtaa->", res.data);

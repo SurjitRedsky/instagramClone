@@ -76,21 +76,21 @@ const SignUp = () => {
               placeholder={"Full Name"}
               onchange={handleChange}
               name={"name"}
-              value={signUpData.email}
+              value={signUpData.name}
             />
             <InputFeild
               type={"text"}
               placeholder={"Username"}
               onchange={handleChange}
               name={"userName"}
-              value={signUpData.email}
+              value={signUpData.userName}
             />
             <InputFeild
               type={"password"}
               placeholder={"Password"}
               onchange={handleChange}
               name={"password"}
-              value={signUpData.email}
+              value={signUpData.password}
             />
             <span>
               {
