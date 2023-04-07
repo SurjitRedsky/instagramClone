@@ -35,7 +35,9 @@ const AddBirthDate = () => {
     `${birthDate.year},${birthDate.month},${birthDate.day}`
   ))
   
-  const onclick=()=>{
+  const onclick=(e)=>{
+    e.preventDefault();
+
     setNewDateFormat(new Date(
       `${birthDate.year},${birthDate.month},${birthDate.day}`
     ))

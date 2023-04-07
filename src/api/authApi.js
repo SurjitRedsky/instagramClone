@@ -26,7 +26,7 @@ export const register = (data, navigate,setWarning) => {
   })
     .then((res) => {
       if(res.data.statusCode == 200){
-        localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
+        
 
         navigate("/accounts/emailssignup/addbirthdate",{state:{user:res.data.user}})
       }else{
@@ -45,6 +45,21 @@ export const sendCodeAndAddBirthday = (data, navigate) => {
   })
     .then((res) => {
       console.log("dtaa->", res.data);
+if(res.data.statusCode==200){
+  localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
+navigate("/accounts/emailsignup/codeveified")
+}else{
+  // setWarning(`${res.data.message}`)
+  alert("not")
+}
     })
     .catch((err) => console.log(err));
 };
+
+
+export const confirVerificaionCode=(data,navigate)=>{
+  console.log(data);
+  API.put(`/verified/${data.id}`,data).then((res)=>{
+    console.log(res.data);
+  }).catch((err)=>console.log(err))
+}
