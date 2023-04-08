@@ -17,7 +17,7 @@ export const logIn = (data, navigate) =>
     });
 
 //register
-export const register = (data, navigate,setWarning) => {
+export const register = (data, navigate, setWarning) => {
   API.post("/accounts/register", {
     email: data.email,
     userName: data.userName,
@@ -25,11 +25,11 @@ export const register = (data, navigate,setWarning) => {
     password: data.password,
   })
     .then((res) => {
-      if(res.data.statusCode == 200){
-        
+      if (res.data.statusCode === 200) {
 
-        navigate("/accounts/emailssignup/addbirthdate",{state:{user:res.data.user}})
-      }else{
+
+        navigate("/accounts/emailssignup/addbirthdate", { state: { user: res.data.user } })
+      } else {
         setWarning(`${res.data.message}`)
       }
     })
@@ -38,28 +38,28 @@ export const register = (data, navigate,setWarning) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  console.log("data->",data);
+  console.log("data->", data);
   API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
-    email:data.email
+    email: data.email
   })
     .then((res) => {
       console.log("dtaa->", res.data);
-if(res.data.statusCode==200){
-  localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
-navigate("/accounts/emailsignup/codeveified")
-}else{
-  // setWarning(`${res.data.message}`)
-  alert("not")
-}
+      if (res.data.statusCode === 200) {
+        localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
+        navigate("/accounts/emailsignup/codeveified")
+      } else {
+        // setWarning(`${res.data.message}`)
+        alert("not")
+      }
     })
     .catch((err) => console.log(err));
 };
 
 
-export const confirVerificaionCode=(data,navigate)=>{
+export const confirVerificaionCode = (data, navigate) => {
   console.log(data);
-  API.put(`/verified/${data.id}`,data).then((res)=>{
+  API.put(`/verified/${data.id}`, data).then((res) => {
     console.log(res.data);
-  }).catch((err)=>console.log(err))
+  }).catch((err) => console.log(err))
 }

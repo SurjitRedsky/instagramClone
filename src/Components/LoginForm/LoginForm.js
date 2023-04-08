@@ -20,9 +20,9 @@ const LoginForm = () => {
   };
 
   const [loginData, setLoginData] = useState(loginInitialState);
-  const [warning,setWarning]=useState("")
-  const [inputChange,setInputChange]=useState(false)
-  const [disable ,setDisable ]=useState(true);
+  const [warning, setWarning] = useState("")
+  const [inputChange, setInputChange] = useState(false)
+  const [disable, setDisable] = useState(true);
   const [error, setError] = useState({ username: "", password: "" });
 
   // set login data
@@ -36,7 +36,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     console.log("loginUser", loginData);
     e.preventDefault();
-    logIn(loginData, navigate,setWarning);
+    logIn(loginData, navigate, setWarning);
   };
 
   return (
@@ -55,7 +55,7 @@ const LoginForm = () => {
             name={"userName"}
             value={loginData.userName}
           />
-{/* <TextField label="password" variant="filled"/> */}
+          {/* <TextField label="password" variant="filled"/> */}
           {/* {inputChange ? (
             <label>
               <span>password</span>
@@ -69,13 +69,13 @@ const LoginForm = () => {
             </label>
 
           ) : ( */}
-            <InputFeild
-              type={"password"}
-              placeholder={"Password"}
-              onchange={handleChange}
-              name={"password"}
-              value={loginData.password}
-            />
+          <InputFeild
+            type={"password"}
+            placeholder={"Password"}
+            onchange={handleChange}
+            name={"password"}
+            value={loginData.password}
+          />
           {/* )} */}
 
           <span>
@@ -85,7 +85,7 @@ const LoginForm = () => {
             }
           </span>
 
-          <Button  className={"loginBtn"} text={"Log In"} disabled={disable}/>
+          <Button className={"loginBtn"} text={"Log In"} disabled={disable} />
 
           <HorizontalLine />
           <AnchorTag
