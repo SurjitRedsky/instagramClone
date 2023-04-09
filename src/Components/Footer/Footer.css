@@ -1,7 +1,7 @@
 .mainFooter {
     height: auto;
-    color: rgba(var(--ig-secondary-text));
-    font-weight: var(--font-weight-system-semibold);
+    color: #737373;
+    font-weight: var(--font-weight-system);
     font-size: 12px;
     display: flex;
     flex-direction: column;

@@ -23,7 +23,6 @@ const Login = () => {
 		< div className="loginPanel">
 			<div className="main">
 				<div className="imgBox">
-					<img src={'/images/home-phones.png'} alt="h" />
 					<div className="innerImg">
 						<img src={currentImage} alt="home" />
 					</div>

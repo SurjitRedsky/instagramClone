@@ -4,10 +4,6 @@
   margin-bottom: 12px;
 }
 
-.loginForm{
-  padding-bottom: 70px;
-}
-
 .loginContainer{
   padding: 0px 40px;
   border: 1px solid rgb(var(--grey-2));
