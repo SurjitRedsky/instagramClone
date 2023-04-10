@@ -6,8 +6,10 @@ export default function LoginSignupOption({
 }) {
     return (
         <div className="loginOption">
+            <p className='loginOptionPara'>
             {label} {' '}
             <AnchorTag href={linkUrl} text={linkText} />
+            </p>
         </div>
     )
 }

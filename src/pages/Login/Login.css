@@ -34,5 +34,12 @@
 .loginPanel .imgBox .innerImg {
   position: absolute;
   top: 25px;
-  left: 108px;
+  left: 112px;
 }
+
+@media screen and (max-width: 870px){
+  .imgBox{
+    display: none;
+  }
+}
+

@@ -20,23 +20,23 @@ const LoginForm = () => {
   };
 
   const [loginData, setLoginData] = useState(loginInitialState);
-  const [warning, setWarning] = useState("")
-  const [inputChange, setInputChange] = useState(false)
+  const [warning, setWarning] = useState("");
+  const [inputChange, setInputChange] = useState(false);
   const [disable, setDisable] = useState(true);
   const [error, setError] = useState({ username: "", password: "" });
 
   // set login data
   const handleChange = (e) => {
-    setInputChange(true)
+    setInputChange(true);
     loginData.password.length >= 5 ? setDisable(false) : setDisable(true);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   // login button submit form
   const handleSubmit = (e) => {
-    console.log("loginUser", loginData);
     e.preventDefault();
     logIn(loginData, navigate, setWarning);
+    console.log("loginUser", loginData);
   };
 
   return (
@@ -46,63 +46,68 @@ const LoginForm = () => {
           <ImgTag src={"/images/binstalogo.png"} width={200} />
         </div>
 
-        <form className="form" onSubmit={handleSubmit}>
-          <InputFeild
-            requied
-            type={"text"}
-            placeholder={"Phone number, username or email"}
-            onchange={handleChange}
-            name={"userName"}
-            value={loginData.userName}
-          />
-          {/* <TextField label="password" variant="filled"/> */}
-          {/* {inputChange ? (
+
+          <form className="form" onSubmit={handleSubmit}>
+            <InputFeild
+              requied
+              type={"text"}
+              placeholder={"Phone number, username or email"}
+              onchange={handleChange}
+              name={"userName"}
+              value={loginData.userName}
+            />
+            {/* <TextField label="password" variant="filled"/> */}
+            {/* {inputChange ? (
             <label>
-              <span>password</span>
+            <span>password</span>
             <InputFeild
             type={"password"}
             placeholder={"Password"}
             onchange={handleChange}
             name={"password"}
             value={loginData.password}
-          />
+            />
             </label>
-
+            
           ) : ( */}
-          <InputFeild
-            type={"password"}
-            placeholder={"Password"}
-            onchange={handleChange}
-            name={"password"}
-            value={loginData.password}
-          />
-          {/* )} */}
+            <InputFeild
+              type={"password"}
+              placeholder={"Password"}
+              onchange={handleChange}
+              name={"password"}
+              value={loginData.password}
+            />
+      
 
-          <span>
+            <Button className={"loginBtn"} text={"Log In"} disabled={disable} />
 
-            {
-              warning
-            }
-          </span>
+            <HorizontalLine />
 
-          <Button className={"loginBtn"} text={"Log In"} disabled={disable} />
+            <div className="facebookLink">
+              <ImgTag src={"./images/facebook.png"} width={"16px"}></ImgTag>
 
-          <HorizontalLine />
-          <AnchorTag
-            href={"*"}
-            className={"facebookIcons"}
-            text={` Log in with Facebook `}
-          />
-          <AnchorTag
-            href={"*"}
-            className={"forgotPass"}
-            text={"Forgot Password?"}
-          />
-        </form>
+              <AnchorTag
+                href={"*"}
+                className={"facebookIcons"}
+                text={` Log in with Facebook `}
+              />
+            </div>
+            <div className="errorWearning" style={{display:setWarning!==0?"block":"none"}}>
+            <p  >
+              {warning}
+              </p>
+              </div>
+            <AnchorTag
+              href={"*"}
+              className={"forgotPass"}
+              text={"Forgot Password?"}
+            />
+          </form>
+    
       </div>
       <LoginSignupOption
-        label="Don' t have an account?"
-        linkText="SignUp"
+        label="Don't have an account?"
+        linkText="Sign up"
         linkUrl="/accounts/emailsignup"
       />
       <AppStoreIcons />
@@ -111,5 +116,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-

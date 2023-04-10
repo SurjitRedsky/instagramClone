@@ -15,6 +15,7 @@
     gap:10px;
 }
 
+
 .form {
   display: flex;
   flex-direction: column;
@@ -30,6 +31,8 @@ color: rgb(var(--grey-5 ));
 
   padding: 10px 10px;
   border: 1px solid rgb(var(--grey-2));
+  background-color:#fafafa;
+
 }
 .form>input[type=text],input[type=password]:focus{
   outline: none;
@@ -47,37 +50,82 @@ width: 100%;
   margin: 5px 0px;
 }
 
+/* FACEBOOK LINKS OPTION */
+.facebookLink{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.facebookLink>img{
+  margin-right: 7px;
+}
+.facebookLink>a{
+  color: #385185;
+  font-size: 15px;
+  font-weight: var(--font-weight-system-semibold);
+  text-decoration: none;
+  padding: 15px 0px;
+}
 
-.facebookIcons {
+
+/* .facebookIcons {
   color: rgba(var(--blue-8));
   font-size: 15px;
   font-weight: var(--font-weight-system-semibold);
   text-decoration: none;
   padding: 15px 0px;
 
+} */
+
+/* set style for wearning  */
+/* .errorWearning{
+  min-width: 280px;
+background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} */
+  /* justify-content: center; */
+
+.errorWearning{
+  color: rgba(var(--ig-error-or-destructive ));
+  max-width: 280px;
+text-align: center ;
+font-size: 14px;
+line-height: 18px;
+padding: 10px 5px;
 }
+
+
 
 .forgotPass{
   font-size: 13px;
   color: rgba(var(--blue-8));
 text-decoration: none;
-padding: 0px 0px 25px 0px ;
+padding: 0px 0px 20px 0px ;
 }
 
-.signUp {
-  display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
+
+
+/* have an account option block */
+.loginOption {
   border: 1px solid rgb(var(--grey-2));
-  margin: 10px 0px;
-  font-size: 14px;
-  padding: 25px 10px ;
+  font-size: 13px;
+  background-color: white;
+  min-width: 350px;
+  text-align: center;
+  margin-top: 10px;
+  padding: 25px 0px ;
+
 }
-.signUp>a{
-  color: rgba(var(--blue-4));
-  font-weight:var(  --font-weight-system-semibold) ;
-text-decoration: none;
-font-size: inherit;
-padding: 0px 0px ;
+
+
+.loginOption > p>a {
+  text-decoration: none;
+color: #0095f6;
+font-weight: var(--font-weight-system-semibold);
 }
+
+

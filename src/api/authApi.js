@@ -2,15 +2,25 @@ import axios from "axios";
 const API = axios.create({ baseURL: "http://localhost:4000" });
 
 //login api request
-export const logIn = (data, navigate) =>
+export const logIn = (data, navigate,setWarning ) =>
   API.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
   })
     .then((res) => {
-      localStorage.setItem("loginUser", JSON.stringify(res?.data));
-      // console.log(res.data);
-      navigate("/home");
+if(res.data.statusCode==200){
+
+  localStorage.setItem("loginUser", JSON.stringify(res?.data));
+
+  navigate("/homePage");
+}else if(res.data.statusCode==404){
+console.log();
+setWarning("Sorry, your password was incorrect. Please double-check your password.")
+}else{
+  console.log(res.data);
+}
+
+
     })
     .catch((err) => {
       console.log(err);
@@ -26,11 +36,11 @@ export const register = (data, navigate, setWarning) => {
   })
     .then((res) => {
       if (res.data.statusCode === 200) {
-
-
         navigate("/accounts/emailssignup/addbirthdate", { state: { user: res.data.user } })
-      } else {
+      } else if(res.data.statusCode===403) {
         setWarning(`${res.data.message}`)
+      }else{
+
       }
     })
     .catch((err) => console.log(err));
@@ -49,7 +59,6 @@ export const sendCodeAndAddBirthday = (data, navigate) => {
         localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
         navigate("/accounts/emailsignup/codeveified")
       } else {
-        // setWarning(`${res.data.message}`)
         alert("not")
       }
     })
