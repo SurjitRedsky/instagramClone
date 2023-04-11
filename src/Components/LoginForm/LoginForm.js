@@ -56,21 +56,9 @@ const LoginForm = () => {
               name={"userName"}
               value={loginData.userName}
             />
-            {/* <TextField label="password" variant="filled"/> */}
-            {/* {inputChange ? (
-            <label>
-            <span>password</span>
+           
             <InputFeild
-            type={"password"}
-            placeholder={"Password"}
-            onchange={handleChange}
-            name={"password"}
-            value={loginData.password}
-            />
-            </label>
-            
-          ) : ( */}
-            <InputFeild
+            required
               type={"password"}
               placeholder={"Password"}
               onchange={handleChange}
