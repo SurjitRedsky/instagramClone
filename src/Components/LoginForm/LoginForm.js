@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
-import InputFeild from "../InputFeild";
+import InputFeild from "../InputField";
 import Button from "../Button";
 import ImgTag from "../ImgTag";
 import AnchorTag from "../AnchorTag";
@@ -19,9 +19,8 @@ const LoginForm = () => {
   };
 
   const [loginData, setLoginData] = useState(loginInitialState);
-  const [warning, setWarning] = useState();
+  const [warning, setWarning] = useState("");
   const [disable, setDisable] = useState(true);
-  const [error, setError] = useState({ username: "", password: "" });
 
   //password input
   const [passwordType, setPasswordType] = useState("password");
@@ -40,7 +39,9 @@ const LoginForm = () => {
     console.log("loginUser", loginData);
   };
 
-  const toggleBtn = () => {
+
+  const toggleBtn = (e) => {
+    e.preventDefault()
     if (passwordType === "password") {
       setPasswordType("text");
       setPasswordText("Hide");
@@ -74,16 +75,17 @@ const LoginForm = () => {
             onchange={handleChange}
             name={"password"}
             value={loginData.password}
+            showBtn={loginData?.password?.length > 0}
             innerInputContent={
               <Button
                 text={passwordText}
                 className={"hideShowPassword"}
-                onClick={toggleBtn}
+                onclick={toggleBtn}
               />
             }
           />
 
-          <Button className={"loginBtn"} text={"Log In"} disabled={disable} onClick={handleSubmit}/>
+          <Button className={"loginBtn"} text={"Log In"} disabled={disable} onclick={handleSubmit} />
 
           <HorizontalLine />
 
@@ -96,13 +98,13 @@ const LoginForm = () => {
               text={` Log in with Facebook `}
             />
           </div>
-        {
-setWarning.length>0?(
-  <span className="errorWearningShow">{warning}
-</span>
-):""
-        }
-          
+          {
+            setWarning.length > 0 ? (
+              <span className="errorWearningShow">{warning}
+              </span>
+            ) : ""
+          }
+
           <AnchorTag
             href={"*"}
             className={"forgotPass"}

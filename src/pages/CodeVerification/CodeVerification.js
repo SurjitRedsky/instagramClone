@@ -4,27 +4,27 @@ import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import Footer from "../../components/Footer/Footer";
 import ImgTag from "../../components/ImgTag";
-import InputFeild from "../../components/InputFeild";
 import Button from "../../components/Button";
 import AnchorTag from "../../components/AnchorTag";
 import { confirVerificaionCode } from "../../api/authApi";
 import { useNavigate } from "react-router-dom";
+import InputFeild from "../../components/InputField";
 
 function CodeVerification() {
   const currentUser = JSON.parse(localStorage.getItem("loginUser")).user;
-// const currentUser=localStorage;
+  // const currentUser=localStorage;
 
-  const navigate=useNavigate()
-const [verificationCode,setVerificationCode]=useState("")
+  const navigate = useNavigate()
+  const [verificationCode, setVerificationCode] = useState("")
 
-const handleChange=(e)=>{
-  setVerificationCode(e.target.value)
-}
-const onSubmit=(e)=>{
-  e.preventDefault();
-  console.log("code->",verificationCode);
-confirVerificaionCode({code:verificationCode,id:currentUser._id},navigate)
-}
+  const handleChange = (e) => {
+    setVerificationCode(e.target.value)
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("code->", verificationCode);
+    confirVerificaionCode({ code: verificationCode, id: currentUser._id }, navigate)
+  }
 
   return (
     <div className="codeVerificationPage">
@@ -38,7 +38,7 @@ confirVerificaionCode({code:verificationCode,id:currentUser._id},navigate)
             </p>
           </div>
           <form className="codeVerifyForm" onSubmit={onSubmit}>
-            <InputFeild type={"text"} placeholder={"££££££"} name={"code"} onchange={handleChange}  required={true}/>
+            <InputFeild type={"text"} placeholder={"££££££"} name={"code"} onchange={handleChange} required={true} />
             <Button className={"confirmBtn"} text={"Confirm"} />
           </form>
           <div className="updateNumberRequest">
@@ -52,10 +52,10 @@ confirVerificaionCode({code:verificationCode,id:currentUser._id},navigate)
           linkText={"Log In"}
           linkUrl={"accounts/login"}
         />
-        <AppStoreIcons  />
+        <AppStoreIcons />
       </div>
       <Footer />
-    
+
     </div>
   );
 }

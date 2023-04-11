@@ -1,6 +1,7 @@
+
 import React from "react";
 
-const Button = ({ type, className, id, onClick, text,disabled ,fontIcon}) => {
+const Button = ({ type, className, id, onclick, text, disabled, fontIcon, styles }) => {
   // console.log("kedhkjs",disable);
   return (
     <>
@@ -8,8 +9,9 @@ const Button = ({ type, className, id, onClick, text,disabled ,fontIcon}) => {
         type={type}
         className={className}
         id={id}
-        onClick={onClick}
-       disabled={disabled}
+        onClick={onclick}
+        disabled={disabled}
+        style={styles}
       >
         {
           fontIcon
