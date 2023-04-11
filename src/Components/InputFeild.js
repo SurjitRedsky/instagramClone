@@ -1,16 +1,16 @@
 import React from "react";
 import './Common/common.css'
 
-const InputFeild = ({ type, className, id,placeholder,onchange,name,required,value }) => {
+const InputFeild = ({ type, className, id,placeholder,onchange,name,required,value,innerInputContent }) => {
   return (
     
      <div
-        className={`inputWithLabel ${
-          value?.length > 0 ? "currentValue" : "changeValue"
-        }`}
+        className={`inputWithLabel`}
       >
-<div className="userNameInput">
-          {value.length > 0 && (
+<div className={`userNameInput ${
+          value?.length > 0 ? "currentValue" : "changeValue"
+        } `}>
+          {value?.length > 0 && (
             <span className="spanPassword"> {placeholder}</span>
           )}
 
@@ -24,8 +24,8 @@ const InputFeild = ({ type, className, id,placeholder,onchange,name,required,val
         name={name}
       ></input>
     </div>
-    <div className="input ">
-
+    <div className={`${value?.length>0 ? "show" :"InputIneerBtnHide" }`} >
+{innerInputContent}
     </div>
     </div>
 

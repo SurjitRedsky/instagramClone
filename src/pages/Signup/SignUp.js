@@ -50,26 +50,28 @@ const SignUp = () => {
             <Button
               className={"facebookLoginBtn"}
               fontIcon={
-                <ImgTag src={"/images/lightFacebookIcons.png"} width={15} />
+                <ImgTag src={"/images/whitefacebookIcon.png"} width={"16px"} />
               }
               text={` Log in with Facebook `}
             />
 
             <HorizontalLine />
 
-            {/* requied
-            type={"text"}
-            placeholder={"Phone number, username or email"}
-            onchange={handleChange}
-            name={"userName"}
-            value={loginData.userName} */}
-
+           
             <InputFeild
               type={"text"}
               placeholder={"Mobile number or email"}
               onchange={handleChange}
               name={"email"}
               value={signUpData.email}
+              innerInputContent={
+                // <Button
+                //   text={passwordText}
+                //   className={"hideShowPassword"}
+                //   onClick={toggleBtn}
+                // />
+                <ImgTag src={'/images/inputTrue.png'} alt="icon" width={30}/>
+              }
             />
             <InputFeild
               type={"text"}

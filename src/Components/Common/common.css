@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 8px 0px 10px 0px;
+    margin: 4px 0px 10px 0px;
 }
 
 .line {
@@ -23,29 +23,32 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    min-width: 280px;
+    min-width: 268px;
   color: rgba(var(--grey-5));
   border: 1px solid rgb(var(--grey-2)); 
   background-color: #fafafa;
+  font-weight: normal;
   }
   .spanPassword{
   font-size: var(--system-12-font-size);
+  padding-bottom: 2px;
   }
   .userNameInput{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     padding: 9x 0px 7px 8px;
-  
   }
   .userNameInput>input[type=text]{
   border: none;
-  font-size: 12px;
+  font-size: 13px;
+  border-radius: 1px;
+
   }
   .userNameInput>input[type=password]{
     border: none;
-    font-size: 12px;
+    font-size: 13px;
+    border-radius: 1px;
   }
   
   .userNameInput>input[type=text],input[type=password]:focus{
@@ -54,11 +57,26 @@
   
   .currentValue{
     padding-top: 2px;
-    padding-bottom: 3px;
-    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-left: 8px;
   }
   .changeValue{
     padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding-bottom: 11px;
+    padding-left: 8px;
   }
+
+
+  /* for inner content in input field  */
+  .InputIneerBtnHide{
+display: none;
+  }
+  .show{
+display: block;
+  }
+
+
+
+
+
+ 

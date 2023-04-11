@@ -46,7 +46,12 @@
   font-weight: var(--font-weight-system-semibold);
   padding: 8px 0px;
   margin: 5px 0px;
-  white-space: 2px;
+  /* white-space: 2px; */
+  display: flex;
+  justify-content:center ;
+  align-items:end ;
+  /* text-align:end; */
+  gap: 5px;
 }
 
 

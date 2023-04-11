@@ -10,7 +10,6 @@ import AppStoreIcons from "../Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../Common/LoginSignupOption";
 import HorizontalLine from "../Common/HorizontalLine";
 import { logIn } from "../../api/authApi";
-import { TextField } from "@mui/material";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -20,14 +19,16 @@ const LoginForm = () => {
   };
 
   const [loginData, setLoginData] = useState(loginInitialState);
-  const [warning, setWarning] = useState("");
-  const [inputChange, setInputChange] = useState(false);
+  const [warning, setWarning] = useState();
   const [disable, setDisable] = useState(true);
   const [error, setError] = useState({ username: "", password: "" });
 
+  //password input
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordText, setPasswordText] = useState("Show");
+
   // set login data
   const handleChange = (e) => {
-    setInputChange(true);
     loginData.password.length >= 5 ? setDisable(false) : setDisable(true);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
@@ -39,6 +40,16 @@ const LoginForm = () => {
     console.log("loginUser", loginData);
   };
 
+  const toggleBtn = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      setPasswordText("Hide");
+      return;
+    }
+    setPasswordType("password");
+    setPasswordText("Show");
+  };
+
   return (
     <div className="loginForm">
       <div className="loginContainer">
@@ -46,52 +57,58 @@ const LoginForm = () => {
           <ImgTag src={"/images/binstalogo.png"} width={200} />
         </div>
 
+        <form className="form" >
+          <InputFeild
+            requied
+            type={"text"}
+            placeholder={"Phone number, username or email"}
+            onchange={handleChange}
+            name={"userName"}
+            value={loginData.userName}
+          />
 
-          <form className="form" onSubmit={handleSubmit}>
-            <InputFeild
-              requied
-              type={"text"}
-              placeholder={"Phone number, username or email"}
-              onchange={handleChange}
-              name={"userName"}
-              value={loginData.userName}
-            />
-           
-            <InputFeild
+          <InputFeild
             required
-              type={"password"}
-              placeholder={"Password"}
-              onchange={handleChange}
-              name={"password"}
-              value={loginData.password}
-            />
-      
-
-            <Button className={"loginBtn"} text={"Log In"} disabled={disable} />
-
-            <HorizontalLine />
-
-            <div className="facebookLink">
-              <ImgTag src={"./images/facebook.png"} width={"16px"}></ImgTag>
-
-              <AnchorTag
-                href={"*"}
-                className={"facebookIcons"}
-                text={` Log in with Facebook `}
+            type={passwordType}
+            placeholder={"Password"}
+            onchange={handleChange}
+            name={"password"}
+            value={loginData.password}
+            innerInputContent={
+              <Button
+                text={passwordText}
+                className={"hideShowPassword"}
+                onClick={toggleBtn}
               />
-            </div>
-            <div className="errorWearning" style={{display:setWarning!==0?"block":"none"}}>
-            <p  >
-              {warning}
-              </p>
-              </div>
+            }
+          />
+
+          <Button className={"loginBtn"} text={"Log In"} disabled={disable} onClick={handleSubmit}/>
+
+          <HorizontalLine />
+
+          <div className="facebookLink">
+            <ImgTag src={"./images/facebook.png"} width={"16px"}></ImgTag>
+
             <AnchorTag
               href={"*"}
-              className={"forgotPass"}
-              text={"Forgot Password?"}
+              className={"facebookIcons"}
+              text={` Log in with Facebook `}
             />
-          </form>
-    
+          </div>
+        {
+setWarning.length>0?(
+  <span className="errorWearningShow">{warning}
+</span>
+):""
+        }
+          
+          <AnchorTag
+            href={"*"}
+            className={"forgotPass"}
+            text={"Forgot password?"}
+          />
+        </form>
       </div>
       <LoginSignupOption
         label="Don't have an account?"
