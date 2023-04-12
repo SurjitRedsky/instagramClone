@@ -1,9 +1,10 @@
 .horizontal {
 
     width: 100%;
-    color: rgb(var(--ig-secondary-text));
+    /* color: rgb(var(--ig-secondary-text)); */
+    color: #737373;
     font-family: var(--font-family-system);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: var(--font-weight-system-semibold);
     text-transform: uppercase;
     display: flex;
@@ -81,6 +82,7 @@ display: none;
 display: flex;
 align-items: center;
 padding: 0px 7px 0px 0px;
+gap: 7px;
   }
 
 

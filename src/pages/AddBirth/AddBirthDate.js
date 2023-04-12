@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./AddBirthDate.css";
 
 import Footer from "../../components/Footer/Footer";
@@ -18,7 +18,7 @@ import { sendCodeAndAddBirthday } from "../../api/authApi";
 const AddBirthDate = () => {
   const navigate =useNavigate()
   const location =useLocation();
-  const user = location.state.user
+  const user = location.state?.user
   console.log("user->",user)
  
   //initial state for birthdate 
@@ -29,29 +29,42 @@ const AddBirthDate = () => {
   }
  
   const [birthDate,setBirthDate]=useState(initialBirthDate);
+  const [btnDisale, setBtnDisable]=useState(true)
 
 //state for set string date into object 
   const [newDateFormat,setNewDateFormat]=useState(new Date(
     `${birthDate.year},${birthDate.month},${birthDate.day}`
   ))
+
+useEffect(() => {
+if(birthDate.year<new Date().getFullYear()-7){
+setBtnDisable(false)
+}else{
+  setBtnDisable(true)
+}  
+}, [birthDate])
+
+
   
   const onclick=(e)=>{
     e.preventDefault();
-
     setNewDateFormat(new Date(
       `${birthDate.year},${birthDate.month},${birthDate.day}`
     ))
 // navigate('/accounts/emailsignup/codeveified',{})
-sendCodeAndAddBirthday({dateOfBirth:newDateFormat,email:user.email,id:user._id},navigate)
+console.log("uuu=>",location);
+console.log("data=>",{dateOfBirth:newDateFormat,email:user?.email,id:user?._id});
+// sendCodeAndAddBirthday({dateOfBirth:newDateFormat,email:user?.email,id:user?._id},navigate)
 
   }
 
   return (
     <div className="AddBirthDatePanel">
       <div className="birthDateContainer">
-        <div className="selectDatePanel">
+        <form className="selectDatePanel">
+        <div className="formlayout">
           <div className="cakeIcon">
-            <ImgTag src={"/images/birthDayCake.png"} width={150} />
+            <ImgTag src={"/images/birthDayCake.png"} width={140} />
             <h4 className="headingForBirth">Add Your Birthday</h4>
 
             <p className="publicProfile">
@@ -66,7 +79,7 @@ sendCodeAndAddBirthday({dateOfBirth:newDateFormat,email:user.email,id:user._id},
           {/* <form> */}
 
           <div className="dateSelection">
-            <DatePicker setBirthDate={setBirthDate} birthDate={birthDate}/>
+            <DatePicker setBirthDate={setBirthDate} birthDate={birthDate} />
             <p className="birthDateDescription ">
               <span className="wearing">
                 {" "}
@@ -77,12 +90,14 @@ sendCodeAndAddBirthday({dateOfBirth:newDateFormat,email:user.email,id:user._id},
             </p>
           </div>
           <div className="nextBackBtn">
-            <Button className={"nextBtn"} text={"next"} onClick={onclick}/>
+
+            <Button className={"nextBtn"} text={"Next"} onClick={onclick} disabled={btnDisale}/>
             <AnchorTag href={"*"} text={"Go Back"} />
           </div>
           {/* </form> */}
 
         </div>
+        </form>
         <LoginSignupOption
           label={"Have an account?"}
           linkText={"Log In"}

@@ -249,5 +249,8 @@
   font-family: var(--font-family-system);
   /* background-color: #2851A3; */
   }
-
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
 

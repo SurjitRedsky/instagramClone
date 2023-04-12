@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import "./datepicker.css";
 
-function DatePicker({setBirthDate,birthDate}) {
+function DatePicker({setBirthDate,birthDate,ableBtn}) {
   const [day, setDay] = useState(new Date().getDate());
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
-  // const [birthDate,setBirthDate]=useState({
-  //   month:month,
-  //   day:day,
-  //   year:year
-  // })
+  // const [btnDisale, setBtnDisable]=useState(true)
+
 
 const handleChange=(e)=>{
+// const handleName=e.target.name
+// console.log("name",handleName);
+
   setBirthDate({   ...birthDate,[e.target.name]:e.target.value})
-// setDate(`${new Date(birthDate.month,birthDate.day,birthDate.year )}`)
-// setDate(`${birthDate.month,birthDate.day,birthDate.year}` )
-// setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+  // if(birthDate.year){
+  //   console.log("value=>",birthDate.year);
+  // birthDate[handleName]<new Date().getFullYear()-10?ableBtn(false):ableBtn(true)
+  // }
 }
-// console.log(birthDate);
 
 
   // set length of days 

@@ -36,7 +36,8 @@ export const register = (data, navigate, setWarning) => {
   })
     .then((res) => {
       if (res.data.statusCode === 200) {
-        navigate("/accounts/emailssignup/addbirthdate", { state: { user: res.data.user } })
+        console.log("res",res.data.user);
+        navigate("/accounts/emailsignup/addbirthdate", { state: { user: res.data.user } })
       } else if(res.data.statusCode===403) {
         setWarning(`${res.data.message}`)
       }else{
