@@ -4,7 +4,7 @@ import './Common/common.css'
 const InputField = ({
   type, className,
   id, placeholder, onchange, name,
-  required, value, innerInputContent, showBtn,
+  required, value, innerInputContent, showBtn,autoFocus,pattern,maxNum,minNum,
   handleBlur = () => { }
 }) => {
 
@@ -28,6 +28,12 @@ const InputField = ({
           onChange={onchange}
           name={name}
           onBlur={() => handleBlur(name)}
+          autoFocus={autoFocus}
+          pattern={pattern}
+      min={minNum}
+      max={maxNum}
+      
+        
         ></input>
       </div>
       <div className={`${showBtn ? "show" : "InputIneerBtnHide"}`} >

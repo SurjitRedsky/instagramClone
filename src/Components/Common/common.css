@@ -58,7 +58,21 @@
   background-color: transparent;
   }
 
-  .userNameInput>input[type=text],input[type=password]:focus{
+  .userNameInput>input[type=tel]{
+    border: none;
+    font-size: 13px;
+    border-radius: 1px;
+  background-color: transparent;
+  }
+
+  .userNameInput>input[type=number]{
+    border: none;
+    font-size: 13px;
+    border-radius: 1px;
+  background-color: transparent;
+  }
+
+  .userNameInput>input[type=text],input[type=password],input[type=tel], input[type=number]:focus{
     outline: none;
   }
 
@@ -103,4 +117,11 @@ padding: 0px 2px 0px 4px;
 
 
 
+
+  /* jhfidhf */
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 

@@ -6,45 +6,87 @@ import Footer from "../../components/Footer/Footer";
 import ImgTag from "../../components/ImgTag";
 import Button from "../../components/Button";
 import AnchorTag from "../../components/AnchorTag";
-import { confirVerificaionCode } from "../../api/authApi";
+import { confirVerificaionCode, reSendVerificaionCode } from "../../api/authApi";
 import { useNavigate } from "react-router-dom";
-import InputFeild from "../../components/InputField";
+
+import InputField from "../../components/InputField";
+// import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 function CodeVerification() {
-  const currentUser = JSON.parse(localStorage.getItem("loginUser")).user;
-  // const currentUser=localStorage;
+  const currentUser = JSON.parse(localStorage.getItem("SignUpUser"));
 
-  const navigate = useNavigate()
-  const [verificationCode, setVerificationCode] = useState("")
+  const navigate = useNavigate();
+  const [verificationCode, setVerificationCode] = useState("");
+  const [wearning, setWearning] = useState("");
+  const [resendCodeMsg, setResendCodeMsg] = useState(true);
 
   const handleChange = (e) => {
-    setVerificationCode(e.target.value)
-  }
+    // maxlength for input
+    let maxlength = 6;
+    let newValue = e.target.value;
+    if (newValue.length > maxlength) {
+      newValue = newValue.slice(0, maxlength);
+    }
+    setVerificationCode(newValue);
+  };
+
+  //submit button
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("code->", verificationCode);
-    confirVerificaionCode({ code: verificationCode, id: currentUser._id }, navigate)
+
+    confirVerificaionCode(
+      { code: verificationCode, id: currentUser.userId },
+      navigate,
+      setWearning
+    );
+  };
+  const handleResendCode=(e)=>{
+
+reSendVerificaionCode({id:currentUser.userId},navigate,setResendCodeMsg)
   }
 
   return (
     <div className="codeVerificationPage">
       <div className="codeVerificationPanel">
         <div className="codevericationContainer">
-          <ImgTag src={"/images/birthDayCake.png"} width={100} />
+          <div>
+            <ImgTag
+              src={"/images/codeVerificationImg.png"}
+              width={64}
+              height={75}
+            />
+          </div>
+
           <div className="headingForCodeVerify">
+            {resendCodeMsg.length > 0 ? <p>Your code was resent.</p> : ""}
             <h4> Just one more step</h4>
             <p>
-              Enter the 6-digit code we sent to:<span>4734674387</span>
+              Enter the 6-digit code we sent to:
+              <span>{currentUser.userName}</span>
             </p>
           </div>
           <form className="codeVerifyForm" onSubmit={onSubmit}>
-            <InputFeild type={"text"} placeholder={"££££££"} name={"code"} onchange={handleChange} required={true} />
+            <InputField
+              required
+              autoFocus
+              type={"number"}
+              placeholder={"######"}
+              onchange={handleChange}
+              name={"code"}
+              value={verificationCode}
+            />
             <Button className={"confirmBtn"} text={"Confirm"} />
           </form>
+          {wearning.length > 0 ? (
+            <span className="errorWearningShow">{wearning}</span>
+          ) : (
+            ""
+          )}
+
           <div className="updateNumberRequest">
-            <AnchorTag text={"Change Number"} />
+            <Button text={"Change Number"} />
             {"|"}
-            <AnchorTag text={"Request New Code"} />
+            <Button text={"Request New Code"} onclick={handleResendCode}/>
           </div>
         </div>
         <LoginSignupOption
@@ -55,7 +97,6 @@ function CodeVerification() {
         <AppStoreIcons />
       </div>
       <Footer />
-
     </div>
   );
 }

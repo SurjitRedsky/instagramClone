@@ -13,50 +13,46 @@ import DatePicker from "../../components/Common/DatePicker/DatePicker";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sendCodeAndAddBirthday } from "../../api/authApi";
 
-
-
 const AddBirthDate = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
-  const user = location.state?.user
-  console.log("user->", user)
+  const user = location.state?.user;
+  console.log("user->", user);
 
   //initial state for birthdate
   const initialBirthDate = {
     month: new Date().getMonth() + 1,
     day: new Date().getDate(),
-    year: new Date().getFullYear()
-  }
+    year: new Date().getFullYear(),
+  };
 
   const [birthDate, setBirthDate] = useState(initialBirthDate);
-  const [btnDisale, setBtnDisable] = useState(true)
+  const [btnDisale, setBtnDisable] = useState(true);
 
   //state for set string date into object
-  const [newDateFormat, setNewDateFormat] = useState(new Date(
-    `${birthDate.year},${birthDate.month},${birthDate.day}`
-  ))
+  const [newDateFormat, setNewDateFormat] = useState(
+    new Date(`${birthDate.year},${birthDate.month},${birthDate.day}`)
+  );
 
   useEffect(() => {
     if (birthDate.year < new Date().getFullYear() - 7) {
-      setBtnDisable(false)
+      setBtnDisable(false);
     } else {
-      setBtnDisable(true)
+      setBtnDisable(true);
     }
-  }, [birthDate])
-
-
+    setNewDateFormat(
+      new Date(`${birthDate.year},${birthDate.month},${birthDate.day}`)
+    );
+  }, [birthDate]);
 
   const onclick = (e) => {
     e.preventDefault();
-    setNewDateFormat(new Date(
-      `${birthDate.year},${birthDate.month},${birthDate.day}`
-    ))
-    // navigate('/accounts/emailsignup/codeveified',{})
-    // console.log("uuu=>", location);
-    // console.log("data=>", { dateOfBirth: newDateFormat, email: user?.email, id: user?._id });
-    sendCodeAndAddBirthday({ dateOfBirth: newDateFormat, userName: user?.email, id: user?._id }, navigate)
 
-  }
+    sendCodeAndAddBirthday(
+      { dateOfBirth: newDateFormat, userName: user?.email, id: user?._id },
+      navigate
+    );
+  };
 
   return (
     <div className="AddBirthDatePanel">
@@ -90,12 +86,14 @@ const AddBirthDate = () => {
               </p>
             </div>
             <div className="nextBackBtn">
-
-              <Button className={"nextBtn"} text={"Next"} disabled={btnDisale} />
+              <Button
+                className={"nextBtn"}
+                text={"Next"}
+                disabled={btnDisale}
+              />
               <AnchorTag href={"*"} text={"Go Back"} />
             </div>
             {/* </form> */}
-
           </div>
         </form>
         <LoginSignupOption

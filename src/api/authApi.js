@@ -9,18 +9,15 @@ export const logIn = (data, navigate, setWarning) =>
   })
     .then((res) => {
       if (res.data.statusCode == 200) {
-
-        localStorage.setItem("loginUser", JSON.stringify(res?.data));
-
+        localStorage.setItem("loginUser", JSON.stringify(res?.data.user));
         navigate("/homePage");
       } else if (res.data.statusCode == 404) {
-        console.log();
-        setWarning("Sorry, your password was incorrect. Please double-check your password.")
+        setWarning(
+          "Sorry, your password was incorrect. Please double-check your password."
+        );
       } else {
         console.log(res.data);
       }
-
-
     })
     .catch((err) => {
       console.log(err);
@@ -35,11 +32,14 @@ export const register = (data, navigate, setWarning) => {
     password: data.password,
   })
     .then((res) => {
+      // console.log("res->",res.data);
       if (res.data.statusCode === 200) {
-        console.log("res", res.data.data.user);
-        navigate("/accounts/emailsignup/addbirthdate", { state: { user: res.data.data.user } })
+        // console.log("res", res.data.user);
+        navigate("/accounts/emailsignup/addbirthdate", {
+          state: { user: res.data.user },
+        });
       } else if (res.data.statusCode === 403) {
-        setWarning(`${res.data.message}`)
+        setWarning(`${res.data.message}`);
       } else {
         console.log("nill");
       }
@@ -49,27 +49,45 @@ export const register = (data, navigate, setWarning) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  console.log("data from navigation", data);
+  // console.log("data from navigation", data);
   API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
-    userName: data.userName
+    userName: data.userName,
   })
     .then((res) => {
-      console.log("dtaa->", res);
+      // console.log("dtaa->", res);
       if (res.data.statusCode === 200) {
-        localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
-        navigate("/accounts/emailsignup/codeveified")
+        localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
+        navigate("/accounts/emailsignup/codeveified");
       } else if (res.data.statusCode === 500) {
-        alert("Server Error")
+        alert("Server Error");
       }
     })
-    .catch((err) => { console.log(err) });
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
+export const confirVerificaionCode = (data, navigate, setWearning) => {
+  // console.log(data);
+  API.put(`/accounts/verified/${data.id}`, { code: data.code })
+    .then((res) => {
+      if (res.data.statusCode === 200) {
+        // localStorage.setItem("registerUser",JSON.stringify(res?.data) )
+        navigate("/homePage");
+      } else if (res.data.statusCode === 400) {
+        setWearning(res.data.message);
+      } else {
+        setWearning(res.data.message);
+      }
+    })
+    .catch((err) => console.log(err));
+};
 
-export const confirVerificaionCode = (data, navigate) => {
-  console.log(data);
-  API.put(`/verified/${data.id}`, data).then((res) => {
-    console.log(res.data);
-  }).catch((err) => console.log(err))
-}
+// resend verificaion code
+export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
+  API.put(`/accounts/verified/resend/${data.id}`).then((res) => {
+    console.log("res", res.data);
+    setResendCodeMsg(res?.data)
+  }).catch((err)=>console.log(err))
+};
