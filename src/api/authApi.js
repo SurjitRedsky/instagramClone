@@ -2,23 +2,23 @@ import axios from "axios";
 const API = axios.create({ baseURL: "http://localhost:4000" });
 
 //login api request
-export const logIn = (data, navigate,setWarning ) =>
+export const logIn = (data, navigate, setWarning) =>
   API.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
   })
     .then((res) => {
-if(res.data.statusCode==200){
+      if (res.data.statusCode == 200) {
 
-  localStorage.setItem("loginUser", JSON.stringify(res?.data));
+        localStorage.setItem("loginUser", JSON.stringify(res?.data));
 
-  navigate("/homePage");
-}else if(res.data.statusCode==404){
-console.log();
-setWarning("Sorry, your password was incorrect. Please double-check your password.")
-}else{
-  console.log(res.data);
-}
+        navigate("/homePage");
+      } else if (res.data.statusCode == 404) {
+        console.log();
+        setWarning("Sorry, your password was incorrect. Please double-check your password.")
+      } else {
+        console.log(res.data);
+      }
 
 
     })
@@ -36,12 +36,12 @@ export const register = (data, navigate, setWarning) => {
   })
     .then((res) => {
       if (res.data.statusCode === 200) {
-        console.log("res",res.data.user);
-        navigate("/accounts/emailsignup/addbirthdate", { state: { user: res.data.user } })
-      } else if(res.data.statusCode===403) {
+        console.log("res", res.data.data.user);
+        navigate("/accounts/emailsignup/addbirthdate", { state: { user: res.data.data.user } })
+      } else if (res.data.statusCode === 403) {
         setWarning(`${res.data.message}`)
-      }else{
-
+      } else {
+        console.log("nill");
       }
     })
     .catch((err) => console.log(err));
@@ -49,21 +49,21 @@ export const register = (data, navigate, setWarning) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  console.log("data->", data);
+  console.log("data from navigation", data);
   API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
-    email: data.email
+    userName: data.userName
   })
     .then((res) => {
-      console.log("dtaa->", res.data);
+      console.log("dtaa->", res);
       if (res.data.statusCode === 200) {
         localStorage.setItem("SignUpUser", JSON.stringify(res?.data))
         navigate("/accounts/emailsignup/codeveified")
-      } else {
-        alert("not")
+      } else if (res.data.statusCode === 500) {
+        alert("Server Error")
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => { console.log(err) });
 };
 
 

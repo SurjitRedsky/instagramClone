@@ -39,17 +39,17 @@ const SignUp = () => {
 
   //check phone validation
   const ph = (v) => {
-    return  /^\+?[1-9][0-9]{7,9}$/.test(v);
+    return /^\+?[1-9][0-9]{7,9}$/.test(v);
   };
 
   //check password
-  const password = (v) => { 
-    return /^[a-zA-Z0-9!@#$%^&*]{6,10}$/.test(v);
+  const password = (v) => {
+    return /^[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(v);
   };
 
   //check userName
   const checkUerName = (v) => {
-    return  /^[A-Za-z][A-Za-z0-9_]{6,14}$/.test(v);
+    return /^[A-Za-z][A-Za-z0-9_]{6,14}$/.test(v);
   };
 
   // set error
@@ -113,7 +113,7 @@ const SignUp = () => {
     } else if (error?.userName === "error") {
       setSignUpWearning("This username isn't available. Please try another.");
     } else if (error?.password === "error") {
-      setSignUpWearning("Enter a valid email address.");
+      setSignUpWearning("Password is easy to guess.");
     } else {
       register(signUpData, navigate, setWarning);
     }
@@ -206,12 +206,12 @@ const SignUp = () => {
                   fkey="password"
                   error={error}
                   showPassword={showPassword}
-                  handleClick={() => setShowPassword(!showPassword)}
+                  handleClick={(e) => { e.preventDefault(); setShowPassword(!showPassword) }}
                 />
               }
               handleBlur={checkPasswordValidation}
             />
-          
+
             <div className="signUpDescription">
               <p>
                 People who use our service may have uploaded your contact
@@ -234,7 +234,7 @@ const SignUp = () => {
             <span className="signUpWearning">
 
 
-          {signUpWearning}
+              {signUpWearning}
             </span>
           </form>
 
