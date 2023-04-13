@@ -1,22 +1,23 @@
 import axios from "axios";
+import axiosInstance from '../constants/axiosInstance';
 const API = axios.create({ baseURL: "http://localhost:4000" });
 
 //login api request
 export const logIn = (data, navigate, setWarning) =>
-  API.post("/accounts/login", {
+  axiosInstance.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
   })
-    .then((res) => {
-      if (res.data.statusCode == 200) {
-        localStorage.setItem("loginUser", JSON.stringify(res?.data.user));
+    .then((response) => {
+      if (response.data.statusCode == 200) {
+        localStorage.setItem("loginUser", JSON.stringify(response.data.user));
         navigate("/homePage");
-      } else if (res.data.statusCode == 404) {
+      } else if (response.data.statusCode == 404) {
         setWarning(
           "Sorry, your password was incorrect. Please double-check your password."
         );
       } else {
-        console.log(res.data);
+        console.log(response.data);
       }
     })
     .catch((err) => {

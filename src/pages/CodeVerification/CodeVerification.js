@@ -5,12 +5,10 @@ import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import Footer from "../../components/Footer/Footer";
 import ImgTag from "../../components/ImgTag";
 import Button from "../../components/Button";
-import AnchorTag from "../../components/AnchorTag";
-import { confirVerificaionCode, reSendVerificaionCode } from "../../api/authApi";
+import { confirVerificaionCode, reSendVerificaionCode } from "../../apiRequests/authApi";
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
-// import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 function CodeVerification() {
   const currentUser = JSON.parse(localStorage.getItem("SignUpUser"));

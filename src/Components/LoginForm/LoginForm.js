@@ -9,7 +9,7 @@ import AnchorTag from "../AnchorTag";
 import AppStoreIcons from "../Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../Common/LoginSignupOption";
 import HorizontalLine from "../Common/HorizontalLine";
-import { logIn } from "../../api/authApi";
+import { logIn } from "../../apiRequests/authApi";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const LoginForm = () => {
             />
           </div>
           {
-            setWarning.length > 0 ? (
+            warning.length > 0 ? (
               <span className="errorWearningShow">{warning}
               </span>
             ) : ""

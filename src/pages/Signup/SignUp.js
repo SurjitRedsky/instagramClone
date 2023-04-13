@@ -9,7 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import HorizontalLine from "../../components/Common/HorizontalLine";
-import { register } from "../../api/authApi";
+import { register } from "../../apiRequests/authApi";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -231,11 +231,15 @@ const SignUp = () => {
               text={"Sign up"}
               disabled={disable}
             />
-            <span className="signUpWearning">
-
-
-              {signUpWearning}
-            </span>
+            {
+              
+              signUpWearning.length>0?(
+                <span className="signUpWearning">
+                {signUpWearning}
+              </span>
+              ):""
+              
+             }
           </form>
 
         </div>

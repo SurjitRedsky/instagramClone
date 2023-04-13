@@ -11,7 +11,7 @@ import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import DatePicker from "../../components/Common/DatePicker/DatePicker";
 import { useLocation, useNavigate } from "react-router-dom";
-import { sendCodeAndAddBirthday } from "../../api/authApi";
+import { sendCodeAndAddBirthday } from "../../apiRequests/authApi";
 
 const AddBirthDate = () => {
   const navigate = useNavigate();
