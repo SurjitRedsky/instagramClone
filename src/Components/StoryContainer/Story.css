@@ -1,0 +1,20 @@
+/* story list  */
+.storyList{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 16px;
+  padding: 16px 0px;
+  gap: 10px;
+}
+
+
+
+
+
+/* single user profle on story */
+.userStory{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}

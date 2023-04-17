@@ -11,7 +11,9 @@ width: 15%;
   }
 .centreContainer{
   width: 60%;
-
+  display: flex;
+  flex-direction: column;
+margin:0px auto;
 }
 
 .rightContainer{

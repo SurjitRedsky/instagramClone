@@ -90,7 +90,7 @@ const [userNameList,setUserNameList]=useState([])
     }
     return null;
   };
-  console.log(error);
+ 
 
   //check password
   const checkPasswordValidation = (key) => {
@@ -125,12 +125,14 @@ const [userNameList,setUserNameList]=useState([])
   // Refresh username
   const refreshUserName = () => {
     console.log("#m refresh username from api: ");
-    // const preUserName=signUpData.userName
-    // createRandomUserName(preUserName,setUserNameList)
+    const preUserName=signUpData.userName
+   
+    createRandomUserName(preUserName,setUserNameList);
+    
+    console.log("usernmae->",userNameList);
+    signUpData.userName=userNameList[0]
   };
-  // signUpData.userName=userNameList[0]
-  // console.log("new->",signUpData.userName);
-  // console.log("usernmae->",userNameList);
+  
   return (
     <div className="panel">
       <div className="signUpContainer">

@@ -1,0 +1,14 @@
+.section{
+ display: flex;
+
+  max-width: 1013px;
+  justify-content: space-between;
+  padding-top: 4px;
+  flex-flow: row nowrap;
+}
+
+.main{
+  width: 660px;
+
+  margin-right: 64px;
+}
