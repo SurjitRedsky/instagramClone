@@ -4,13 +4,11 @@
   height: 100vh;
 justify-content: space-between;
 }
-.leftContainer{
-width: 10%;
-border-right: 1px solid rgba(var(--grey-4));
+  .leftContainer{
+width: 15%;
+/* width: fit-content; */
 
-/* background-color: antiquewhite  ; */
-
-}
+  }
 .centreContainer{
   width: 60%;
 

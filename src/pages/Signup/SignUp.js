@@ -9,7 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import HorizontalLine from "../../components/Common/HorizontalLine";
-import { register } from "../../apiRequests/authApi";
+import { createRandomUserName, register } from "../../apiRequests/authApi";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -28,6 +28,9 @@ const SignUp = () => {
 
   const [error, setError] = useState(initialState);
   const [signUpWearning, setSignUpWearning] = useState("");
+
+  //random userName
+const [userNameList,setUserNameList]=useState([])
 
   //password input
   const [showPassword, setShowPassword] = useState(false);
@@ -68,7 +71,7 @@ const SignUp = () => {
   //check simple input
   const checkValidation = (key) => {
     const inputValue = signUpData[key];
-    console.log("valeu", inputValue);
+    // console.log("valeu", inputValue);
     if (inputValue.length >= 0) {
       setError({ ...error, [key]: "success" });
     } else {
@@ -122,7 +125,12 @@ const SignUp = () => {
   // Refresh username
   const refreshUserName = () => {
     console.log("#m refresh username from api: ");
+    // const preUserName=signUpData.userName
+    // createRandomUserName(preUserName,setUserNameList)
   };
+  // signUpData.userName=userNameList[0]
+  // console.log("new->",signUpData.userName);
+  // console.log("usernmae->",userNameList);
   return (
     <div className="panel">
       <div className="signUpContainer">
@@ -153,7 +161,7 @@ const SignUp = () => {
               showBtn
               innerInputContent={
                 <RenderInnerInputContent
-                  fkey="email"
+                  forKey="email"
                   error={error}
                   showIcon={signUpData?.email.length > 0}
                 />
@@ -169,7 +177,7 @@ const SignUp = () => {
               value={signUpData.name}
               innerInputContent={
                 <RenderInnerInputContent
-                  fkey="name"
+                  forKey="name"
                   error={error}
                   showIcon={signUpData?.name.length > 0}
                 />
@@ -185,7 +193,7 @@ const SignUp = () => {
               value={signUpData.userName}
               innerInputContent={
                 <RenderInnerInputContent
-                  fkey="userName"
+                  forKey="userName"
                   error={error}
                   refresh={signUpData?.name === signUpData?.userName}
                   showIcon={signUpData?.userName.length > 0}
@@ -203,7 +211,7 @@ const SignUp = () => {
               value={signUpData.password}
               innerInputContent={
                 <RenderInnerInputContent
-                  fkey="password"
+                  forKey="password"
                   error={error}
                   showPassword={showPassword}
                   handleClick={(e) => { e.preventDefault(); setShowPassword(!showPassword) }}
@@ -259,7 +267,7 @@ const SignUp = () => {
 export default SignUp;
 
 function RenderInnerInputContent({
-  fkey,
+  forKey,
   error,
   handleClick,
   showPassword,
@@ -267,11 +275,11 @@ function RenderInnerInputContent({
   showIcon,
   showBtn,
 }) {
-  if (fkey === "email" && showIcon) {
+  if (forKey === "email" && showIcon) {
     return (
       <ImgTag
         src={
-          error[fkey] === "success"
+          error[forKey] === "success"
             ? "/images/inputTrue.png"
             : "/images/x-mark-1.png"
         }
@@ -281,13 +289,13 @@ function RenderInnerInputContent({
     );
   }
 
-  if (fkey === "userName" && showIcon) {
-    console.log(error[fkey]);
+  if (forKey === "userName" && showIcon) {
+    // console.log(error[forKey]);
     return refresh ? (
       <>
         <ImgTag
           src={
-            error[fkey] === "success"
+            error[forKey] === "success"
               ? "/images/inputTrue.png"
               : "/images/x-mark-1.png"
           }
@@ -304,7 +312,7 @@ function RenderInnerInputContent({
     ) : showIcon ? (
       <ImgTag
         src={
-          error[fkey] === "success"
+          error[forKey] === "success"
             ? "/images/inputTrue.png"
             : "/images/x-mark-1.png"
         }
@@ -316,12 +324,12 @@ function RenderInnerInputContent({
     );
   }
 
-  if (fkey === "password") {
+  if (forKey === "password") {
     return (
       <>
         <ImgTag
           src={
-            error[fkey] === "success"
+            error[forKey] === "success"
               ? "/images/inputTrue.png"
               : "/images/x-mark-1.png"
           }
@@ -337,11 +345,11 @@ function RenderInnerInputContent({
     );
   }
 
-  if (error[fkey] === "success" && showIcon) {
+  if (error[forKey] === "success" && showIcon) {
     return <ImgTag src={"/images/inputTrue.png"} alt="icon" width={20} />;
   }
 
-  if (error[fkey] === "error" || showBtn) {
+  if (error[forKey] === "error" || showBtn) {
     return <ImgTag src={"/images/x-mark-1.png"} alt="icon" width={20} />;
   }
 

@@ -1,8 +1,65 @@
-/* .leftHeader{
+.leftHeader{
+  width: 244px;
+   height: 100vh;
+  position: fixed;
+
+   display: flex;
+   flex-direction: column;    
+   justify-content: space-between;
+  align-items: flex-start;
+
+   
+  border-right: 1px solid rgba(var(--grey-4));
+  padding:8px 12px 27px 12px;
+}
+
+/* icons */
+.leftHeaderIcon{
+  box-sizing: border-box;
+  font-size: 14px;
+  color: rgb(var(--ig-primary-text));
+  font-family: var(--font-family-system);
+  font-size: var(--system-14-font-size);
+  line-height: var(--system-14-line-height);
+  padding: 30px 12px 14px 12px;
+  margin: 0px 0px 19px;
+}
+
+/* list */
+.leftHeaderLinkList{
+/* padding-left: 12px; */
+padding-right: 12px;
+}
+.leftHeaderLinkBox{
+
+  padding: 12px;
+}
+
+.leftHeaderLinkBox>a{
+  align-items: center;
+  color: rgb(var(--ig-primary-text));
+
+}
+
+
+.leftHeaderLink{
   display: flex;
-  flex-direction: column;
-} */
-.leftHeaderLinks{
+  margin-top: 2px;
+  margin-bottom: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  /* padding: 0px 0px 16px; */
+}
+
+
+.leftHeaderLinkName{
+  padding-left: 20px;
+}
+
+
+.LeftHeaderBottom>a{
   display: flex;
-  flex-direction: column;
+padding: 12px;
+color: rgb(var(--ig-primary-text));
+
 }

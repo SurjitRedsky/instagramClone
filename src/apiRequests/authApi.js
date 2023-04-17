@@ -1,10 +1,11 @@
 import axios from "axios";
-import axiosInstance from '../constants/axiosInstance';
+
+// import axios from ''
 const API = axios.create({ baseURL: "http://localhost:4000" });
 
 //login api request
 export const logIn = (data, navigate, setWarning) =>
-  axiosInstance.post("/accounts/login", {
+  API.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
   })
@@ -87,8 +88,16 @@ export const confirVerificaionCode = (data, navigate, setWearning) => {
 
 // resend verificaion code
 export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
-  API.put(`/accounts/verified/resend/${data.id}`).then((res) => {
-    console.log("res", res.data);
-    setResendCodeMsg(res?.data)
-  }).catch((err)=>console.log(err))
+  API.put(`/accounts/verified/resend/${data.id}`)
+    .then((res) => {
+      console.log("res", res.data);
+      setResendCodeMsg(res?.data);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const createRandomUserName = (data, setUserNameList) => {
+  API.post("accounts/createUserName", { userName: data })
+    .then((response) => setUserNameList(response.data))
+    .catch((err) => console.log(err));
 };
