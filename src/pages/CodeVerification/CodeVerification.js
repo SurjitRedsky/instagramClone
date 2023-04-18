@@ -5,7 +5,10 @@ import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import Footer from "../../components/Footer/Footer";
 import ImgTag from "../../components/ImgTag";
 import Button from "../../components/Button";
-import { confirVerificaionCode, reSendVerificaionCode } from "../../apiRequests/authApi";
+import {
+  confirVerificaionCode,
+  reSendVerificaionCode,
+} from "../../apiRequests/authApi";
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../../components/InputField";
@@ -17,6 +20,7 @@ function CodeVerification() {
   const [verificationCode, setVerificationCode] = useState("");
   const [wearning, setWearning] = useState("");
   const [resendCodeMsg, setResendCodeMsg] = useState(true);
+  const [isDisabled, setDisabled] = useState(true);
 
   const handleChange = (e) => {
     // maxlength for input
@@ -26,6 +30,7 @@ function CodeVerification() {
       newValue = newValue.slice(0, maxlength);
     }
     setVerificationCode(newValue);
+    verificationCode.length > 5 ? setDisabled(false) : setDisabled(true);
   };
 
   //submit button
@@ -38,10 +43,13 @@ function CodeVerification() {
       setWearning
     );
   };
-  const handleResendCode=(e)=>{
-
-reSendVerificaionCode({id:currentUser.userId},navigate,setResendCodeMsg)
-  }
+  const handleResendCode = (e) => {
+    reSendVerificaionCode(
+      { id: currentUser.userId },
+      navigate,
+      setResendCodeMsg
+    );
+  };
 
   return (
     <div className="codeVerificationPage">
@@ -73,7 +81,11 @@ reSendVerificaionCode({id:currentUser.userId},navigate,setResendCodeMsg)
               name={"code"}
               value={verificationCode}
             />
-            <Button className={"confirmBtn"} text={"Confirm"} />
+            <Button
+              className={"confirmBtn"}
+              text={"Confirm"}
+              disabled={isDisabled}
+            />
           </form>
           {wearning.length > 0 ? (
             <span className="errorWearningShow">{wearning}</span>
@@ -84,7 +96,7 @@ reSendVerificaionCode({id:currentUser.userId},navigate,setResendCodeMsg)
           <div className="updateNumberRequest">
             <Button text={"Change Number"} />
             {"|"}
-            <Button text={"Request New Code"} onclick={handleResendCode}/>
+            <Button text={"Request New Code"} onclick={handleResendCode} />
           </div>
         </div>
         <LoginSignupOption

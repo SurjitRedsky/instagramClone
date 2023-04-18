@@ -47,6 +47,9 @@ text-align: center;
     font-weight: 400;
 }
 
+.cakeIcon{
+    margin-top: 10px;
+}
 
 .cakeIcon >a{
     color: rgb(var(--blue-4));

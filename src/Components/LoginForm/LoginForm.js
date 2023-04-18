@@ -28,20 +28,29 @@ const LoginForm = () => {
 
   // set login data
   const handleChange = (e) => {
-    loginData.password.length >= 5 ? setDisable(false) : setDisable(true);
+    loginData.password.length >= 5 && loginData.userName.length>0 ? setDisable(false) : setDisable(true);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   // login button submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    logIn(loginData, navigate, setWarning);
-    console.log("loginUser", loginData);
+    const response = await logIn(loginData);
+    if (response.data.statusCode == 200) {
+      localStorage.setItem("loginUser", JSON.stringify(response.data.user));
+      navigate("/homePage");
+    } else if (response.data.statusCode == 404) {
+      setWarning(
+        "Sorry, your password was incorrect. Please double-check your password."
+      );
+    } else {
+      console.log("loginError->", response.data);
+    }
+
   };
 
-
   const toggleBtn = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (passwordType === "password") {
       setPasswordType("text");
       setPasswordText("Hide");
@@ -58,7 +67,7 @@ const LoginForm = () => {
           <ImgTag src={"/images/binstalogo.png"} width={200} />
         </div>
 
-        <form className="form" >
+        <form className="form">
           <InputFeild
             requied
             type={"text"}
@@ -85,7 +94,12 @@ const LoginForm = () => {
             }
           />
 
-          <Button className={"loginBtn"} text={"Log In"} disabled={disable} onclick={handleSubmit} />
+          <Button
+            className={"loginBtn"}
+            text={"Log In"}
+            disabled={disable}
+            onclick={handleSubmit}
+          />
 
           <HorizontalLine />
 
@@ -93,17 +107,18 @@ const LoginForm = () => {
             <ImgTag src={"./images/facebook.png"} width={"16px"}></ImgTag>
 
             <AnchorTag
-              href={"*"}
+              href={
+                "https://www.facebook.com/login.php?skip_api_login=1&api_key=124024574287414&kid_directed_site=0&app_id=124024574287414&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Foauth%3Fclient_id%3D124024574287414%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignup%252F%26state%3D%257B%2522fbLoginKey%2522%253A%25221fff0l112wgktc1ed6ohn1tc8viu89ne6k1uee8a31agyvjeydzv4x%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252Ffxcal%252Fdisclosure%252F%253Fnext%253D%25252F%2522%257D%26scope%3Demail%26response_type%3Dcode%252Cgranted_scopes%26locale%3Den_US%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3Dcc751796-6e0b-4b51-8733-f757265a28c1%26tp%3Dunspecified&cancel_url=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fsignup%2F%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3D%257B%2522fbLoginKey%2522%253A%25221fff0l112wgktc1ed6ohn1tc8viu89ne6k1uee8a31agyvjeydzv4x%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252Ffxcal%252Fdisclosure%252F%253Fnext%253D%25252F%2522%257D%23_%3D_&display=page&locale=en_GB&pl_dbl=0"
+              }
               className={"facebookIcons"}
               text={` Log in with Facebook `}
             />
           </div>
-          {
-            warning.length > 0 ? (
-              <span className="errorWearningShow">{warning}
-              </span>
-            ) : ""
-          }
+          {warning.length > 0 ? (
+            <span className="errorWearningShow">{warning}</span>
+          ) : (
+            ""
+          )}
 
           <AnchorTag
             href={"*"}

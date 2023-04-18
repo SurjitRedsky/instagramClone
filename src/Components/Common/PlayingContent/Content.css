@@ -1,0 +1,90 @@
+.playingContent{
+  width: 60%;
+  height: 600px;
+  /* border: 1px solid rgb(46, 140, 241); */
+  margin-top: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+  display: inline-block;
+  overflow: hidden;
+
+}
+.content{
+  background-color: black;
+}
+.content>img{
+  width: 100%;
+
+}
+
+
+
+
+/* content header css is here */
+
+
+.contentHeader{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.userProfile{
+display: flex;
+flex-direction: row;
+margin: 8px 4px 8px 5px;
+align-items: center;
+    box-sizing: border-box;
+}
+
+
+
+.userDetail{
+  justify-content: center;
+  margin-left: 10px;
+  min-height: 40px;
+}
+.userDetail>span{
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+.optionButton>button{
+  font-size: 20px;
+  background-color: transparent;
+  /* background-color: red; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+/* padding: auto; */
+padding-bottom: 7px;
+}
+
+/* content header css end is here */
+
+
+
+
+
+/* filed icons  */
+.filedIcons{
+margin: 10px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.LikeShare{
+  width: 20%;
+  display: flex;
+ justify-content: space-between; 
+}
+
+
+/* filed icons end */

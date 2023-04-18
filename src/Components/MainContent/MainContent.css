@@ -1,0 +1,32 @@
+
+/* here degien for left home screen side */
+.homePageMainContent{
+ display: flex;
+  max-width: 1113px;
+  justify-content: space-between;
+  padding-top: 4px;
+  flex-flow: row nowrap;
+  /* background-color: grey;
+   */
+}
+
+.leftMainContent{
+  width: 630px;
+
+
+}
+
+
+
+/* left side of homeScreen */
+.rightMainContainer{
+  width: 320px;
+  background-color: azure;
+}
+
+.mainContentList{
+
+  display: flex;
+  justify-content: center;
+
+}

@@ -22,7 +22,7 @@ const SignUp = () => {
     password: "",
   });
 
-  const [warning, setWarning] = useState("");
+  // button disable 
   const [disable, setDisable] = useState(true);
 
   const [error, setError] = useState({
@@ -56,7 +56,7 @@ const SignUp = () => {
 
   //check userName
   const checkUerName = (v) => {
-    return /^[A-Za-z][A-Za-z0-9_]{6,14}$/.test(v);
+    return /^[A-Za-z][A-Za-z0-9]{6,14}$/.test(v);
   };
 
   // set error
@@ -95,7 +95,7 @@ const SignUp = () => {
     }
     return null;
   };
-
+// console.log("error->",error);
 
   //check password
   const checkPasswordValidation = (key) => {
@@ -114,7 +114,7 @@ const SignUp = () => {
     signUpData.password.length >= 5 ? setDisable(false) : setDisable(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     if (error?.email === "error") {
       setSignUpWearning("Enter a valid email address.");
@@ -123,7 +123,16 @@ const SignUp = () => {
     } else if (error?.password === "error") {
       setSignUpWearning("Password is easy to guess.");
     } else {
-      register(signUpData, navigate, setWarning);
+      const respones=await register(signUpData);
+      if (respones.data.statusCode === 200) {
+        navigate("/accounts/emailsignup/addbirthdate", {
+          state: { user: respones.data.user },
+        });
+      } else if (respones.data.statusCode === 403) {
+        setSignUpWearning(`${respones.data.message}`);
+      } else {
+        console.log("nill");
+      }
     }
   };
 
@@ -140,9 +149,12 @@ const SignUp = () => {
       console.log("usen->", userNameList);
     }
     else {
+      // console.log("userName->",preUserName);
+
       let response = await createRandomUserName(preUserName);
       console.log('#m list: ', response);
-      const list = response?.data?.data;
+      const list = response?.data?.data
+      console.log("lis-.",list);
       const first = list[0]
       setSignUpData({
         ...signUpData,
@@ -245,13 +257,15 @@ const SignUp = () => {
               <p>
                 People who use our service may have uploaded your contact
                 information to Instagram.{" "}
-                <AnchorTag href={"*"} text={" Learn More"} />
+                <AnchorTag href={"https://www.facebook.com/help/instagram/261704639352628"} text={" Learn More"} />
               </p>
               <p>
                 By signing up, you agree to our
-                <AnchorTag href={"*"} text={"Terms , Privacy Policy"} />
+                <AnchorTag href={"https://help.instagram.com/581066165581870/?locale=en_US"} text={"Terms "} /> ,
+                <AnchorTag href={"https://www.facebook.com/privacy/policy"} text={"Privacy Policy"}/>
+
                 and
-                <AnchorTag href={"*"} text={"Cookies Policy."} />
+                <AnchorTag href={"https://help.instagram.com/1896641480634370/"} text={"Cookies Policy."} />
               </p>
             </div>
 

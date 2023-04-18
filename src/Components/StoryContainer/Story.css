@@ -5,7 +5,8 @@
   justify-content: flex-start;
   margin-top: 16px;
   padding: 16px 0px;
-  gap: 10px;
+  gap: 10 px;
+  overflow-x:scroll
 }
 
 
@@ -17,4 +18,10 @@
   display: flex;
   flex-direction:column;
   align-items: center;
+}
+.userStory>img{
+  border: 3px solid rgb(239, 133, 192);
+border-radius: 50%;
+margin: 4px;
+outline-offset: 2px;
 }

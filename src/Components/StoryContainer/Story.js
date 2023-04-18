@@ -30,6 +30,55 @@ const storyList=[
     "profilePic":"../images/inputIcons/profile.png",
     "username":"name"
     
+  },{
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  },
+  {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
+  }, {
+    "profilePic":"../images/inputIcons/profile.png",
+    "username":"name"
+    
   },
 ]
 

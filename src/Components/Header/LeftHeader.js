@@ -103,29 +103,26 @@ const LeftHeader = () => {
         </div>
       </div>
 
-      <div className="LeftHeaderBottom ">
+      <div className="LeftHeaderBottom " onClick={handleClick}>
+        <AnchorTag
+          // href={"https://web.skype.com/"}
+          text={
+            <>
+              <div>
+                <ImgTag
+                  src={"../images/inputIcons/menuLine.png"}
+                  width={20}
+                  height={22}
+                />
+              </div>
+              <div>
+                {/* <Button text={"Menu"} onclick={handleClick} /> */}
 
-
-        <AnchorTag href={"https://web.skype.com/"}  text={
-<>
-<div>
-          <ImgTag
-            src={"../images/inputIcons/menuLine.png"}
-            width={20}
-            height={22}
-          />
-        </div>
-        <div >
-          {/* <Button text={"Menu"} onclick={handleClick} /> */}
-
-          <div className="leftHeaderLinkName">More</div>
-        </div>
-</>
-
-        }/>
-
-        
-     
+                <div className="leftHeaderLinkName">More</div>
+              </div>
+            </>
+          }
+        />
       </div>
     </div>
   );

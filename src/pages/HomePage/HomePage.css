@@ -4,19 +4,15 @@
   height: 100vh;
 justify-content: space-between;
 }
-  .leftContainer{
-width: 15%;
-/* width: fit-content; */
-
-  }
-.centreContainer{
-  width: 60%;
+.leftContainer{
+  width: 15%;
+  
+}
+.rightContainer{
+  width: 55%;
   display: flex;
   flex-direction: column;
-margin:0px auto;
+  margin:0px auto;
+  /* background-color: grey; */
 }
 
-.rightContainer{
-  width: 30%;
-
-}

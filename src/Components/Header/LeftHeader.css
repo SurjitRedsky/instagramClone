@@ -63,3 +63,9 @@ padding: 12px;
 color: rgb(var(--ig-primary-text));
 
 }
+
+
+.leftHeaderLinkBox>a :hover{
+  /* background-color: gray; */
+
+}
