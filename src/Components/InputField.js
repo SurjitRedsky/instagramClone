@@ -4,7 +4,7 @@ import './Common/common.css'
 const InputField = ({
   type, className,
   id, placeholder, onchange, name,
-  required, value, innerInputContent, showBtn,autoFocus,pattern,maxNum,minNum,
+  required, value, innerInputContent, showBtn, autoFocus, pattern, maxNum, minNum,
   handleBlur = () => { }
 }) => {
 
@@ -27,14 +27,14 @@ const InputField = ({
           placeholder={placeholder}
           onChange={onchange}
           name={name}
+          value={value}
           onBlur={() => handleBlur(name)}
           autoFocus={autoFocus}
           pattern={pattern}
-      min={minNum}
-      max={maxNum}
-      
-        
-        ></input>
+          min={minNum}
+          max={maxNum}
+        >
+        </input>
       </div>
       <div className={`${showBtn ? "show" : "InputIneerBtnHide"}`} >
         {innerInputContent}

@@ -19,14 +19,14 @@ function App() {
     <div className="app">
 
 
-       <Routes>
+      <Routes>
         {/* <Route path="/" element={<Login />} />
         <Route path='/accounts/login' element={<Login />} />
         <Route path="/accounts/emailsignup" element={<SignUp />} />
-        <Route path="/accounts/emailsignup/addbirthdate"  element={<AddBirthDate/>} />
-        <Route path="/accounts/emailsignup/codeveified" element={<CodeVerification/>} /> */}
-        <Route path="/homePage" element={<HomePage/>}/>  
-       </Routes> 
+        <Route path="/accounts/emailsignup/addbirthdate" element={<AddBirthDate />} />
+        <Route path="/accounts/emailsignup/codeveified" element={<CodeVerification />} /> */}
+        <Route path="/homePage" element={<HomePage />} />
+      </Routes>
     </div>
 
   );

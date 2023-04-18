@@ -96,8 +96,6 @@ export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
     .catch((err) => console.log(err));
 };
 
-export const createRandomUserName = (data, setUserNameList) => {
-  API.post("accounts/createUserName", { userName: data })
-    .then((response) => setUserNameList(response.data))
-    .catch((err) => console.log(err));
+export const createRandomUserName = (data) => {
+  return API.post("accounts/createUserName", { userName: data })
 };

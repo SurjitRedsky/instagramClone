@@ -15,22 +15,26 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const initialState = {
+  const [signUpData, setSignUpData] = useState({
     email: "",
     name: "",
     userName: "",
     password: "",
-  };
+  });
 
-  const [signUpData, setSignUpData] = useState(initialState);
   const [warning, setWarning] = useState("");
   const [disable, setDisable] = useState(true);
 
-  const [error, setError] = useState(initialState);
+  const [error, setError] = useState({
+    email: "",
+    name: "",
+    userName: "",
+    password: "",
+  });
   const [signUpWearning, setSignUpWearning] = useState("");
 
   //random userName
-const [userNameList,setUserNameList]=useState([])
+  const [userNameList, setUserNameList] = useState([])
 
   //password input
   const [showPassword, setShowPassword] = useState(false);
@@ -81,7 +85,8 @@ const [userNameList,setUserNameList]=useState([])
 
   //check userName
   const checkUserNamevalidation = (key) => {
-    const inputValue = signUpData[key];
+
+    let inputValue = signUpData[key];
     const isture = checkUerName(inputValue);
     if (inputValue.length > 0) {
       signUpData?.name !== inputValue && isture
@@ -90,7 +95,7 @@ const [userNameList,setUserNameList]=useState([])
     }
     return null;
   };
- 
+
 
   //check password
   const checkPasswordValidation = (key) => {
@@ -123,16 +128,30 @@ const [userNameList,setUserNameList]=useState([])
   };
 
   // Refresh username
-  const refreshUserName = () => {
-    console.log("#m refresh username from api: ");
-    const preUserName=signUpData.userName
-   
-    createRandomUserName(preUserName,setUserNameList);
-    
-    console.log("usernmae->",userNameList);
-    signUpData.userName=userNameList[0]
+  const refreshUserName = async () => {
+    const preUserName = signUpData.name
+    if (userNameList.length > 0) {
+      const first = userNameList[0]
+      setSignUpData({
+        ...signUpData,
+        userName: first,
+      })
+      setUserNameList(userNameList.slice(1))
+      console.log("usen->", userNameList);
+    }
+    else {
+      let response = await createRandomUserName(preUserName);
+      console.log('#m list: ', response);
+      const list = response?.data?.data;
+      const first = list[0]
+      setSignUpData({
+        ...signUpData,
+        userName: first,
+      })
+      setUserNameList(list.slice(1))
+    }
   };
-  
+
   return (
     <div className="panel">
       <div className="signUpContainer">
@@ -192,17 +211,17 @@ const [userNameList,setUserNameList]=useState([])
               onchange={handleChange}
               name={"userName"}
               showBtn
-              value={signUpData.userName}
+              value={signUpData?.userName}
               innerInputContent={
                 <RenderInnerInputContent
                   forKey="userName"
                   error={error}
-                  refresh={signUpData?.name === signUpData?.userName}
+                  refresh={signUpData.name.length > 0}
                   showIcon={signUpData?.userName.length > 0}
                   handleClick={refreshUserName}
                 />
               }
-              handleBlur={checkUserNamevalidation}
+              handleBlur={() => checkUserNamevalidation('userName')}
             />
             <InputField
               type={showPassword ? "text" : "password"}
@@ -242,14 +261,14 @@ const [userNameList,setUserNameList]=useState([])
               disabled={disable}
             />
             {
-              
-              signUpWearning.length>0?(
+
+              signUpWearning.length > 0 ? (
                 <span className="signUpWearning">
-                {signUpWearning}
-              </span>
-              ):""
-              
-             }
+                  {signUpWearning}
+                </span>
+              ) : ""
+
+            }
           </form>
 
         </div>
@@ -291,11 +310,10 @@ function RenderInnerInputContent({
     );
   }
 
-  if (forKey === "userName" && showIcon) {
-    // console.log(error[forKey]);
-    return refresh ? (
+  if (forKey === "userName") {
+    return (
       <>
-        <ImgTag
+        {showIcon && <ImgTag
           src={
             error[forKey] === "success"
               ? "/images/inputTrue.png"
@@ -304,26 +322,16 @@ function RenderInnerInputContent({
           alt="icon"
           width={20}
         />
-        <ImgTag
+        }
+        {refresh && <ImgTag
           src={"/images/refreshing-1.png"}
           alt="icon"
           width={20}
           handleClick={handleClick}
         />
-      </>
-    ) : showIcon ? (
-      <ImgTag
-        src={
-          error[forKey] === "success"
-            ? "/images/inputTrue.png"
-            : "/images/x-mark-1.png"
         }
-        alt="icon"
-        width={20}
-      />
-    ) : (
-      ""
-    );
+      </>
+    )
   }
 
   if (forKey === "password") {
