@@ -1,0 +1,25 @@
+.exploreContainer{
+  /* background-color: aqua; */
+  box-sizing:border-box;
+  max-width: 960px;
+  padding: 40px 20px 0;
+  padding-top:24px;
+  width: 100%;
+}
+
+
+.exploreViewRow{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.exploreViewColumn{
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.exploreViewColumn>img{
+  width: 100%;
+}

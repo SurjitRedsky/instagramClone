@@ -1,31 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import AnchorTag from "../AnchorTag";
 import ImgTag from "../ImgTag";
 import "./LeftHeader.css";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
+import SuggestionBox from "../SuggestionBox/SuggestionBox";
+import MainContent from "../MainContent/MainContent";
 
 const LeftHeader = () => {
+
+  const [activeComponent,setActiveComponent]=useState(<MainContent/>)
   const navigate = useNavigate();
 
   const headerLinks = [
     {
-      url: "*",
+      url: "/",
       name: "Home",
       icon: "../images/inputIcons/home.png",
+    component:<MainContent />
     },
     {
-      url: "https://about.meta.com/",
+      url: "",
       name: "Search",
       icon: "../images/inputIcons/search.png",
     },
     {
-      url: "https://about.meta.com/",
+      url: "/explore",
       name: "Explore",
       icon: "../images/inputIcons/exploer.png",
+    component:<SuggestionBox/>
     },
     {
-      url: "https://about.meta.com/",
+      url: "/reels",
       name: "Reels",
       icon: "../images/inputIcons/reels.png",
     },
@@ -66,6 +72,11 @@ const LeftHeader = () => {
     }
   };
 
+const handleChnageClick=(component,name)=>{
+setActiveComponent(component)
+}
+
+
   return (
     <div className="leftHeader">
       <div className="leftHeaderTop">
@@ -84,7 +95,7 @@ const LeftHeader = () => {
         <div className="leftHeaderLinkList">
           {headerLinks.map((item, index) => {
             return (
-              <div className="leftHeaderLinkBox">
+              <div className="leftHeaderLinkBox" onClick={handleChnageClick(item.component,item.name)}>
                 <AnchorTag
                   href={item.url}
                   text={

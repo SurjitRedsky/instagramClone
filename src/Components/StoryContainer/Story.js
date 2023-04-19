@@ -7,42 +7,43 @@ const Story = () => {
 
   const storyList = [
     {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+      "profilePic": "../images/inputIcons/redHeart.png",
+      "username": "instagram"
 
     }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+      "profilePic": "../images/birthdayCake.png",
+      "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    }, 
+    // {
+    //   "profilePic": "../images/inputTrue.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/x-mark-1.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/lightFacebookIcons.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/facebook.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/inputIcons/search.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/inputIcons/reels.png",
+    //   "username": "instagram"
 
-    }, {
-      "profilePic": "../images/inputIcons/profile.png",
-      "username": "name"
+    // }, {
+    //   "profilePic": "../images/inputIcons/instagram.png",
+    //   "username": "instagram"
 
-    },
+    // },
   ]
 
 
@@ -58,9 +59,13 @@ const Story = () => {
         storyList.map((item, index) => {
 
           return (
+
             <div className='userStory' key={index}>
-              <ImgTag src={item.profilePic} width={60} height={60} />
-              <span> {item.username} </span>
+
+              <div className='storyback'>
+              <ImgTag src={item.profilePic} width={59} height={59} />
+            </div>
+              <span className='storyUserName'> {item.username} </span>
             </div>
           )
 

@@ -132,6 +132,7 @@ const SignUp = () => {
         setSignUpWearning(`${respones.data.message}`);
       } else {
         console.log("nill");
+        setSignUpWearning(`${respones.data.message}`)
       }
     }
   };

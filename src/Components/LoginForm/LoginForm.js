@@ -39,12 +39,13 @@ const LoginForm = () => {
     if (response.data.statusCode == 200) {
       localStorage.setItem("loginUser", JSON.stringify(response.data.user));
       navigate("/homePage");
-    } else if (response.data.statusCode == 404) {
+    } else if (response.data.statusCode == 400 || response.data.statusCode == 404) {
       setWarning(
         "Sorry, your password was incorrect. Please double-check your password."
       );
     } else {
       console.log("loginError->", response.data);
+      setWarning(response.data.message)
     }
 
   };

@@ -2,6 +2,7 @@ import React from "react";
 import "./MainContent.css";
 import Story from "../StoryContainer/Story";
 import Content from "../Common/PlayingContent/Content";
+import SuggestionBox from "../SuggestionBox/SuggestionBox";
 
 const MainContent = () => {
 
@@ -28,7 +29,9 @@ const MainContent = () => {
         </div>
       </div>
 
-      <div className="rightMainContainer">rightSide</div>
+      <div className="rightMainContainer">
+        <SuggestionBox/>
+      </div>
     </div>
   );
 };
