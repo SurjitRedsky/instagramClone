@@ -22,7 +22,7 @@ const SignUp = () => {
     password: "",
   });
 
-  // button disable 
+  // button disable
   const [disable, setDisable] = useState(true);
 
   const [error, setError] = useState({
@@ -95,7 +95,7 @@ const SignUp = () => {
     }
     return null;
   };
-// console.log("error->",error);
+  // console.log("error->",error);
 
   //check password
   const checkPasswordValidation = (key) => {
@@ -114,7 +114,7 @@ const SignUp = () => {
     signUpData.password.length >= 5 ? setDisable(false) : setDisable(true);
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (error?.email === "error") {
       setSignUpWearning("Enter a valid email address.");
@@ -123,7 +123,7 @@ const SignUp = () => {
     } else if (error?.password === "error") {
       setSignUpWearning("Password is easy to guess.");
     } else {
-      const respones=await register(signUpData);
+      const respones = await register(signUpData);
       if (respones.data.statusCode === 200) {
         navigate("/accounts/emailsignup/addbirthdate", {
           state: { user: respones.data.user },
@@ -154,7 +154,7 @@ const SignUp = () => {
       let response = await createRandomUserName(preUserName);
       console.log('#m list: ', response);
       const list = response?.data?.data
-      console.log("lis-.",list);
+      console.log("lis-.", list);
       const first = list[0]
       setSignUpData({
         ...signUpData,
@@ -262,7 +262,7 @@ const SignUp = () => {
               <p>
                 By signing up, you agree to our
                 <AnchorTag href={"https://help.instagram.com/581066165581870/?locale=en_US"} text={"Terms "} /> ,
-                <AnchorTag href={"https://www.facebook.com/privacy/policy"} text={"Privacy Policy"}/>
+                <AnchorTag href={"https://www.facebook.com/privacy/policy"} text={"Privacy Policy"} />
 
                 and
                 <AnchorTag href={"https://help.instagram.com/1896641480634370/"} text={"Cookies Policy."} />
