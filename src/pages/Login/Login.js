@@ -6,8 +6,6 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 
 const Login = () => {
 
-
-
 	const [currentImage, setCurrentImage] = useState('/images/screenshot1.png')
 	const addImages = ['/images/screenshot1.png', '/images/screenshot2.png', '/images/screenshot3.png', '/images/screenshot4.png']
 

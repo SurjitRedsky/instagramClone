@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
@@ -21,6 +21,7 @@ const LoginForm = () => {
   const [loginData, setLoginData] = useState(loginInitialState);
   const [warning, setWarning] = useState("");
   const [disable, setDisable] = useState(true);
+  const [token,setToken]=useState("")
 
   //password input
   const [passwordType, setPasswordType] = useState("password");
@@ -37,7 +38,9 @@ const LoginForm = () => {
     e.preventDefault();
     const response = await logIn(loginData);
     if (response.data.statusCode == 200) {
-      localStorage.setItem("loginUser", JSON.stringify(response.data.user));
+      setToken(response.data.token)
+      localStorage.setItem("token",JSON.stringify(response.data.token))
+      localStorage.setItem("loginUser", JSON.stringify(response.data.userData));
       navigate("/homePage");
     } else if (response.data.statusCode == 400 || response.data.statusCode == 404) {
       setWarning(
@@ -61,6 +64,13 @@ const LoginForm = () => {
     setPasswordText("Show");
   };
 
+
+
+  useEffect(() => {
+    localStorage.setItem("token",JSON.stringify(token))
+    
+  }, [token])
+  
   return (
     <div className="loginForm">
       <div className="loginContainer">

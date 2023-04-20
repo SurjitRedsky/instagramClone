@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./HomePage.css";
 import LeftHeader from "../../components/Header/LeftHeader";
@@ -9,10 +9,12 @@ import SuggestionBox from "../../components/SuggestionBox/SuggestionBox";
 import AnchorTag from "../../components/AnchorTag";
 import ImgTag from "../../components/ImgTag";
 import ExploreScreen from "../../components/ExploreScreen/ExploreScreen";
+import { getUser } from "../../apiRequests/userApi";
 
 const HomePage = ({ comp }) => {
-  const [activeComponent, setActiveComponent] = useState(<MainContent />);
   const navigate = useNavigate();
+  const [activeComponent, setActiveComponent] = useState(<MainContent />);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const headerLinks = [
     {
@@ -57,6 +59,22 @@ const HomePage = ({ comp }) => {
     },
   ];
 
+  const getUserData = async (token) => {
+    await getUser(token)
+      .then((response) => {
+          setCurrentUser(response.data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    getUserData(token);
+  }, []);
+
+
+
+  // get storage from local storage data
   const getAllStorage = () => {
     let data = [];
     for (var i = 0; i < localStorage.length; i++) {
@@ -65,6 +83,7 @@ const HomePage = ({ comp }) => {
     return data;
   };
 
+  // for logout button
   const handleClick = (e) => {
     if (getAllStorage().length > 0) {
       localStorage.clear();
@@ -98,7 +117,8 @@ const HomePage = ({ comp }) => {
                 return (
                   <div
                     className="leftHeaderLinkBox"
-                    onClick={()=>handleChnageClick(item.component, item.name)}
+                    onClick={() => handleChnageClick(item.component, item.name)}
+                    key={index}
                   >
                     <AnchorTag
                       text={
@@ -119,7 +139,7 @@ const HomePage = ({ comp }) => {
 
           <div className="LeftHeaderBottom " onClick={handleClick}>
             <AnchorTag
-          text={
+              text={
                 <>
                   <div>
                     <ImgTag
@@ -129,7 +149,7 @@ const HomePage = ({ comp }) => {
                     />
                   </div>
                   <div>
-     <div className="leftHeaderLinkName">More</div>
+                    <div className="leftHeaderLinkName">More</div>
                   </div>
                 </>
               }
@@ -138,8 +158,7 @@ const HomePage = ({ comp }) => {
         </div>
       </div>
       <div className="rightContainer">
-{activeComponent?activeComponent:""  }
-
+        {activeComponent ? activeComponent : ""}
       </div>
     </div>
   );

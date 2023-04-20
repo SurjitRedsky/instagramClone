@@ -1,37 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SuggestionBox.css";
 import ImgTag from "../ImgTag";
 import Button from "../Button";
+import SuggestionBoxFooter from "./SuggestionBoxFooter";
+import { getAllUsers } from "../../apiRequests/userApi";
 
-const SuggestionBox = () => {
-  const listOfUser = [
-    {
-      name: "davinder",
-      profileImage: "../images/inputIcons/profile.png",
-      status: " Follows you",
-    },
-    {
-      name: "jaspalSingh",
-      profileImage: "../images/inputIcons/profile.png",
-      status: "Suggested for you",
-    },
-    {
-      name: "simarjeet",
-      profileImage: "../images/inputIcons/profile.png",
-      status: " Follows you",
-    },
-    {
-      name: "  sartaj",
-      profileImage: "../images/inputIcons/profile.png",
-      status: "Suggested for youu",
-    },
-    {
-      name: "luckySingh",
-      profileImage: "../images/inputIcons/profile.png",
-      status: " Follows you",
-    },
-  ];
+const SuggestionBox = ({ user }) => {
+  const [listOfUser, setListOfUser] = useState([]);
 
+  const getUsers = async (token) => {
+    await getAllUsers(token)
+      .then((response) => {
+        setListOfUser(response.data.users);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    getUsers(token);
+  }, []);
+
+  
+ 
   return (
     <div className="suggestionContainer">
       <div className="userDetails">
@@ -40,8 +31,8 @@ const SuggestionBox = () => {
             <ImgTag src={"../images/inputIcons/profile.png"} width={60} />
           </div>
           <div className="userDetail">
-            <h5>User Name</h5>
-            <span> title </span>
+            <h5>{user?.userName}</h5>
+            <span> {user?.firstName} </span>
           </div>
         </div>
 
@@ -57,16 +48,23 @@ const SuggestionBox = () => {
       </div>
 
       <div className="suggestedUser">
-        {listOfUser.map((item, ind) => {
+        {listOfUser.map((user, ind) => {
           return (
-            <div className="suggestedUserProfile">
-              <div className="userProfile" key={ind}>
+            <div className="suggestedUserProfile" key={ind}>
+              <div className="userProfile" >
                 <div>
-                  <ImgTag src={item.profileImage} width={34} />
+                  <ImgTag
+                    src={
+                      user?.profileImage?.url 
+                        ? user?.profileImage.url
+                        : "../images/inputIcons/profile.png"
+                    }
+                    width={34}
+                  />
                 </div>
                 <div className="userDetail">
-                  <h5>{item.name} </h5>
-                  <span> {item.status}</span>
+                  <h5>{user?.userName} </h5>
+                  <span> {user?.firstName}</span>
                 </div>
               </div>
 
@@ -76,6 +74,10 @@ const SuggestionBox = () => {
             </div>
           );
         })}
+      </div>
+
+      <div>
+        <SuggestionBoxFooter />
       </div>
     </div>
   );
