@@ -1,12 +1,10 @@
 .playingContent{
   width: 70%;
-  height: 600px;
   /* border: 1px solid rgb(46, 140, 241); */
   margin-top: 10px;
   margin-bottom: 12px;
   border-bottom: 1px solid rgb(var(--ig-separator));
   display: inline-block;
-  overflow: hidden;
 
 }
 .content{
@@ -83,7 +81,7 @@ margin: 10px 0px;
 .LikeShare{
   width: 20%;
   display: flex;
- justify-content: space-between; 
+ justify-content: space-between;
 }
 
 
