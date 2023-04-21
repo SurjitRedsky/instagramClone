@@ -21,14 +21,18 @@ const SuggestionBox = ({ user }) => {
     getUsers(token);
   }, []);
 
-  
- 
+  //convert uri
+  const convert = (uri) => {
+    const encoded = encodeURI(uri);
+    return encoded
+  }
+  // console.log("user÷->", user);
   return (
     <div className="suggestionContainer">
       <div className="userDetails">
         <div className="userProfile">
           <div>
-            <ImgTag src={"../images/inputIcons/profile.png"} width={60} />
+            <ImgTag src={user?.profileImage?.uri ? convert(user?.profileImage?.uri) : " ../images/inputIcons/profile.png"} width={60} />
           </div>
           <div className="userDetail">
             <h5>{user?.userName}</h5>
@@ -48,18 +52,18 @@ const SuggestionBox = ({ user }) => {
       </div>
 
       <div className="suggestedUser">
+
+
         {listOfUser.map((user, ind) => {
           return (
+
             <div className="suggestedUserProfile" key={ind}>
               <div className="userProfile" >
-                <div>
+                <div className="suggestedUserProfileImg" >
                   <ImgTag
                     src={
-                      user?.profileImage?.url 
-                        ? user?.profileImage.url
-                        : "../images/inputIcons/profile.png"
+                      user?.profileImage?.thumbnail?.uri ? convert(user?.profileImage?.thumbnail?.uri) : " ../images/inputIcons/profile.png"
                     }
-                    width={34}
                   />
                 </div>
                 <div className="userDetail">

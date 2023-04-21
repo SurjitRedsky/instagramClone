@@ -12,22 +12,22 @@ import HomePage from "./pages/homePage/HomePage";
 import Button from "./components/Button";
 import Login from './pages/login/Login'
 import SuggestionBox from './components/SuggestionBox/SuggestionBox';
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import { useEffect } from 'react';
 
 // socket.io-client
 
-const SC = {};
-const socket = io("http://localhost:3001", { autoConnect: false });
+// const SC = {};
+// const socket = io("http://localhost:3001", { autoConnect: false });
 
 
 
 function App() {
-useEffect(()=>{
-socket.connect()
+  // useEffect(()=>{
+  // socket.connect()
 
 
-},[])
+  // },[])
 
 
   return (
@@ -35,7 +35,7 @@ socket.connect()
 
 
       <Routes>
-        <Route path="/" element={<Login/>} />
+        <Route path="/" element={<Login />} />
         <Route path='/accounts/login' element={<Login />} />
         <Route path="/accounts/emailsignup" element={<SignUp />} />
         <Route path="/accounts/emailsignup/addbirthdate" element={<AddBirthDate />} />

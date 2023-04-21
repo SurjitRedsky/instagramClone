@@ -10,6 +10,7 @@ import AnchorTag from "../../components/AnchorTag";
 import ImgTag from "../../components/ImgTag";
 import ExploreScreen from "../../components/ExploreScreen/ExploreScreen";
 import { getUser } from "../../apiRequests/userApi";
+import UserProfile from "../../components/UserProfile/UserProfile";
 
 const HomePage = ({ comp }) => {
   const navigate = useNavigate();
@@ -55,14 +56,14 @@ const HomePage = ({ comp }) => {
     {
       name: "Profile",
       icon: "../images/inputIcons/profile.png",
-      component: <SuggestionBox />,
+      component: <UserProfile />,
     },
   ];
 
   const getUserData = async (token) => {
     await getUser(token)
       .then((response) => {
-          setCurrentUser(response.data.data);
+        setCurrentUser(response.data.data);
       })
       .catch((err) => console.log(err));
   };

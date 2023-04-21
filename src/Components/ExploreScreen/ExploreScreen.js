@@ -34,8 +34,6 @@ const ExploreScreen = () => {
       src: "../images/inputIcons/wedding.jpeg"
     }, {
       src: "../images/inputIcons/wedding.jpeg"
-    }, {
-      src: "../images/inputIcons/wedding.jpeg"
     },
   ]
 
