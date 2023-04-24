@@ -5,6 +5,7 @@ import Content from "../Common/PlayingContent/Content";
 import SuggestionBox from "../SuggestionBox/SuggestionBox";
 import { getUser } from "../../apiRequests/userApi";
 
+
 const MainContent = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
