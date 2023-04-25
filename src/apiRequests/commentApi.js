@@ -3,8 +3,8 @@ import axios from "axios";
 const API = axios.create({ baseURL: "http://localhost:4000" });
 
 
-export const commentOnPost=(data,token)=>{
-  return API.post(`/comment/${data.postId}`,{text:data.text},{ headers: {"Authorization" : `${token}`} })
+export const commentOnPost = (data, token) => {
+  return API.post(`/comment/${data.postId}`, { text: data.text }, { headers: { "Authorization": `${token}` } })
 }
 
 // const { text } = req.body;
