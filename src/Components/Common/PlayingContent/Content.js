@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import './Content.css';
-import { getPosts } from '../../../apiRequests/postApi';
-import Post from './Post';
-import PostModal from './PostModal';
+import React, { useState, useEffect } from "react";
+import "./Content.css";
 
-const ele = document.getElementById("root")
+import { getPosts } from "../../../apiRequests/postApi";
+
+import Post from "./Post";
+import PostModal from "./PostModal";
 
 const Content = () => {
   const [posts, setPosts] = useState([]);
-  const [authToken, setAuthToken] = useState("")
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [authToken, setAuthToken] = useState("");
 
-  const [selectPost, setSelectPost] = useState(null)
+
+  //view comment modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectPost,setSelectPost]=useState(null)
 
   //get all posts
   const getAllPosts = async () => {
@@ -21,46 +23,41 @@ const Content = () => {
   };
 
   useEffect(() => {
-    setAuthToken(JSON.parse(localStorage.getItem("token")))
+    setAuthToken(JSON.parse(localStorage.getItem("token")));
     getAllPosts();
   }, []);
+
+  
 
   const handleOpenModal = (post) => {
     setIsModalOpen(true);
     setSelectPost(post)
-    ele.setAttribute("style", "overflow:hidden;");
-
-  }
-
+  };
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    ele.setAttribute("style", "overflow:scroll;");
-
-  }
-
+  };
 
   return (
     <div className="postList">
       {posts.map((post, index) => {
         return (
-          <Post
-            post={post}
-            key={index}
-            onPressItem={handleOpenModal}
-            authToken={authToken} />
+         <Post
+         post={post}
+         key={index}
+         onPressItem={handleOpenModal}
+         authToken={authToken}
+         
+         />
         );
       })}
-
-      <PostModal
-        post={selectPost}
-        postList={posts}
-        isOpen={isModalOpen}
-        handleClose={handleCloseModal}
-      />
-
+ <PostModal
+ post={selectPost}
+ postList={posts}
+ isOpen={isModalOpen}
+ handleClose={handleCloseModal}
+ />
     </div>
   );
 };
 
 export default Content;
-

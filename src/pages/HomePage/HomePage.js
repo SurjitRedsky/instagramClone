@@ -11,6 +11,7 @@ import ImgTag from "../../components/ImgTag";
 import ExploreScreen from "../../components/ExploreScreen/ExploreScreen";
 import { getUser } from "../../apiRequests/userApi";
 import UserProfile from "../../components/UserProfile/UserProfile";
+import CreatePostModal from "../../components/CreatePost/CreatePostModal";
 
 const HomePage = ({ comp }) => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const HomePage = ({ comp }) => {
     {
       name: "Create",
       icon: "../images/inputIcons/create.png",
-      component: <SuggestionBox />,
+      component: <CreatePostModal /> ,
     },
     {
       name: "Profile",

@@ -25,40 +25,12 @@ const ContentModel
 
 
   return (
-    <div>
-<Modal
-        isOpen={modalIsOpen}
-        className="commentModal"
-        // overlayClassName="Overlay"
-        contentLabel="Example Modal"
-        shouldCloseOnOverlayClick={false}
-      >
+    <div className='model'>
 
-<div className='comment'>
-  <div className='commentModalContainer'>
-    <div className='commentPost'>
-      <ImgTag />
-    </div>
-    <div className='commentList'>
-
-      sgdfsgdfs
-    </div>
-
-  </div>
-
-
-
-
-
-
-
+<div className=''>
 
 </div>
 
-
-      </Modal>
-
-      
     </div>
   )
 }
