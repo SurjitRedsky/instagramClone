@@ -1,19 +1,17 @@
-import {
-  Dialog,
-  DialogContent,
-  IconButton,
-  DialogTitle,
-  Button,
-} from "@mui/material";
+import { Dialog, DialogContent, IconButton, DialogTitle } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useRef, useState } from "react";
 import "./CreatePostModal.css";
 import ImgTag from "../ImgTag";
+import Button from "../Button";
 import { createUrl, uploadFile } from "../../apiRequests/postApi";
+import UploadPost from "./UploadPost";
+import SelectPost from "./SelectPost";
 
 const CreatePostModal = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [selectedFile,setSelectedFile]=useState(null)
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isGenraterLink, setGenraterLink] = useState("");
 
   const handleClose = () => {
     setIsOpen(false);
@@ -28,65 +26,38 @@ const CreatePostModal = () => {
 
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
-setSelectedFile(file)
-    // await createUrl(file)
-    //   .then((response) => console.log("respones->", response.data))
-    //   .catch((err) => console.log(err));
-
+    setSelectedFile(file);
 
     const formData = new FormData();
-    formData.append('file', selectedFile);
+    formData.append("file", selectedFile);
 
-    
-
-
-
-    await uploadFile(formData)
-      .then((response) => console.log("respones->", response.data))
-      .catch((err) => console.log(err));
-
-    console.log("file->", file);
+    if (formData) {
+      await uploadFile(formData)
+        .then((response) => {
+          console.log("respones->", response.data);
+          response.data.statusCode === 200
+            ? setGenraterLink(response.data.url)
+            : setGenraterLink("");
+        })
+        .catch((err) => console.log(err));
+    }
+    return null;
   };
 
   //
 
   return (
     <div className="createPostPage">
-      <div className="createPostCont">
-        <div className="createPostModalHeading">
-          <h1> Create new Post </h1>
-        </div>
-        <div className="createPostModalContent">
-          <div className="imgCont">
-            <ImgTag src={"../images/birthDayCake.png"} width={250} />
-
-            <span className="textDragPics">Drag photos and videos here</span>
-          </div>
-          <div className="selectPostBtn">
-            <button onClick={handleClick}>Select from computer </button>
-            <input
-              type="file"
-              ref={fileInput}
-              onChange={handleFileSelect}
-              style={{ display: "none" }}
-            ></input>
-          </div>
-        </div>
-      </div>
+        {isGenraterLink.length > 0 ? (
+          <UploadPost link={isGenraterLink} />
+        ) : (
+          <SelectPost
+            handleClick={handleClick}
+            fileInput={fileInput}
+            handleFileSelect={handleFileSelect}
+          />
+        )}
     </div>
-
-    //    <Dialog open={isOpen}>
-    // <DialogTitle>
-    //   Create new Post
-    //   <IconButton onClick={handleClose}>
-    //     <CloseIcon />
-    //   </IconButton>
-    // </DialogTitle>
-    // <DialogContent>
-    //   crrekfjndkl
-    // </DialogContent>
-
-    //    </Dialog>
   );
 };
 

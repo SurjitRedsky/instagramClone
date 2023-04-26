@@ -61,18 +61,18 @@ const HomePage = ({ comp }) => {
     },
   ];
 
-  const getUserData = async (token) => {
-    await getUser(token)
-      .then((response) => {
-        setCurrentUser(response.data.data);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const getUserData = async (token) => {
+  //   await getUser(token)
+  //     .then((response) => {
+  //       setCurrentUser(response.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    getUserData(token);
-  }, []);
+  // useEffect(() => {
+  //   const token = JSON.parse(localStorage.getItem("token"));
+  //   getUserData(token);
+  // }, []);
 
 
 

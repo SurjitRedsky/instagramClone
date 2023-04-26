@@ -13,9 +13,13 @@ export default function Post({ post, authToken, onPressItem }) {
     const [likeBtn, setLikesBtn] = useState("../images/inputIcons/blackHeart3.png")
 
     // convert uri
-    const convert = (uri) => {
-        const encoded = encodeURI(uri.uri);
-        return encoded
+    const convert = (url) => {
+        if(url.uri){
+            const encoded = encodeURI(url.uri);
+            return encoded    
+        }else{
+            return url
+        }
     };
 
     // handle Add comment
@@ -49,8 +53,6 @@ export default function Post({ post, authToken, onPressItem }) {
 
     //handleOpen modal
 
-
-
     return (
         <div className="playingContent">
             {/* content header */}
@@ -73,7 +75,6 @@ export default function Post({ post, authToken, onPressItem }) {
                 <div className="LikeShare">
 
                     <Button text={<ImgTag
-                        // src={'../images/inputIcons/blackHeart3.png'}
                         src={likeBtn}
                         width={23}
                         height={20}

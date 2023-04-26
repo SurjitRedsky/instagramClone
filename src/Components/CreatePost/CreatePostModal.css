@@ -1,5 +1,6 @@
 
 
+/* slectpost container 1 */
 .createPostPage{
   width: 100%;
   height: 100vh;
@@ -9,26 +10,29 @@
 }
 
 .createPostCont{
-  width: 40%;
+  min-width: 40%;
+  max-width: 70%;
   border-radius: 10px;
-  justify-content: center;
   display: flex;
   align-items: center;
 flex-direction: column;
-justify-content: space-between;
 box-shadow: 0 0 10px 1px #b1acac
 }
 .createPostModalHeading{
   width: 100%;
   text-align: center;
-  padding: 8px 0px ;
+  padding: 8px 10px ;
   border-bottom: 1px solid rgb( 219, 219, 219)
 }
 .createPostModalHeading>h1{
   font-size: 16px;
-  font-weight: 600;
-  
+  font-weight: 600; 
 }
+
+
+
+
+
 
 
 .createPostModalContent{
@@ -54,7 +58,7 @@ gap: 10px;
   justify-content: center;
 }
 
-.selectPostBtn >button{
+.selectPostBtn > button{
   color: #FFFFFF;
   background-color: #0095F6;
   padding: 7px 16px;
@@ -62,5 +66,98 @@ gap: 10px;
   font-size: 16px;
   font-weight: 600;
 }
-.hee{
-  }
+
+
+
+/* second container crop img 2 */
+.cropPostModalHeading{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgb(219,219,219);
+  justify-content: space-between;
+}
+.cropPostModalContent{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center
+}
+.cropPostModalContent>img{
+  max-width: 100%;
+  height: auto;
+}
+/* /////////////////////// */
+
+
+
+/* add caption 3 */
+
+.addCaptionHeading{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb( 219, 219, 219);
+}
+.uploadPostModalWithUser{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+ justify-content: center;
+  /* align-items: center; */
+}
+
+.uploadPostModalImg{
+  width: 70%;
+}
+.uploadPostModalImg>img{
+  max-width: 100%;
+}
+
+.uploadPostModalUser{
+  width: 30%;
+}
+
+
+
+
+.userNameCont{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.userNameCont>h4{
+  margin-left: 10px;
+}
+
+/* **********£ */
+
+
+/* upload post modal -- slect image  */
+/* .uploadPostModalContent{
+  height:auto;
+  display: flex;
+  overflow: hidden;
+} */
+
+.uploadPostModalContent>img{
+object-fit: cover;
+}
+
+.postModalBackBtn,.postModalNextBtn{
+  background-color: transparent;
+  font-size: 14px;
+}
+.postModalNextBtn{
+  color: #0095F6;
+}
+
+
+
+
+/* next btn afetr image select  */
+
