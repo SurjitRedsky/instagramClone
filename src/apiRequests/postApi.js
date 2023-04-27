@@ -1,3 +1,4 @@
+import { Api } from "@mui/icons-material";
 import axios from "axios";
 
 const API = axios.create({ baseURL: "http://localhost:4000" });
@@ -18,20 +19,19 @@ export const createUrl = (file) => {
 
 // upload file 
 export const uploadFile = (formData)=>{
-// return API.post("/upload", {file}, {
-//   headers: {
-//     "Content-Type": "multipart/form-data",
-//   },
-// })    
-
-
 return API.post('/upload', formData, {
   headers: {
     'Content-Type': 'multipart/form-data'
   }
 })
-
 }
+
+
+//share post 
+export const sharePost =(data,token)=>{
+return API.post("/posts",data,{ headers: {"Authorization" : `${token}`} })
+}
+
 
 
 

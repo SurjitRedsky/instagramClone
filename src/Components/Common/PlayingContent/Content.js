@@ -31,9 +31,12 @@ const Content = () => {
 
   const handleOpenModal = (post) => {
     setIsModalOpen(true);
+    console.log("isOpen->",isModalOpen);
+
     setSelectPost(post)
   };
   const handleCloseModal = () => {
+    console.log("isClose->",isModalOpen);
     setIsModalOpen(false);
   };
 
@@ -54,8 +57,10 @@ const Content = () => {
  post={selectPost}
  postList={posts}
  isOpen={isModalOpen}
+
  handleClose={handleCloseModal}
  />
+
     </div>
   );
 };
