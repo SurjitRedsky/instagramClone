@@ -17,12 +17,6 @@ import SelectPost from "../../CreatePost/SelectPost";
 function PostModal({ post, isOpen, handleClose, postList, isClose }) {
   const classes = useStyles();
 
-  //   const handleClose=()=>{
-  //     console.log(isOpen);
-  // return !isOpen
-  //   }
-  console.log(isOpen);
-
   // convert uri
   const convert = (url) => {
     if (url.uri) {
@@ -43,17 +37,13 @@ function PostModal({ post, isOpen, handleClose, postList, isClose }) {
           </div>
 
           <div className={classes.containerBox}>
-
-<SelectPost/>
-
-
-
+            <SelectPost />
             {/* <div>
               <ImgTag src={"http://localhost:4000/1682584298443.jpeg"} />
             </div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             {/* </Modal.Body> */}
-          </div> 
+          </div>
         </Modal>
       </div>
       // <Dialog open={isOpen} maxWidth={"lg"}>
@@ -85,8 +75,6 @@ export default PostModal;
 const useStyles = makeStyles(() => ({
   contentBox: {
     display: "flex",
-    // justifyContent:"center",
-    // alignItems:"center"
     marginTop: "20px",
     padding: 0,
   },
@@ -99,7 +87,6 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     overflow: "hidden",
     height: "60vh",
-    // marginTop: "20px",
   },
 
   innerBox1: {

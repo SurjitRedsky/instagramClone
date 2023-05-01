@@ -4,6 +4,7 @@ import ContentHeader from "../ContentHeader";
 import CommentModal from "../ContentModal/CommentModal";
 import Button from "../../Button";
 import { commentOnPost } from "../../../apiRequests/commentApi";
+import moment from 'moment'
 
 export default function Post({ post, authToken, onPressItem }) {
   const [comment, setComment] = useState("");
@@ -48,23 +49,46 @@ export default function Post({ post, authToken, onPressItem }) {
     setLikesBtn("../images/inputIcons/redHeart.png");
   };
 
-  //handleOpen modal
+  
+  // get date and time 
+
+  const createDate=(createdAt)=>{
+    var future = moment(new Date());
+    var start = moment(createdAt);
+    var d = future.diff(start, 'days'); // 9
+ 
+    // const diffInMs   = d2 - d1
+    // const days = diffInMs / (1000 * 60 * 60 * 24)  
+    console.log("days->",d);
+
+if(d<=7){
+  console.log( `${d}d`)
+}else{
+  console.log(`${Math.round(d/7)}w`)
+}
+
+// console.log("dfklmdfl",`${Math.round(days/7)}w`);
+  }
+  
+  createDate()
 
   return (
     <div className="playingContent">
       {/* content header */}
-      <div className="contentHeader">
+  
         <ContentHeader
           data={{
             userName: post.userName,
             profileImage: post.profileImage,
+            createdAt:post.createdAt
           }}
         />
-      </div>
+     
 
       {/* post */}
       <div className="content">
         {/* {console.log("lll",post?.media[0]?.url)} */}
+        
 
         <ImgTag src={convert(post?.media[0]?.url)} alt={"images"} />
       </div>

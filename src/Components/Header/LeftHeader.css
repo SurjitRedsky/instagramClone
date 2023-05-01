@@ -69,3 +69,17 @@ color: rgb(var(--ig-primary-text));
   /* background-color: gray; */
 
 }
+
+
+@media only screen and (max-width: 1260px) {
+  .leftHeader{
+ width: 100px;
+  }
+.leftHeaderLinkName{
+  display: none;
+}
+.leftHeaderIcon{
+  display: none;
+}
+
+}

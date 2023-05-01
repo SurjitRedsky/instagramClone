@@ -48,24 +48,32 @@ align-items: center;
   border-radius: 50%;
   overflow: hidden;
 }
-
 .userProfileImg >img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-
-
-
 .userDetailOnPost{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  min-height: 40px;
 }
-.userDetailOnPost>span{
+.userDetailOnPostUserName{
+  font-size: 14px;  
+  font-weight: 600;
+}
+.userDetailonPostTittle{
   font-size: 12px;
 }
+.userDetailTopLine span:not(:last-of-type)::after {
+  content: '\00B7';
+  margin: 0 0.10em 0 0.30em;
+}
+.userDetailOnUploadTme{
+  font-size: 13px;
+  color: #737373;
 
+}
 
 
 
@@ -75,19 +83,11 @@ align-items: center;
 .optionButton>button{
   font-size: 20px;
   background-color: transparent;
-  /* background-color: red; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-/* padding: auto; */
+ 
 padding-bottom: 7px;
 }
 
-/* content header css end is here */
-
-
-
-
+/* content header css end is here *
 
 /* filed icons  */
 .filedIcons{
@@ -184,7 +184,7 @@ width: 80%;
   height: 100vh;
 }
 
-.btn{
+.hioppp{
   background-color: aqua;
   color: brown;
 }

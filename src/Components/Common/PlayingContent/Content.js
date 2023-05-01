@@ -57,7 +57,6 @@ const Content = () => {
  post={selectPost}
  postList={posts}
  isOpen={isModalOpen}
-
  handleClose={handleCloseModal}
  />
 

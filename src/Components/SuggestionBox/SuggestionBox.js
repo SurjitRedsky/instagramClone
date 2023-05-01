@@ -7,6 +7,9 @@ import { getAllUsers } from "../../apiRequests/userApi";
 
 const SuggestionBox = ({ user }) => {
   const [listOfUser, setListOfUser] = useState([]);
+  const [currentUser,setCurrentUser]=useState("")
+
+
 
   const getUsers = async (token) => {
     await getAllUsers(token)
@@ -19,6 +22,15 @@ const SuggestionBox = ({ user }) => {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
     getUsers(token);
+  
+    const user =JSON.parse(localStorage.getItem("loginUser"));
+    if(user){
+      setCurrentUser(user);
+    }else{
+      const user= JSON.parse(localStorage.getItem("signUser"))
+      setCurrentUser(user)
+    }
+
   }, []);
 
  // convert uri
@@ -44,9 +56,9 @@ const SuggestionBox = ({ user }) => {
               width={60}
             />
           </div>
-          <div className="userDetail">
-            <h5>{user?.userName}</h5>
-            <span> {user?.firstName} </span>
+          <div className="suggestedListUserCont">
+          <span className="suggestedListUserName">{user?.userName} </span>
+                  <span className="suggestedListName"> {user?.firstName} {user?.lastName} </span>
           </div>
         </div>
 
@@ -62,7 +74,13 @@ const SuggestionBox = ({ user }) => {
       </div>
 
       <div className="suggestedUser">
-        {listOfUser.map((user, ind) => {
+        {
+          
+          listOfUser.filter((item)=>{
+          return (
+            item._id!==currentUser._id
+          )
+        } ).map((user, ind) => {
           return (
             <div className="suggestedUserProfile" key={ind}>
               <div className="userProfile">
@@ -75,9 +93,9 @@ const SuggestionBox = ({ user }) => {
                     }
                   />
                 </div>
-                <div className="userDetail">
-                  <h5>{user?.userName} </h5>
-                  <span> {user?.firstName}</span>
+                <div className="suggestedListUserCont">
+                  <span className="suggestedListUserName">{user?.userName} </span>
+                  <span className="suggestedListName"> {user?.firstName}</span>
                 </div>
               </div>
 

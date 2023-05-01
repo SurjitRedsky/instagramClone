@@ -19,27 +19,25 @@ justify-content: space-between;
 
 
 
-/* .userProfile>img{
-border: 2px solid rgb(232, 33, 33);
-
-} */
-
-.userDetail{
-justify-content: center;
-margin-left: 10px;
-min-height: 35px;
-}
-
-/* .userDetail{
+/* username */
+.suggestedListUserCont{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-left: 10px;
-  min-height: 40px;
-} */
-.userDetail>span{
+}
+.suggestedListUserName{
+font-size: 14px;
+font-weight: 600;
+}
+.suggestedListName{
+  font-size: 12px;
+}
+/* ******** */
+
+/* .userDetail>span{
   color: #737373;
   font-size: 12px;
-  /* margin-left: 10px; */
-}
+} */
 
 
 .switchButton>button{
@@ -65,7 +63,6 @@ justify-content: space-between;
 .suggestedUserProfileImg{
     width: 32px;
       height: 32px;
-
 border-radius: 50%;
 background-color: red;
   overflow: hidden;
@@ -76,15 +73,7 @@ background-color: red;
   height: 100%;
 object-fit: cover;
 }
-/* .userProfileImg {
-  width: 60%;
-  border-radius: 50%;
-  overflow: hidden;
-}
 
-.userProfileImg>img {
-  object-fit: cover;
-} */
 .suggestionHeading{
   display: flex;
   justify-content: space-between;

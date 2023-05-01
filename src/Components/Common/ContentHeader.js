@@ -1,9 +1,23 @@
 import React from "react";
 import ImgTag from "../ImgTag";
 import Button from "../Button";
-// import '../../content.css'
-import '../Common/PlayingContent/Content.css'
+import moment from "moment";
+import "../Common/PlayingContent/Content.css";
 const ContentHeader = ({ data }) => {
+  
+  
+  
+  // find the diff b/w post uploading date and current date
+  const createDate = () => {
+    let now = moment(new Date());
+    let createdAt = moment(data.createdAt);
+    let days = now.diff(createdAt, "days"); 
+    if (days < 7) {
+      return `${days}d`;
+    } else {
+      return `${Math.round(days / 7)}w`;
+    }
+  };
 
   // convert uri
   const convert = (url) => {
@@ -18,12 +32,22 @@ const ContentHeader = ({ data }) => {
     <div className="contentHeader">
       <div className="userProfile">
         <div className="userProfileImg">
-          {/* <ImgTag src={convert(data?.profileImage?.uri)} width={35} /> */}
-          <ImgTag src={data?.profileImage ? convert(data?.profileImage) : " ../images/inputIcons/profile.png"} width={35} />
+          <ImgTag
+            src={
+              data?.profileImage
+                ? convert(data?.profileImage)
+                : " ../images/inputIcons/profile.png"
+            }
+            width={35}
+          />
         </div>
         <div className="userDetailOnPost">
-          <h5>{data.userName}</h5>
-          <span> title </span>
+          <div className="userDetailTopLine">
+            <span className="userDetailOnPostUserName">{data?.userName}</span>
+            <span className="userDetailOnUploadTme"> {createDate()} </span>
+          </div>
+
+          <span className="userDetailonPostTittle"> title </span>
         </div>
       </div>
       <div className="optionButton">
