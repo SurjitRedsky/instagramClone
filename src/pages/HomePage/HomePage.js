@@ -12,6 +12,7 @@ import ExploreScreen from "../../components/ExploreScreen/ExploreScreen";
 import { getUser } from "../../apiRequests/userApi";
 import UserProfile from "../../components/UserProfile/UserProfile";
 import CreatePostModal from "../../components/CreatePost/CreatePostModal";
+import LeftSideHeaderModal from "../../components/Header/LeftSideHeaderModal";
 
 const HomePage = ({ comp }) => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const HomePage = ({ comp }) => {
     {
       name: "Search",
       icon: "../images/inputIcons/search.png",
-      component: <SuggestionBox />,
+      component: <LeftSideHeaderModal/> ,
     },
     {
       name: "Explore",
