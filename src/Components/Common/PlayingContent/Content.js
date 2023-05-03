@@ -10,10 +10,9 @@ const Content = () => {
   const [posts, setPosts] = useState([]);
   const [authToken, setAuthToken] = useState("");
 
-
   //view comment modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectPost,setSelectPost]=useState(null)
+  const [selectPost, setSelectPost] = useState(null);
 
   //get all posts
   const getAllPosts = async () => {
@@ -22,44 +21,43 @@ const Content = () => {
       .catch((err) => console.log(err));
   };
 
+  //handle open post modal
+  const handleOpenModal = (post) => {
+    setIsModalOpen(true);
+    setSelectPost(post);
+  };
+
+  //handle close post modal 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     setAuthToken(JSON.parse(localStorage.getItem("token")));
     getAllPosts();
   }, []);
 
-  
 
-  const handleOpenModal = (post) => {
-    setIsModalOpen(true);
-    console.log("isOpen->",isModalOpen);
 
-    setSelectPost(post)
-  };
-  const handleCloseModal = () => {
-    console.log("isClose->",isModalOpen);
-    setIsModalOpen(false);
-  };
 
   return (
     <div className="postList">
       {posts.map((post, index) => {
         return (
-         <Post
-         post={post}
-         key={index}
-         onPressItem={handleOpenModal}
-         authToken={authToken}
-         
-         />
+          <Post
+            post={post}
+            key={index}
+            onPressItem={handleOpenModal}
+            authToken={authToken}
+          />
         );
       })}
- <PostModal
- post={selectPost}
- postList={posts}
- isOpen={isModalOpen}
- handleClose={handleCloseModal}
- />
-
+      <PostModal
+        post={selectPost}
+        postList={posts}
+        isOpen={isModalOpen}
+        handleClose={handleCloseModal}
+      />
     </div>
   );
 };

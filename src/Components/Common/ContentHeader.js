@@ -13,20 +13,20 @@ const ContentHeader = ({ data }) => {
       if (days < 1) {
 
 
-        console.log("before->",createdAt.format("hh"));
+        // console.log("before->",createdAt.format("hh"));
         if (moment(createdAt).format("mm") < "60") {
-          console.log("min->", moment(createdAt).format("mm"));
+          // console.log("min->", moment(createdAt).format("mm"));
           return `${moment(createdAt).format("mm")}m`;
         } else {
-          console.log("ho->", moment(createdAt).format("hh"));
+          // console.log("ho->", moment(createdAt).format("hh"));
           return `${moment(createdAt).format("hh")}h`;
         }
       } else {
-        console.log("day->", days);
+        // console.log("day->", days);
         return `${days}d`;
       }
     } else {
-      console.log("week->", Math.round(days / 7));
+      // console.log("week->", Math.round(days / 7));
       return `${Math.round(days / 7)}w`;
     }
   };

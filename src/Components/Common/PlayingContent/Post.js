@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ImgTag from "../../ImgTag";
 import ContentHeader from "../ContentHeader";
 import CommentModal from "../ContentModal/CommentModal";
 import Button from "../../Button";
 import { commentOnPost } from "../../../apiRequests/commentApi";
-import moment from 'moment'
+import moment from "moment";
+import { postLike } from "../../../apiRequests/postApis/postLikeApi";
+import { async } from "react-input-emoji";
 
 export default function Post({ post, authToken, onPressItem }) {
   const [comment, setComment] = useState("");
@@ -45,51 +47,41 @@ export default function Post({ post, authToken, onPressItem }) {
   };
 
   //change like button
-  const clickLike = () => {
-    setLikesBtn("../images/inputIcons/redHeart.png");
+  const clickLike = async (id) => {
+    const respones = await postLike({ postId: id, token: authToken });
+    if (respones.data.statusCode == 200) {
+      setLikesBtn("../images/inputIcons/redHeart.png");
+    } else {
+      setLikesBtn("../images/inputIcons/blackHeart3.png");
+    }
   };
 
-  
-  // get date and time 
+  useEffect(() => {
+const currentuser=JSON.parse(localStorage.getItem("loginUser"));
+console.log("userr-->",currentuser)
 
-  const createDate=(createdAt)=>{
-    var future = moment(new Date());
-    var start = moment(createdAt);
-    var d = future.diff(start, 'days'); // 9
- 
-    // const diffInMs   = d2 - d1
-    // const days = diffInMs / (1000 * 60 * 60 * 24)  
-    console.log("days->",d);
-
-if(d<=7){
-  console.log( `${d}d`)
-}else{
-  console.log(`${Math.round(d/7)}w`)
+const isLiked=post?.likes?.users?.includes(currentuser._id)
+console.log("isLikes->",isLiked);
+if(isLiked){
+  setLikesBtn("../images/inputIcons/redHeart.png")
 }
 
-// console.log("dfklmdfl",`${Math.round(days/7)}w`);
-  }
+  }, [])
   
-  createDate()
 
   return (
     <div className="playingContent">
       {/* content header */}
-  
-        <ContentHeader
-          data={{
-            userName: post.userName,
-            profileImage: post.profileImage,
-            createdAt:post.createdAt
-          }}
-        />
-     
+      <ContentHeader
+        data={{
+          userName: post.userName,
+          profileImage: post.profileImage,
+          createdAt: post.createdAt,
+        }}
+      />
 
       {/* post */}
       <div className="content">
-        {/* {console.log("lll",post?.media[0]?.url)} */}
-        
-
         <ImgTag src={convert(post?.media[0]?.url)} alt={"images"} />
       </div>
 
@@ -98,7 +90,7 @@ if(d<=7){
         <div className="LikeShare">
           <Button
             text={<ImgTag src={likeBtn} width={23} height={20} />}
-            onclick={clickLike}
+            onclick={() => clickLike(post?._id)}
           />
 
           <Button
@@ -133,11 +125,11 @@ if(d<=7){
       {/* post description */}
       <div className="contentDescription">
         <div className="likesOnPost">
-          <span>{post.likes.users.length} likes</span>
+          <span>{post?.likes?.users?.length} likes</span>
         </div>
         <div className="postDescription">
           <p>
-            <span>{post.userName} </span> {post.content}
+            <span>{post?.userName} </span> {post.content}
           </p>
         </div>
         <div className="viewComments">

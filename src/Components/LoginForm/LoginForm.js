@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
@@ -21,7 +22,7 @@ const LoginForm = () => {
   const [loginData, setLoginData] = useState(loginInitialState);
   const [warning, setWarning] = useState("");
   const [disable, setDisable] = useState(true);
-  const [token,setToken]=useState("")
+  const [token, setToken] = useState("");
 
   //password input
   const [passwordType, setPasswordType] = useState("password");
@@ -29,28 +30,38 @@ const LoginForm = () => {
 
   // set login data
   const handleChange = (e) => {
-    loginData.password.length >= 5 && loginData.userName.length>0 ? setDisable(false) : setDisable(true);
+    loginData.password.length >= 5 && loginData.userName.length > 0
+      ? setDisable(false)
+      : setDisable(true);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   // login button submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await logIn(loginData);
-    if (response.data.statusCode == 200) {
-      setToken(response.data.token)
-      localStorage.setItem("token",JSON.stringify(response.data.token))
-      localStorage.setItem("loginUser", JSON.stringify(response.data.userData));
-      navigate("/homePage");
-    } else if (response.data.statusCode == 400 || response.data.statusCode == 404) {
-      setWarning(
-        "Sorry, your password was incorrect. Please double-check your password."
-      );
-    } else {
-      console.log("loginError->", response.data);
-      setWarning(response.data.message)
-    }
+   const respones= await logIn(loginData)
+      if (respones.data.statusCode == 200) {
+        setToken(respones.data.token);
+        localStorage.setItem("token", JSON.stringify(respones.data.token));
+        localStorage.setItem("loginUser", JSON.stringify(respones.data.userData));
+        navigate("/homePage");
+      } else if (
+        respones.data.statusCode == 400 ||
+        respones.data.statusCode == 404
+      ) {
+        setWarning(
+          "Sorry, your password was incorrect. Please double-check your password."
+        );
+      } else {
+        console.log("loginError->", respones.data);
+        setWarning(respones.data.message);
+      }
 
+
+
+
+   
+    
   };
 
   const toggleBtn = (e) => {
@@ -64,13 +75,10 @@ const LoginForm = () => {
     setPasswordText("Show");
   };
 
-
-
   useEffect(() => {
-    localStorage.setItem("token",JSON.stringify(token))
-    
-  }, [token])
-  
+    localStorage.setItem("token", JSON.stringify(token));
+  }, [token]);
+
   return (
     <div className="loginForm">
       <div className="loginContainer">

@@ -25,7 +25,7 @@ const MainContent = () => {
     <div className="homePageMainContent">
       <div className="leftMainContent">
         <div className="storyContainer">
-          <Story />
+          {/* <Story /> */}
         </div>
         <div className="mainContentList">
           <Content user={currentUser} />

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./Login.css";
-
 import Footer from "../../components/Footer/Footer";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import "./Login.css";
 
 const Login = () => {
-
 	const [currentImage, setCurrentImage] = useState('/images/screenshot1.png')
+	
+	//change list of images 
 	const addImages = ['/images/screenshot1.png', '/images/screenshot2.png', '/images/screenshot3.png', '/images/screenshot4.png']
 
+	//current image timing on mobile view
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			setCurrentImage(addImages[Math.floor(Math.random() * addImages.length)]);

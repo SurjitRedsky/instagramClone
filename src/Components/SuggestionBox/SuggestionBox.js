@@ -4,10 +4,13 @@ import ImgTag from "../ImgTag";
 import Button from "../Button";
 import SuggestionBoxFooter from "./SuggestionBoxFooter";
 import { getAllUsers } from "../../apiRequests/userApi";
+import { follow } from "../../apiRequests/followApi";
+import { async } from "react-input-emoji";
 
 const SuggestionBox = ({ user }) => {
   const [listOfUser, setListOfUser] = useState([]);
   const [currentUser,setCurrentUser]=useState("")
+  const [authToekn,setAuthToken]=useState("")
 
 
 
@@ -21,9 +24,11 @@ const SuggestionBox = ({ user }) => {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
+    setAuthToken(token)
     getUsers(token);
   
     const user =JSON.parse(localStorage.getItem("loginUser"));
+    console.log("user-->",user);
     if(user){
       setCurrentUser(user);
     }else{
@@ -41,7 +46,13 @@ const SuggestionBox = ({ user }) => {
   }
   return url;
 };
-  // console.log("user÷->", user);
+
+
+//follow api 
+async function followBtn(id){
+  await follow({id:id,token:authToekn}).then((respones)=>{console.log("res-->",respones.data.message); }).catch((err)=>{console.log(err);})
+}
+
   return (
     <div className="suggestionContainer">
       <div className="userDetails">
@@ -49,16 +60,17 @@ const SuggestionBox = ({ user }) => {
           <div>
             <ImgTag
               src={
-                user?.profileImage?.uri
+                currentUser?.profileImage?.uri
                   ? convert(user?.profileImage?.uri)
                   : " ../images/inputIcons/profile.png"
               }
               width={60}
-            />
+            />  
           </div>
           <div className="suggestedListUserCont">
-          <span className="suggestedListUserName">{user?.userName} </span>
-                  <span className="suggestedListName"> {user?.firstName} {user?.lastName} </span>
+        
+          <span className="suggestedListUserName">{currentUser?.userName} </span>
+                  <span className="suggestedListName"> {currentUser?.firstName} {user?.lastName} </span>
           </div>
         </div>
 
@@ -100,7 +112,7 @@ const SuggestionBox = ({ user }) => {
               </div>
 
               <div className="switchButton">
-                <Button text={"Follow"} />
+                <Button text={"Follow"} onclick={()=>followBtn(user._id)} />
               </div>
             </div>
           );

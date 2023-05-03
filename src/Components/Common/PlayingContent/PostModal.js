@@ -1,18 +1,9 @@
-import { Box, Container, Grid, IconButton, colors } from "@mui/material";
-import { createStyles, makeStyles } from "@mui/styles";
+import SelectPost from "../../CreatePost/SelectPost";
+import { makeStyles } from "@mui/styles";
 import { Modal } from "react-bootstrap";
 import "./Content.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import CloseIcon from "@mui/icons-material/Close";
-import ImgTag from "../../ImgTag";
-
-import Post from "./Post";
-import Button from "../../Button";
-import SelectPost from "../../CreatePost/SelectPost";
 
 function PostModal({ post, isOpen, handleClose, postList, isClose }) {
   const classes = useStyles();
