@@ -16,6 +16,8 @@ function PostModal({ post, isOpen, handleClose, postList, isClose }) {
     }
     return url;
   };
+
+  
   if (post) {
     const filterPost = postList.filter((item) => post._id == item._id);
     return (

@@ -9,11 +9,7 @@ import "./UserProfile.css"
 
 
 const UserProfile = () => {
-
-
-
-
-    const images = [
+  const images = [
         {
             src: "../images/inputIcons/wedding.jpeg"
         }, {
@@ -38,8 +34,11 @@ const UserProfile = () => {
     };
 
     useEffect(() => {
-        const token = JSON.parse(localStorage.getItem("token"));
+        const token = localStorage.getItem("token")
+        const user=JSON.parse(localStorage.getItem("userCedentials"))
         getUserData(token);
+
+
     }, []);
     console.log("user->", currentUser);
 

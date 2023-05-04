@@ -6,7 +6,7 @@ import "./Login.css";
 const Login = () => {
 	const [currentImage, setCurrentImage] = useState('/images/screenshot1.png')
 	
-	//change list of images 
+	//Array of screenShot images
 	const addImages = ['/images/screenshot1.png', '/images/screenshot2.png', '/images/screenshot3.png', '/images/screenshot4.png']
 
 	//current image timing on mobile view

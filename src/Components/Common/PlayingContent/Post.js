@@ -57,11 +57,11 @@ export default function Post({ post, authToken, onPressItem }) {
   };
 
   useEffect(() => {
-const currentuser=JSON.parse(localStorage.getItem("loginUser"));
-console.log("userr-->",currentuser)
+const currentuser=JSON.parse(localStorage.getItem("userCedentials"));
+// console.log("userr-->",currentuser)
 
 const isLiked=post?.likes?.users?.includes(currentuser._id)
-console.log("isLikes->",isLiked);
+// console.log("isLikes->",isLiked);
 if(isLiked){
   setLikesBtn("../images/inputIcons/redHeart.png")
 }

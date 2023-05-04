@@ -19,10 +19,13 @@ const AddDecriptionPost = ({ handleBackClick, currentUser, link }) => {
   const [isPostShared, setPostShared] = useState(false);
   const [messageOnShared,setMessageShared]=useState("")
 
-  //convert uri to url
-  const convert = (uri) => {
-    const encoded = encodeURI(uri.uri);
-    return encoded;
+  // convert uri
+  const convert = (url) => {
+    if (url.uri) {
+      const encoded = encodeURI(url.uri);
+      return encoded;
+    }
+    return url;
   };
 
   const handleDescriptionChange = (e) => {
@@ -52,7 +55,9 @@ const AddDecriptionPost = ({ handleBackClick, currentUser, link }) => {
   };
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token"));
+    // const token = JSON.parse(localStorage.getItem("token"));
+    const token = localStorage.getItem("token")
+
     setAuthToken(token);
   }, []);
 
@@ -83,6 +88,7 @@ const AddDecriptionPost = ({ handleBackClick, currentUser, link }) => {
                 <ImgTag
                   src={
                     currentUser?.profileImage?.uri
+                 
                       ? convert(currentUser?.profileImage?.uri)
                       : " ../images/inputIcons/profile.png"
                   }

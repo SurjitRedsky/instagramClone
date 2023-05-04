@@ -43,7 +43,8 @@ const LoginForm = () => {
       if (respones.data.statusCode == 200) {
         setToken(respones.data.token);
         localStorage.setItem("token", JSON.stringify(respones.data.token));
-        localStorage.setItem("loginUser", JSON.stringify(respones.data.userData));
+        // localStorage.setItem("loginUser", JSON.stringify(respones.data.userData));
+        localStorage.setItem("userCedentials",JSON.stringify(respones.data.userData))
         navigate("/homePage");
       } else if (
         respones.data.statusCode == 400 ||
@@ -57,10 +58,6 @@ const LoginForm = () => {
         setWarning(respones.data.message);
       }
 
-
-
-
-   
     
   };
 

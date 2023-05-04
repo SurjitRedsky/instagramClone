@@ -30,13 +30,12 @@ function CodeVerification() {
       newValue = newValue.slice(0, maxlength);
     }
     setVerificationCode(newValue);
-    verificationCode.length > 5 ? setDisabled(false) : setDisabled(true);
+    verificationCode.length > 5 ? setDisabled(true) : setDisabled(false);
   };
 
   //submit button
   const onSubmit = (e) => {
     e.preventDefault();
-
     confirVerificaionCode(
       { code: verificationCode, id: currentUser.userId },
       navigate,

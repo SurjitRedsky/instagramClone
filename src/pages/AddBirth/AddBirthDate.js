@@ -16,8 +16,14 @@ import { sendCodeAndAddBirthday } from "../../apiRequests/authApi";
 const AddBirthDate = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = location.state?.user;
-  console.log("user->", user);
+  const user = location.state?.signUpData?.user;
+  const authToken=location.state?.signUpData?.token
+
+  localStorage.setItem("userCedentials",JSON.stringify(user))
+  localStorage.setItem("token",authToken)
+
+
+  console.log("addBirthdateUser-->", user,authToken);
 
   //initial state for birthdate
   const initialBirthDate = {

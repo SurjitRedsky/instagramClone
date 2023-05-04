@@ -8,7 +8,7 @@ export const logIn = (data) => {
   return API.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
-  });
+  } );
 };
 // .then((response) => {
 //   if (response.data.statusCode == 200) {
@@ -52,15 +52,14 @@ export const register = (data) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  // console.log("data from navigation", data);
   API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
     userName: data.userName,
   })
     .then((res) => {
-      // console.log("dtaa->", res);
       if (res.data.statusCode === 200) {
         localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
+        // localStorage.setItem("userCedentials",JSON.stringify(res?.data))
         navigate("/accounts/emailsignup/codeveified");
       } else if (res.data.statusCode === 500) {
         alert("Server Error");
@@ -76,7 +75,6 @@ export const confirVerificaionCode = (data, navigate, setWearning) => {
   API.put(`/accounts/verified/${data.id}`, { code: data.code })
     .then((res) => {
       if (res.data.statusCode === 200) {
-        // localStorage.setItem("registerUser",JSON.stringify(res?.data) )
         navigate("/homePage");
       } else if (res.data.statusCode === 400) {
         setWearning(res.data.message);

@@ -11,8 +11,6 @@ const ContentHeader = ({ data }) => {
     let days = now.diff(createdAt, "days");
     if (days < 7) {
       if (days < 1) {
-
-
         // console.log("before->",createdAt.format("hh"));
         if (moment(createdAt).format("mm") < "60") {
           // console.log("min->", moment(createdAt).format("mm"));

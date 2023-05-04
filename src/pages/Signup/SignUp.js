@@ -125,8 +125,9 @@ const SignUp = () => {
     } else {
       const respones = await register(signUpData);
       if (respones.data.statusCode === 200) {
+        console.log("userSign->",respones.data);
         navigate("/accounts/emailsignup/addbirthdate", {
-          state: { user: respones.data.user },
+          state: { signUpData:{  user: respones.data.user,token:respones.data.token} },
         });
       } else if (respones.data.statusCode === 403) {
         setSignUpWearning(`${respones.data.message}`);

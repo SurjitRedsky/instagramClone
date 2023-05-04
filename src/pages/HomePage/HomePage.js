@@ -28,7 +28,7 @@ const HomePage = ({ comp }) => {
     {
       name: "Search",
       icon: "../images/inputIcons/search.png",
-      component: <LeftSideHeaderModal/> ,
+      component: <LeftSideHeaderModal/>  ,
     },
     {
       name: "Explore",

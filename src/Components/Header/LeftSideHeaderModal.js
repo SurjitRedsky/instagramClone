@@ -15,7 +15,6 @@ const LeftSideHeaderModal = () => {
 </div>
 <div>
 
-
 <video src=',,.'></video>
 </div>
     </div>

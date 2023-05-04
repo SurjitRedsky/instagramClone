@@ -33,7 +33,7 @@ const Content = () => {
   };
 
   useEffect(() => {
-    setAuthToken(JSON.parse(localStorage.getItem("token")));
+    setAuthToken(localStorage.getItem("token"));
     getAllPosts();
   }, []);
 
