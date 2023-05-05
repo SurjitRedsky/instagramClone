@@ -5,7 +5,7 @@ const API = axios.create({ baseURL: "http://localhost:4000" });
 
 export const follow = ({id, token}) => {
   console.log("token",token);
- return  API.post(`/follow/${id}`, " ",{ headers: {"Authorization" : `${token}`} });
+ return  API.post(`/follow/${id}`," ",{ headers: {"Authorization" : `${token}`} });
 };
 
 

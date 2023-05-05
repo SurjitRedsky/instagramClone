@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getUser } from '../../apiRequests/userApi';
+import { getUser, getUserById } from '../../apiRequests/userApi';
 import AnchorTag from '../AnchorTag';
 import Button from '../Button';
 import Footer from '../Footer/Footer';
@@ -25,10 +25,12 @@ const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
 
 
-    const getUserData = async (token) => {
-        await getUser(token)
+    const getUserData = async (id,token) => {
+        console.log("dataUserprofiel-->",id,token);
+        await getUserById(id,token)
             .then((response) => {
-                setCurrentUser(response.data.data);
+                console.log("userr--->>>",response.data);
+                setCurrentUser(response.data);
             })
             .catch((err) => console.log(err));
     };
@@ -36,7 +38,8 @@ const UserProfile = () => {
     useEffect(() => {
         const token = localStorage.getItem("token")
         const user=JSON.parse(localStorage.getItem("userCedentials"))
-        getUserData(token);
+        console.log("userprofile user-->",user);
+        getUserData( user._id , token);
 
 
     }, []);
