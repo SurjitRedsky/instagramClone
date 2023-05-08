@@ -20,14 +20,14 @@ const UploadPost = ({ link }) => {
   const getUserData = async (token) => {
     await getUser(token)
       .then((response) => {
-        console.log("userr000", response.data.data);
+        console.log("userr000", response.data);
         setCurrentUser(response.data.data);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    const token =localStorage.getItem("token")
+    const token = JSON.parse(localStorage.getItem("token"))
     getUserData(token);
   }, []);
 

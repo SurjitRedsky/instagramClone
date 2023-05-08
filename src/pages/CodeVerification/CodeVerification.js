@@ -33,14 +33,28 @@ function CodeVerification() {
     verificationCode.length > 5 ? setDisabled(true) : setDisabled(false);
   };
 
+  const codeVerification = async () => {
+    await confirVerificaionCode({
+      code: verificationCode,
+      id: currentUser.userId,
+    })
+      .then((respones) => {
+        if (respones.data.statusCode == 200) {
+          navigate("/homepage");
+        } else {
+          setWearning(respones.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   //submit button
   const onSubmit = (e) => {
     e.preventDefault();
-    confirVerificaionCode(
-      { code: verificationCode, id: currentUser.userId },
-      navigate,
-      setWearning
-    );
+    codeVerification();
+   
   };
   const handleResendCode = (e) => {
     reSendVerificaionCode(

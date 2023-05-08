@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getUser, getUserById } from '../../apiRequests/userApi';
+import {  getUserById } from '../../apiRequests/userApi';
 import AnchorTag from '../AnchorTag';
 import Button from '../Button';
 import Footer from '../Footer/Footer';
@@ -26,25 +26,33 @@ const UserProfile = () => {
 
 
     const getUserData = async (id,token) => {
-        console.log("dataUserprofiel-->",id,token);
         await getUserById(id,token)
             .then((response) => {
-                console.log("userr--->>>",response.data);
                 setCurrentUser(response.data);
             })
             .catch((err) => console.log(err));
     };
 
     useEffect(() => {
-        const token = localStorage.getItem("token")
+        const token =JSON.parse( localStorage.getItem("token"))
         const user=JSON.parse(localStorage.getItem("userCedentials"))
-        console.log("userprofile user-->",user);
         getUserData( user._id , token);
-
-
     }, []);
-    console.log("user->", currentUser);
 
+
+
+
+  // convert uri
+  const convert = (url) => {
+    if (url?.uri) {
+      const encoded = encodeURI(url.uri);
+      return encoded;
+    }
+    return url;
+  };
+
+
+console.log("currentUser--->",currentUser);
     return (
         <div className='userProfilePage'>
 
@@ -53,7 +61,7 @@ const UserProfile = () => {
                     <div className='userAvtar'>
                         <div className='addProfileImg' >
                             <Button text={
-                                <ImgTag src={"../images/birthDayCake.png"} width={150} />
+                                <ImgTag src={"../images/x-mark-1.png"} width={150} />
 
                             } />
                         </div>
@@ -70,9 +78,9 @@ const UserProfile = () => {
                             />
                         </div>
                         <div className='userContentList'>
-                            <span>{"1 posts"}  </span>
-                            <Button text={"3 followers"} />
-                            <Button text={"4 following"} />
+                            <span>{ currentUser?.posts.length } posts  </span>
+                            <Button text={`${currentUser?.followData?.follower?.length} followers`} />
+                            <Button text={`${currentUser?.followData?.following?.length} following` } />
                         </div>
                         <div className='userprofileName'>
                             <span>{currentUser?.firstName} </span>
@@ -106,12 +114,16 @@ const UserProfile = () => {
                 </div>
 
 
-                <div className='contentOfUserProfile'>
+                <div className='userPostGallery'>
                     {
-                        images.map((img, ind) => {
+                  currentUser?.posts.map((post, ind) => {
                             return (
-                                <div className='showImg' key={ind}>
-                                    <ImgTag src={img.src} />
+                                <div className='galleryImg' key={ind}>
+
+                                    {
+                                        console.log("url--->",post)
+                                    }
+                                    <ImgTag src={convert(post?.media[0]?.url)} alt={"images"} />
                                 </div>
                             )
                         })

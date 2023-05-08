@@ -17,13 +17,12 @@ const AddBirthDate = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state?.signUpData?.user;
-  const authToken=location.state?.signUpData?.token
+  const authToken = location.state?.signUpData?.token;
 
-  localStorage.setItem("userCedentials",JSON.stringify(user))
-  localStorage.setItem("token",authToken)
+  localStorage.setItem("userCedentials", JSON.stringify(user));
+  localStorage.setItem("token", JSON.stringify(authToken));
 
-
-  console.log("addBirthdateUser-->", user,authToken);
+  console.log("addBirthdateUser-->", user, authToken);
 
   //initial state for birthdate
   const initialBirthDate = {
@@ -51,19 +50,43 @@ const AddBirthDate = () => {
     );
   }, [birthDate]);
 
-  const onclick = (e) => {
-    e.preventDefault();
+  //handleBackButton
+  const handleBackClick = () => {
+    navigate('/accounts/emailsignup')
+  };
 
-    sendCodeAndAddBirthday(
-      { dateOfBirth: newDateFormat, userName: user?.email, id: user?._id },
-      navigate
-    );
+  //api request to add birth
+  const addBirthDateCall = async () => {
+    await sendCodeAndAddBirthday({
+      dateOfBirth: newDateFormat,
+      userName: user?.email,
+    }).then((res) => {
+      if (res.data.statusCode === 200) {
+        localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
+        localStorage.setItem("userCedentials",JSON.stringify(res?.data))
+        navigate("/accounts/emailsignup/codeveified");
+      } else if (res.data.statusCode === 500) {
+        alert("Server Error");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addBirthDateCall();
+    // sendCodeAndAddBirthday(
+    //   { dateOfBirth: newDateFormat, userName: user?.email, id: user?._id },
+    //   navigate
+    // );
   };
 
   return (
     <div className="AddBirthDatePanel">
       <div className="birthDateContainer">
-        <form className="selectDatePanel" onSubmit={onclick}>
+        <form className="selectDatePanel" onSubmit={handleSubmit}>
           <div className="formlayout">
             <div className="cakeIcon">
               <ImgTag src={"/images/birthDayCake.png"} width={140} />
@@ -97,7 +120,13 @@ const AddBirthDate = () => {
                 text={"Next"}
                 disabled={btnDisale}
               />
-              <AnchorTag href={"*"} text={"Go Back"} />
+
+<Button
+
+text={"Go Back" }
+onclick={handleBackClick}
+/>
+              {/* <AnchorTag  text={"Go Back"} /> */}
             </div>
             {/* </form> */}
           </div>

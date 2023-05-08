@@ -23,7 +23,7 @@ const SuggestionBox = ({ user }) => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token =JSON.parse( localStorage.getItem("token"))
     setAuthToken(token)
     getUsers(token);
   

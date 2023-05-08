@@ -17,7 +17,7 @@ const MainContent = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token =JSON.parse( localStorage.getItem("token"))
     getUserData(token);
   }, []);
 

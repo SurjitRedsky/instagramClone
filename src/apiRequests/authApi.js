@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // import axios from ''
-const API = axios.create({ baseURL: "http://localhost:4000" });
+const API = axios.create({ baseURL: "http://192.168.18.31:4000" });
 
 //login api request
 export const logIn = (data) => {
@@ -52,44 +52,44 @@ export const register = (data) => {
 
 //send verification code
 export const sendCodeAndAddBirthday = (data, navigate) => {
-  API.post(`accounts/signUp/${data.id}`, {
+  return API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
     userName: data.userName,
   })
-    .then((res) => {
-      if (res.data.statusCode === 200) {
-        localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
-        // localStorage.setItem("userCedentials",JSON.stringify(res?.data))
-        navigate("/accounts/emailsignup/codeveified");
-      } else if (res.data.statusCode === 500) {
-        alert("Server Error");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    // .then((res) => {
+    //   if (res.data.statusCode === 200) {
+    //     localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
+    //     // localStorage.setItem("userCedentials",JSON.stringify(res?.data))
+    //     navigate("/accounts/emailsignup/codeveified");
+    //   } else if (res.data.statusCode === 500) {
+    //     alert("Server Error");
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
 };
 
 export const confirVerificaionCode = (data, navigate, setWearning) => {
-  // console.log(data);
-  API.put(`/accounts/verified/${data.id}`, { code: data.code })
-    .then((res) => {
-      if (res.data.statusCode === 200) {
-        navigate("/homePage");
-      } else if (res.data.statusCode === 400) {
-        setWearning(res.data.message);
-      } else {
-        setWearning(res.data.message);
-      }
-    })
-    .catch((err) => console.log(err));
+  console.log("code verification-->",data);
+ return  API.put(`/accounts/verified/${data.id}`, { code: data.code })
+    // .then((res) => {
+    //   if (res.data.statusCode === 200) {
+    //     navigate("/homePage");
+    //   } else if (res.data.statusCode === 400) {
+    //     setWearning(res.data.message);
+    //   } else {
+    //     setWearning(res.data.message);
+    //   }
+    // })
+    // .catch((err) => console.log(err));
 };
 
 // resend verificaion code
 export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
   API.put(`/accounts/verified/resend/${data.id}`)
     .then((res) => {
-      console.log("res", res.data);
+      // console.log("res", res.data);
       setResendCodeMsg(res?.data);
     })
     .catch((err) => console.log(err));

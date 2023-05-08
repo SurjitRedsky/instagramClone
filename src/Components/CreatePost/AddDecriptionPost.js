@@ -55,8 +55,8 @@ const AddDecriptionPost = ({ handleBackClick, currentUser, link }) => {
   };
 
   useEffect(() => {
-    // const token = JSON.parse(localStorage.getItem("token"));
-    const token = localStorage.getItem("token")
+    const token = JSON.parse(localStorage.getItem("token"));
+    // const token = localStorage.getItem("token")
 
     setAuthToken(token);
   }, []);

@@ -6,7 +6,7 @@ import Button from "../../Button";
 import { commentOnPost } from "../../../apiRequests/commentApi";
 import moment from "moment";
 import { postLike } from "../../../apiRequests/postApis/postLikeApi";
-import { async } from "react-input-emoji";
+
 
 export default function Post({ post, authToken, onPressItem }) {
   const [comment, setComment] = useState("");
@@ -32,22 +32,25 @@ export default function Post({ post, authToken, onPressItem }) {
 
   // send comment data to server
   const addComment = async (data) => {
+    console.log("authToken",authToken);
     await commentOnPost(data, authToken)
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
   };
 
   // handle post comment
-  const handleAddComment = (id) => {
+  function handleAddComment (id){
     const commentData = {
       postId: id,
       text: comment,
     };
     addComment(commentData);
+    console.log("commit-->",commentData);
   };
 
   //change like button
   const clickLike = async (id) => {
+    // console.log("hhiii");
     const respones = await postLike({ postId: id, token: authToken });
     if (respones.data.statusCode == 200) {
       setLikesBtn("../images/inputIcons/redHeart.png");
@@ -58,15 +61,12 @@ export default function Post({ post, authToken, onPressItem }) {
 
   useEffect(() => {
 const currentuser=JSON.parse(localStorage.getItem("userCedentials"));
-// console.log("userr-->",currentuser)
-
 const isLiked=post?.likes?.users?.includes(currentuser._id)
-// console.log("isLikes->",isLiked);
 if(isLiked){
   setLikesBtn("../images/inputIcons/redHeart.png")
 }
 
-  }, [])
+  }, [clickLike])
   
 
   return (
@@ -128,14 +128,14 @@ if(isLiked){
           <span>{post?.likes?.users?.length} likes</span>
         </div>
         <div className="postDescription">
-          <p>
+          {/* <p> */}
             <span>{post?.userName} </span> {post.content}
-          </p>
+          {/* </p> */}
         </div>
         <div className="viewComments">
           {post.comments.map((comment, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="viewCommentList">
                 <span> {comment.text} </span>
               </div>
             );
@@ -156,7 +156,7 @@ if(isLiked){
               {comment?.length > 0 ? (
                 <Button
                   text={"Post"}
-                  onclick={(e) => handleAddComment(post._id)}
+                  onclick={(e)=>{e.preventDefault(); handleAddComment(post._id)}}
                 />
               ) : (
                 ""
