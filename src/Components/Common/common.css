@@ -15,7 +15,7 @@
 
 .line {
     width: 40%;
-    opacity: 0.3;
+    opacity: 0.8;
 }
 
 
@@ -47,7 +47,7 @@
   .userNameInput>input[type=text]{
   border: none;
   font-size: 13px;
-  border-radius: 1px;
+  border-radius: 2px;
   background-color: transparent;
 
   }
@@ -78,7 +78,7 @@
 
   .currentValue{
     padding-top: 2px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
     padding-left: 8px;
   }
 

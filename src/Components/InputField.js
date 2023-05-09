@@ -5,13 +5,15 @@ const InputField = ({
   type, className,
   id, placeholder, onchange, name,
   required, value, innerInputContent, showBtn, autoFocus, pattern, maxNum, minNum,
-  handleBlur = () => { }
+  handleBlur = () => { },
+  style
 }) => {
 
   return (
 
     <div
       className={`inputWithLabel`}
+      style={style}
     >
       <div className={`userNameInput ${value?.length > 0 ? "currentValue" : "changeValue"
         } `}>

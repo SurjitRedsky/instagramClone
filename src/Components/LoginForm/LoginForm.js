@@ -11,6 +11,7 @@ import AppStoreIcons from "../Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../Common/LoginSignupOption";
 import HorizontalLine from "../Common/HorizontalLine";
 import { logIn } from "../../apiRequests/authApi";
+import { LOCAL_ORIGIN } from "../../config";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -137,7 +138,7 @@ const LoginForm = () => {
           )}
 
           <AnchorTag
-            href={"*"}
+            href={`${LOCAL_ORIGIN}/accounts/password/reset`}
             className={"forgotPass"}
             text={"Forgot password?"}
           />

@@ -14,6 +14,8 @@ import Login from './pages/login/Login'
 import SuggestionBox from './components/SuggestionBox/SuggestionBox';
 // import io from 'socket.io-client'
 import { useEffect } from 'react';
+import ForgetPassword from './pages/forgetPassword/ForgetPassword';
+import RobotCaptchaScreen from './pages/forgetPassword/RobotCaptchaScreen';
 
 // socket.io-client
 
@@ -34,12 +36,16 @@ function App() {
 
 
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path='/accounts/login' element={<Login />} />
-        <Route path="/accounts/emailsignup" element={<SignUp />} />
-        <Route path="/accounts/emailsignup/addbirthdate" element={<AddBirthDate />} />
+
         <Route path="/accounts/emailsignup/codeveified" element={<CodeVerification />} />
+        <Route path="/accounts/emailsignup/addbirthdate" element={<AddBirthDate />} />
+        <Route path='/accounts/password/reset' element={<ForgetPassword/> }/>
+        <Route path="/accounts/emailsignup" element={<SignUp />} />
+        <Route path='/accounts/login' element={<Login />} />
         <Route path="/homePage" element={<HomePage />} />
+        <Route path='/challenges' element={<RobotCaptchaScreen/>} />
+
+        <Route path="/" element={<Login />} />
         {/* <Route path='/explore' element={<SuggestionBox/>}/> */}
       </Routes>
     </div>
