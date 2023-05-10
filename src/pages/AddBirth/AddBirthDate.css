@@ -84,6 +84,9 @@ color: rgb(var(--grey-4));
    min-width: 291px;
    width: 22%;
    margin-bottom: 10px;
+   /* display: flex;
+   flex-direction: column;
+   gap: 10px; */
 }
 .nextBtn{
     width: 95%;

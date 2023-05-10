@@ -22,8 +22,6 @@ const AddBirthDate = () => {
   localStorage.setItem("userCedentials", JSON.stringify(user));
   localStorage.setItem("token", JSON.stringify(authToken));
 
-  console.log("addBirthdateUser-->", user, authToken);
-
   //initial state for birthdate
   const initialBirthDate = {
     month: new Date().getMonth() + 1,
@@ -52,7 +50,7 @@ const AddBirthDate = () => {
 
   //handleBackButton
   const handleBackClick = () => {
-    navigate('/accounts/emailsignup')
+    navigate("/accounts/emailsignup");
   };
 
   //api request to add birth
@@ -60,27 +58,24 @@ const AddBirthDate = () => {
     await sendCodeAndAddBirthday({
       dateOfBirth: newDateFormat,
       userName: user?.email,
-    }).then((res) => {
-      if (res.data.statusCode === 200) {
-        localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
-        localStorage.setItem("userCedentials",JSON.stringify(res?.data))
-        navigate("/accounts/emailsignup/codeveified");
-      } else if (res.data.statusCode === 500) {
-        alert("Server Error");
-      }
     })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        if (res.data.statusCode === 200) {
+          localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
+          localStorage.setItem("userCedentials", JSON.stringify(res?.data));
+          navigate("/accounts/emailsignup/codeveified");
+        } else if (res.data.statusCode === 500) {
+          alert("Server Error");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addBirthDateCall();
-    // sendCodeAndAddBirthday(
-    //   { dateOfBirth: newDateFormat, userName: user?.email, id: user?._id },
-    //   navigate
-    // );
   };
 
   return (
@@ -95,11 +90,11 @@ const AddBirthDate = () => {
               <p className="publicProfile">
                 This won't be a part of your public profile.
               </p>
-              <AnchorTag
+              {/* <AnchorTag
                 className={"question"}
                 href={"*"}
                 text={"Why do I need to provide my birthday?"}
-              />
+              /> */}
             </div>
             {/* <form> */}
 
@@ -121,11 +116,11 @@ const AddBirthDate = () => {
                 disabled={btnDisale}
               />
 
-<Button
-
-text={"Go Back" }
-onclick={handleBackClick}
-/>
+              <AnchorTag
+                href="/accounts/emailsignup"
+                text={"Go Back"}
+                // onclick={handleBackClick}
+              />
               {/* <AnchorTag  text={"Go Back"} /> */}
             </div>
             {/* </form> */}

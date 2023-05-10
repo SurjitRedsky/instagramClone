@@ -5,6 +5,8 @@ const InputField = ({
   type, className,
   id, placeholder, onchange, name,
   required, value, innerInputContent, showBtn, autoFocus, pattern, maxNum, minNum,
+  autocomplete,
+
   handleBlur = () => { },
   style
 }) => {
@@ -35,6 +37,7 @@ const InputField = ({
           pattern={pattern}
           min={minNum}
           max={maxNum}
+          autoComplete={autocomplete}
         >
         </input>
       </div>

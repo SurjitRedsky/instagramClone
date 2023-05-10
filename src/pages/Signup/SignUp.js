@@ -11,6 +11,7 @@ import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import HorizontalLine from "../../components/Common/HorizontalLine";
 import { createRandomUserName, register } from "../../apiRequests/authApi";
 import { useNavigate } from "react-router-dom";
+import { LOGIN_WITH_FACEBOOK } from "../../config";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const SignUp = () => {
   const [signUpWearning, setSignUpWearning] = useState("");
 
   //random userName
-  const [userNameList, setUserNameList] = useState([])
+  const [userNameList, setUserNameList] = useState([]);
 
   //password input
   const [showPassword, setShowPassword] = useState(false);
@@ -85,7 +86,6 @@ const SignUp = () => {
 
   //check userName
   const checkUserNamevalidation = (key) => {
-
     let inputValue = signUpData[key];
     const isture = checkUerName(inputValue);
     if (inputValue.length > 0) {
@@ -125,45 +125,53 @@ const SignUp = () => {
     } else {
       const respones = await register(signUpData);
       if (respones.data.statusCode === 200) {
-        console.log("userSign->",respones.data);
+        console.log("userSign->", respones.data);
         navigate("/accounts/emailsignup/addbirthdate", {
-          state: { signUpData:{  user: respones.data.user,token:respones.data.token} },
+          state: {
+            signUpData: {
+              user: respones.data.user,
+              token: respones.data.token,
+            },
+          },
         });
       } else if (respones.data.statusCode === 403) {
         setSignUpWearning(`${respones.data.message}`);
       } else {
         console.log("nill");
-        setSignUpWearning(`${respones.data.message}`)
+        setSignUpWearning(`${respones.data.message}`);
       }
     }
   };
 
   // Refresh username
   const refreshUserName = async () => {
-    const preUserName = signUpData.name
+    const preUserName = signUpData.name;
     if (userNameList.length > 0) {
-      const first = userNameList[0]
+      const first = userNameList[0];
       setSignUpData({
         ...signUpData,
         userName: first,
-      })
-      setUserNameList(userNameList.slice(1))
+      });
+      setUserNameList(userNameList.slice(1));
       console.log("usen->", userNameList);
-    }
-    else {
+    } else {
       // console.log("userName->",preUserName);
 
       let response = await createRandomUserName(preUserName);
-      console.log('#m list: ', response);
-      const list = response?.data?.data
+      console.log("#m list: ", response);
+      const list = response?.data?.data;
       console.log("lis-.", list);
-      const first = list[0]
+      const first = list[0];
       setSignUpData({
         ...signUpData,
         userName: first,
-      })
-      setUserNameList(list.slice(1))
+      });
+      setUserNameList(list.slice(1));
     }
+  };
+
+  const loginWithFbHandle = () => {
+    navigate(LOGIN_WITH_FACEBOOK);
   };
 
   return (
@@ -178,11 +186,21 @@ const SignUp = () => {
               Sign up to see photos and videos from your friends.
             </h2>
             <Button
-              className={"facebookLoginBtn"}
-              fontIcon={
-                <ImgTag src={"/images/whitefacebookIcon.png"} width={"15.5px"} />
+                className={"facebookLoginBtn"}
+              
+              text={
+                <AnchorTag
+                fontIcon={
+                  <ImgTag
+                  src={"/images/whitefacebookIcon.png"}
+                  width={"15.5px"}
+                  />
+                }
+                className={"facebookLoginBtnLink"}
+                href={LOGIN_WITH_FACEBOOK}
+                  text={` Log in with Facebook `}
+                />
               }
-              text={` Log in with Facebook `}
             />
 
             <HorizontalLine />
@@ -235,7 +253,7 @@ const SignUp = () => {
                   handleClick={refreshUserName}
                 />
               }
-              handleBlur={() => checkUserNamevalidation('userName')}
+              handleBlur={() => checkUserNamevalidation("userName")}
             />
             <InputField
               type={showPassword ? "text" : "password"}
@@ -249,7 +267,10 @@ const SignUp = () => {
                   forKey="password"
                   error={error}
                   showPassword={showPassword}
-                  handleClick={(e) => { e.preventDefault(); setShowPassword(!showPassword) }}
+                  handleClick={(e) => {
+                    e.preventDefault();
+                    setShowPassword(!showPassword);
+                  }}
                 />
               }
               handleBlur={checkPasswordValidation}
@@ -259,15 +280,31 @@ const SignUp = () => {
               <p>
                 People who use our service may have uploaded your contact
                 information to Instagram.{" "}
-                <AnchorTag href={"https://www.facebook.com/help/instagram/261704639352628"} text={" Learn More"} />
+                <AnchorTag
+                  href={
+                    "https://www.facebook.com/help/instagram/261704639352628"
+                  }
+                  text={" Learn More"}
+                />
               </p>
               <p>
                 By signing up, you agree to our
-                <AnchorTag href={"https://help.instagram.com/581066165581870/?locale=en_US"} text={"Terms "} /> ,
-                <AnchorTag href={"https://www.facebook.com/privacy/policy"} text={"Privacy Policy"} />
-
+                <AnchorTag
+                  href={
+                    "https://help.instagram.com/581066165581870/?locale=en_US"
+                  }
+                  text={"Terms "}
+                />{" "}
+                ,
+                <AnchorTag
+                  href={"https://www.facebook.com/privacy/policy"}
+                  text={"Privacy Policy"}
+                />
                 and
-                <AnchorTag href={"https://help.instagram.com/1896641480634370/"} text={"Cookies Policy."} />
+                <AnchorTag
+                  href={"https://help.instagram.com/1896641480634370/"}
+                  text={"Cookies Policy."}
+                />
               </p>
             </div>
 
@@ -276,17 +313,12 @@ const SignUp = () => {
               text={"Sign up"}
               disabled={disable}
             />
-            {
-
-              signUpWearning.length > 0 ? (
-                <span className="signUpWearning">
-                  {signUpWearning}
-                </span>
-              ) : ""
-
-            }
+            {signUpWearning.length > 0 ? (
+              <span className="signUpWearning">{signUpWearning}</span>
+            ) : (
+              ""
+            )}
           </form>
-
         </div>
         <LoginSignupOption
           label={"Have an account?"}
@@ -329,25 +361,27 @@ function RenderInnerInputContent({
   if (forKey === "userName") {
     return (
       <>
-        {showIcon && <ImgTag
-          src={
-            error[forKey] === "success"
-              ? "/images/inputTrue.png"
-              : "/images/x-mark-1.png"
-          }
-          alt="icon"
-          width={20}
-        />
-        }
-        {refresh && <ImgTag
-          src={"/images/refreshing-1.png"}
-          alt="icon"
-          width={20}
-          handleClick={handleClick}
-        />
-        }
+        {showIcon && (
+          <ImgTag
+            src={
+              error[forKey] === "success"
+                ? "/images/inputTrue.png"
+                : "/images/x-mark-1.png"
+            }
+            alt="icon"
+            width={20}
+          />
+        )}
+        {refresh && (
+          <ImgTag
+            src={"/images/refreshing-1.png"}
+            alt="icon"
+            width={20}
+            handleClick={handleClick}
+          />
+        )}
       </>
-    )
+    );
   }
 
   if (forKey === "password") {

@@ -6,21 +6,48 @@ import Button from "../../components/Button";
 import InputField from "../../components/InputField";
 import AnchorTag from "../../components/AnchorTag";
 import HorizontalLine from "../../components/Common/HorizontalLine";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { checkUserIs } from "../../apiRequests/authApi";
+
 
 const ForgetPassword = () => {
   const navigate = useNavigate()
 
   const [userName, setUserName] = useState("");
+  const [disable, setDisable] = useState(true);
 
-  const handleChange = (e) => {
-    setUserName(e.target.value);
-    console.log("value-->", userName);
+  // check Username 
+  const checkEmail = function (v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   };
 
+  const handleChange = (e) => {
+      setUserName(e.target.value);
+    
+  };
+
+
+const checkUserValidate=async (name)=>{
+  await checkUserIs(name).then((response) => {
+    console.log("response --->",response);
+    if(response.data.statusCode==200){
+      navigate("/challenges" , {state:{ user:userName}})
+    }else if(response.data.statusCode==404){
+      alert("No User Find")
+    }else{
+      console.log(response.statusCode);
+    }
+  }).catch((err) => {
+    console.log(err);
+  });
+}
+
 const handleSubmit=(e)=>{
-e.preventDefault()
-navigate("/challenges")
+  if(checkEmail(userName)){
+    e.preventDefault()
+    checkUserValidate(userName)
+}
 }
 
 
@@ -59,6 +86,7 @@ navigate("/challenges")
                 name={"userName"}
                 value={userName}
                 style={{minWidth:"300px"}}
+                autocomplete={"off"}
               />
             </form>
           </div>

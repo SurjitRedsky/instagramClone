@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AnchorTag = ( {href,className,id,text, fontIcon}) => {
+const AnchorTag = ( {href,className,id,text, fontIcon,target}) => {
   return (
    <>
-   <a  href={href} className={className} id={id}>{ fontIcon} {text}  </a>
+   <a  href={href} className={className} id={id} target={target}>{fontIcon} {text}</a>
    </>
   )
 }

@@ -98,3 +98,13 @@ export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
 export const createRandomUserName = (data) => {
   return API.post("accounts/createUserName", { userName: data });
 };
+
+
+export const checkUserIs=(data)=>{
+  return API.get(`accounts/checkUser/${data}`)
+}
+
+
+export const sendForgotLink=(payload)=>{
+  return API.post(`accounts/challegeTrue/sendLink/${payload.userName}`)
+}
