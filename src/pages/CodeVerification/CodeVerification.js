@@ -54,7 +54,6 @@ function CodeVerification() {
   const onSubmit = (e) => {
     e.preventDefault();
     codeVerification();
-   
   };
   const handleResendCode = (e) => {
     reSendVerificaionCode(

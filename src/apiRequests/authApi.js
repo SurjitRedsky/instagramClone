@@ -107,4 +107,4 @@ export const checkUserIs=(data)=>{
 
 export const sendForgotLink=(payload)=>{
   return API.post(`accounts/challegeTrue/sendLink/${payload.userName}`)
-}
+} 

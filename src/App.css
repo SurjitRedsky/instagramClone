@@ -247,11 +247,7 @@
   justify-content: center;
   align-items: center;
   font-family: var(--font-family-system);
-/* overflow-y: scroll; */
-/* overflow-y: scroll; */
 
-
-  /* background-color: #2851A3; */
   }
 a{
   cursor: pointer;

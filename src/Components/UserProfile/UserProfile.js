@@ -9,19 +9,7 @@ import "./UserProfile.css"
 
 
 const UserProfile = () => {
-  const images = [
-        {
-            src: "../images/inputIcons/wedding.jpeg"
-        }, {
-            src: "../images/inputIcons/wedding.jpeg"
-        }, {
-            src: "../images/inputIcons/wedding.jpeg"
-        }, {
-            src: "../images/inputIcons/wedding.jpeg"
-        }, {
-            src: "../images/inputIcons/wedding.jpeg"
-        },
-    ]
+ 
     const [currentUser, setCurrentUser] = useState(null);
 
 

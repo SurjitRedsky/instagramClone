@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../Button'
 
-const RobotCaptcha = ({handleChange, handleClick,user} ) => {
+const RobotCaptcha = ({handleChange, handleClick} ) => {
   return (
     <div className="robotCaptchaContainer">
     <div className="robotCaptchaContainerContent">
