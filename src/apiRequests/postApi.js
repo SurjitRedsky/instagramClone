@@ -1,7 +1,8 @@
 import { Api } from "@mui/icons-material";
 import axios from "axios";
+import { BACKEND_URL } from "../config";
 
-const API = axios.create({ baseURL: "http://localhost:4000" });
+const API = axios.create({ baseURL:BACKEND_URL});
 
 export const getPosts = () => {
   return API.get(`/posts`);

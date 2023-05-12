@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import "./HomePage.css";
 import LeftHeader from "../../components/Header/LeftHeader";
 import Footer from "../../components/Footer/Footer";
@@ -62,21 +61,7 @@ const HomePage = ({ comp }) => {
     },
   ];
 
-  // const getUserData = async (token) => {
-  //   await getUser(token)
-  //     .then((response) => {
-  //       setCurrentUser(response.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   const token = JSON.parse(localStorage.getItem("token"));
-  //   getUserData(token);
-  // }, []);
-
-
-
+ 
   // get storage from local storage data
   const getAllStorage = () => {
     let data = [];

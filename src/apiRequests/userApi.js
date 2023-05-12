@@ -1,5 +1,6 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "http://localhost:4000" });
+import { BACKEND_URL } from "../config";
+const API = axios.create({ baseURL: BACKEND_URL });
 
 //get current user 
 export const getUser=(token)=>{

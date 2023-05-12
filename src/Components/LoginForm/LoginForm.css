@@ -50,14 +50,14 @@ width: 100%;
 }
 .loginBtn:hover{
   background-color: rgb(24, 119, 242);
-cursor: not-allowed;
+/* cursor: not-allowed; */
 }
 
 
 .loginBtn:disabled, .loginBtn[disabled] {
 opacity: 0.78;
  cursor: not-allowed;
-  pointer-events: none;
+  /* pointer-events: none; */
 
 }
 

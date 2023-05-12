@@ -22,7 +22,7 @@ function PostModal({ post, isOpen, handleClose, postList, isClose }) {
 
   if (post) {
     const filterPost = postList.filter((item) => post._id == item._id);
-    console.log("filterPost->", filterPost);
+    
     return (
       <div>
         <Modal show={isOpen} className={classes.contentBox}>

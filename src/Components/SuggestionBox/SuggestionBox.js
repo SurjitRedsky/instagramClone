@@ -28,8 +28,6 @@ const SuggestionBox = ({ user }) => {
     getUsers(token);
   
     const user =JSON.parse(localStorage.getItem("userCedentials"));
-    // localStorage.setItem("userCedentials",JSON.stringify(respones.data.userData))
-    console.log("user-->",user);
     if(user){
       setCurrentUser(user);
     }else{

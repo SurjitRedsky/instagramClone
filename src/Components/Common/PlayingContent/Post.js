@@ -14,6 +14,7 @@ export default function Post({ post, authToken, onPressItem }) {
   //likes button , share button
   const [likeBtn, setLikesBtn] = useState(
     "../images/inputIcons/blackHeart3.png"
+    
   );
 
   // convert uri
@@ -32,7 +33,6 @@ export default function Post({ post, authToken, onPressItem }) {
 
   // send comment data to server
   const addComment = async (data) => {
-    console.log("authToken",authToken);
     await commentOnPost(data, authToken)
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
@@ -45,12 +45,10 @@ export default function Post({ post, authToken, onPressItem }) {
       text: comment,
     };
     addComment(commentData);
-    console.log("commit-->",commentData);
   };
 
   //change like button
   const clickLike = async (id) => {
-    // console.log("hhiii");
     const respones = await postLike({ postId: id, token: authToken });
     if (respones.data.statusCode == 200) {
       setLikesBtn("../images/inputIcons/redHeart.png");
@@ -128,9 +126,7 @@ if(isLiked){
           <span>{post?.likes?.users?.length} likes</span>
         </div>
         <div className="postDescription">
-          {/* <p> */}
             <span>{post?.userName} </span> {post.content}
-          {/* </p> */}
         </div>
         <div className="viewComments">
           {post.comments.map((comment, index) => {

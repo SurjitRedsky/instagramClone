@@ -16,7 +16,6 @@ const RobotCaptchaScreen = () => {
   const location = useLocation();
 
   const currentUser = location.state?.user;
-  console.log("current user-->", currentUser);
 
   const [isChecked, setIsChecked] = useState("");
   const [confirmRobot, setConfirmRobot] = useState(false);

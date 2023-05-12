@@ -30,13 +30,13 @@ const ForgetPassword = () => {
 
 const checkUserValidate=async (name)=>{
   await checkUserIs(name).then((response) => {
-    console.log("response --->",response);
+
     if(response.data.statusCode==200){
       navigate("/challenges" , {state:{ user:userName}})
     }else if(response.data.statusCode==404){
       alert("No User Find")
     }else{
-      console.log(response.statusCode);
+      
     }
   }).catch((err) => {
     console.log(err);

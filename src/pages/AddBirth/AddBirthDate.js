@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./AddBirthDate.css";
 
 import Footer from "../../components/Footer/Footer";
-
 import AnchorTag from "../../components/AnchorTag";
 import ImgTag from "../../components/ImgTag";
-
 import Button from "../../components/Button";
 import AppStoreIcons from "../../components/Common/AppStoreIcons/AppStoreIcons";
 import LoginSignupOption from "../../components/Common/LoginSignupOption";
 import DatePicker from "../../components/Common/DatePicker/DatePicker";
-import { useLocation, useNavigate } from "react-router-dom";
 import { sendCodeAndAddBirthday } from "../../apiRequests/authApi";
+
 
 const AddBirthDate = () => {
   const navigate = useNavigate();
@@ -90,13 +89,7 @@ const AddBirthDate = () => {
               <p className="publicProfile">
                 This won't be a part of your public profile.
               </p>
-              {/* <AnchorTag
-                className={"question"}
-                href={"*"}
-                text={"Why do I need to provide my birthday?"}
-              /> */}
             </div>
-            {/* <form> */}
 
             <div className="dateSelection">
               <DatePicker setBirthDate={setBirthDate} birthDate={birthDate} />
@@ -116,14 +109,8 @@ const AddBirthDate = () => {
                 disabled={btnDisale}
               />
 
-              <AnchorTag
-                href="/accounts/emailsignup"
-                text={"Go Back"}
-                // onclick={handleBackClick}
-              />
-              {/* <AnchorTag  text={"Go Back"} /> */}
+              <AnchorTag href="/accounts/emailsignup" text={"Go Back"} />
             </div>
-            {/* </form> */}
           </div>
         </form>
         <LoginSignupOption

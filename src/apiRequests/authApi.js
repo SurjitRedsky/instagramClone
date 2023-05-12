@@ -1,30 +1,16 @@
 import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 // import axios from ''
-const API = axios.create({ baseURL: "http://192.168.18.31:4000" });
+const API = axios.create({ baseURL: BACKEND_URL });
 
 //login api request
 export const logIn = (data) => {
   return API.post("/accounts/login", {
     userName: data.userName,
     password: data.password,
-  } );
+  });
 };
-// .then((response) => {
-//   if (response.data.statusCode == 200) {
-//     localStorage.setItem("loginUser", JSON.stringify(response.data.user));
-//     navigate("/homePage");
-//   } else if (response.data.statusCode == 404) {
-//     setWarning(
-//       "Sorry, your password was incorrect. Please double-check your password."
-//     );
-//   } else {
-//     console.log(response.data);
-//   }
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
 
 //register
 export const register = (data) => {
@@ -34,20 +20,6 @@ export const register = (data) => {
     name: data.name,
     password: data.password,
   });
-  // .then((res) => {
-  //   // console.log("res->",res.data);
-  //   if (res.data.statusCode === 200) {
-  //     // console.log("res", res.data.user);
-  //     navigate("/accounts/emailsignup/addbirthdate", {
-  //       state: { user: res.data.user },
-  //     });
-  //   } else if (res.data.statusCode === 403) {
-  //     setWarning(`${res.data.message}`);
-  //   } else {
-  //     console.log("nill");
-  //   }
-  // })
-  // .catch((err) => console.log(err));
 };
 
 //send verification code
@@ -55,56 +27,36 @@ export const sendCodeAndAddBirthday = (data, navigate) => {
   return API.post(`accounts/signUp/${data.id}`, {
     dateOfBirth: data.dateOfBirth,
     userName: data.userName,
-  })
-    // .then((res) => {
-    //   if (res.data.statusCode === 200) {
-    //     localStorage.setItem("SignUpUser", JSON.stringify(res?.data));
-    //     // localStorage.setItem("userCedentials",JSON.stringify(res?.data))
-    //     navigate("/accounts/emailsignup/codeveified");
-    //   } else if (res.data.statusCode === 500) {
-    //     alert("Server Error");
-    //   }
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+  });
 };
 
+//CONFIRM  verification
 export const confirVerificaionCode = (data, navigate, setWearning) => {
-  console.log("code verification-->",data);
- return  API.put(`/accounts/verified/${data.id}`, { code: data.code })
-    // .then((res) => {
-    //   if (res.data.statusCode === 200) {
-    //     navigate("/homePage");
-    //   } else if (res.data.statusCode === 400) {
-    //     setWearning(res.data.message);
-    //   } else {
-    //     setWearning(res.data.message);
-    //   }
-    // })
-    // .catch((err) => console.log(err));
+  console.log("code verification-->", data);
+  return API.put(`/accounts/verified/${data.id}`, { code: data.code });
 };
 
 // resend verificaion code
 export const reSendVerificaionCode = (data, navigate, setResendCodeMsg) => {
   API.put(`/accounts/verified/resend/${data.id}`)
     .then((res) => {
-      // console.log("res", res.data);
       setResendCodeMsg(res?.data);
     })
     .catch((err) => console.log(err));
 };
 
+//create random userName 
 export const createRandomUserName = (data) => {
   return API.post("accounts/createUserName", { userName: data });
 };
 
+//check user is present in db
+export const checkUserIs = (data) => {
+  return API.get(`accounts/checkUser/${data}`);
+};
 
-export const checkUserIs=(data)=>{
-  return API.get(`accounts/checkUser/${data}`)
-}
 
-
-export const sendForgotLink=(payload)=>{
-  return API.post(`accounts/challegeTrue/sendLink/${payload.userName}`)
-} 
+//send forgot password link
+export const sendForgotLink = (payload) => {
+  return API.post(`accounts/challegeTrue/sendLink/${payload.userName}`);
+};

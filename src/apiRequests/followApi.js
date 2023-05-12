@@ -1,15 +1,11 @@
 import axios from "axios";
+import { BACKEND_URL } from "../config";
 
-// import axios from ''
-const API = axios.create({ baseURL: "http://localhost:4000" });
+const API = axios.create({ baseURL: BACKEND_URL });
 
-export const follow = ({id, token}) => {
-  console.log("token",token);
- return  API.post(`/follow/${id}`," ",{ headers: {"Authorization" : `${token}`} });
+//follow user
+export const follow = ({ id, token }) => {
+  return API.post(`/follow/${id}`, " ", {
+    headers: { Authorization: `${token}` },
+  });
 };
-
-
-
-// export const sharePost = (data, token) => {
-//   return API.post("/posts", data, { headers: { Authorization: `${token}` } });
-// };

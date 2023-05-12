@@ -76,7 +76,7 @@ const SignUp = () => {
   //check simple input
   const checkValidation = (key) => {
     const inputValue = signUpData[key];
-    // console.log("valeu", inputValue);
+
     if (inputValue.length >= 0) {
       setError({ ...error, [key]: "success" });
     } else {
@@ -95,7 +95,6 @@ const SignUp = () => {
     }
     return null;
   };
-  // console.log("error->",error);
 
   //check password
   const checkPasswordValidation = (key) => {
@@ -125,7 +124,6 @@ const SignUp = () => {
     } else {
       const respones = await register(signUpData);
       if (respones.data.statusCode === 200) {
-        console.log("userSign->", respones.data);
         navigate("/accounts/emailsignup/addbirthdate", {
           state: {
             signUpData: {
@@ -137,7 +135,6 @@ const SignUp = () => {
       } else if (respones.data.statusCode === 403) {
         setSignUpWearning(`${respones.data.message}`);
       } else {
-        console.log("nill");
         setSignUpWearning(`${respones.data.message}`);
       }
     }
@@ -153,14 +150,9 @@ const SignUp = () => {
         userName: first,
       });
       setUserNameList(userNameList.slice(1));
-      console.log("usen->", userNameList);
     } else {
-      // console.log("userName->",preUserName);
-
       let response = await createRandomUserName(preUserName);
-      console.log("#m list: ", response);
       const list = response?.data?.data;
-      console.log("lis-.", list);
       const first = list[0];
       setSignUpData({
         ...signUpData,
@@ -186,18 +178,17 @@ const SignUp = () => {
               Sign up to see photos and videos from your friends.
             </h2>
             <Button
-                className={"facebookLoginBtn"}
-              
+              className={"facebookLoginBtn"}
               text={
                 <AnchorTag
-                fontIcon={
-                  <ImgTag
-                  src={"/images/whitefacebookIcon.png"}
-                  width={"15.5px"}
-                  />
-                }
-                className={"facebookLoginBtnLink"}
-                href={LOGIN_WITH_FACEBOOK}
+                  fontIcon={
+                    <ImgTag
+                      src={"/images/whitefacebookIcon.png"}
+                      width={"15.5px"}
+                    />
+                  }
+                  className={"facebookLoginBtnLink"}
+                  href={LOGIN_WITH_FACEBOOK}
                   text={` Log in with Facebook `}
                 />
               }
